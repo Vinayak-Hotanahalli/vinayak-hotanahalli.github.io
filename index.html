@@ -6,75 +6,86 @@
 <title>Vinayak Hotanahalli | AI/ML Engineer</title>
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
 <style>
-  /* GENERAL STYLING */
+  /* === GENERAL STYLING === */
+  :root {
+    --bg-color:#0d0d0d;
+    --text-color:#fff;
+    --accent-color:#33ffd1;
+    --card-bg:#111;
+  }
   body {
     margin:0;
     font-family: 'Poppins', sans-serif;
-    background: #0d0d0d;
-    color: #fff;
-    overflow-x: hidden;
+    background: var(--bg-color);
+    color: var(--text-color);
+    transition: background 0.5s, color 0.5s;
   }
-  h2 {color:#33ffd1; margin-bottom:1rem; text-align:center;}
-  section {padding:50px 20px;}
-  .section-title {margin-bottom:30px;}
-  .card {background:#111; padding:20px; border-radius:12px; box-shadow:0 0 20px rgba(51,255,209,0.2); margin-bottom:30px; transition: transform 0.3s;}
+  h1,h2,h3 {margin:0;}
+  h1 {color:var(--accent-color);}
+  section {padding:60px 20px;}
+  .section-title {margin-bottom:30px; text-align:center;}
+  .card {
+    background:var(--card-bg);
+    padding:20px; border-radius:12px;
+    box-shadow:0 0 20px rgba(51,255,209,0.2);
+    margin-bottom:30px; transition: transform 0.3s;
+  }
   .card:hover {transform: translateY(-10px);}
-  ul {margin:0; padding-left:20px;}
-  button {cursor:pointer; background: #33ffd1; border:none; color:#000; font-weight:600; padding:8px 16px; border-radius:8px; margin-top:10px; transition:0.3s;}
-  button:hover {background:#0ff; color:#000;}
+  ul {padding-left:20px;}
+  button {
+    cursor:pointer;
+    background: var(--accent-color);
+    border:none;
+    color:#000;
+    font-weight:600;
+    padding:8px 16px;
+    border-radius:8px;
+    margin-top:10px;
+    transition:0.3s;
+  }
+  button:hover {background:#0ff;color:#000;}
 
-  /* SEE MORE PANEL */
-  .more-info-panel{
-    max-height:0;
-    overflow:hidden;
-    transition:max-height 0.6s ease, padding 0.5s ease;
-    padding-left:0;
-  }
-  .see-more-btn.active + .more-info-panel{
-    max-height:800px; 
-    padding-left:20px;
-  }
+  /* === SEE MORE PANEL === */
+  .more-info-panel{max-height:0;overflow:hidden;transition:max-height 0.6s ease,padding 0.5s ease;padding-left:0;}
+  .see-more-btn.active + .more-info-panel{max-height:800px;padding-left:20px;}
 
-  /* PROJECT CARD */
-  .projects-container {display:grid; grid-template-columns: repeat(auto-fit,minmax(300px,1fr)); gap:30px;}
-  .project-card {
-    perspective:1500px;
+  /* === PROJECT CARDS === */
+  .projects-container {display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:30px;}
+  .project-card{perspective:1500px;}
+  .project-card-inner{position:relative;width:100%;height:350px;transform-style:preserve-3d;transition: transform 0.8s;}
+  .project-card:hover .project-card-inner{transform:rotateY(180deg);}
+  .project-front, .project-back{
+    position:absolute;width:100%;height:100%;backface-visibility:hidden;
+    border-radius:12px; box-shadow:0 0 20px rgba(51,255,209,0.3); padding:20px; overflow:auto;
   }
-  .project-card-inner {
-    position:relative;
-    width:100%;
-    height:350px;
-    transform-style: preserve-3d;
-    transition: transform 0.8s;
-  }
-  .project-card:hover .project-card-inner {
-    transform: rotateY(180deg);
-  }
-  .project-front, .project-back {
-    position:absolute;
-    width:100%; height:100%;
-    backface-visibility: hidden;
-    border-radius:12px;
-    box-shadow:0 0 20px rgba(51,255,209,0.3);
-    padding:20px;
-  }
-  .project-front {background:#111;}
-  .project-back {
-    background:#222;
-    transform: rotateY(180deg);
-    overflow-y:auto;
-  }
+  .project-front{background:var(--card-bg);}
+  .project-back{background:#222; transform:rotateY(180deg);}
 
-  /* SKILLS CANVAS */
-  #skillCanvas {display:block; margin:auto; border-radius:12px; background:#111;}
+  /* === SKILLS CANVAS === */
+  #skillCanvas{display:block;margin:auto;border-radius:12px;background:#111;}
+
+  /* === THEME SWITCHER === */
+  #themeSwitcher {
+    position:fixed;top:20px;right:20px;cursor:pointer;padding:10px 15px;
+    border-radius:8px;background:var(--accent-color);color:#000;font-weight:bold;
+    z-index:1000;transition:0.3s;
+  }
+  #themeSwitcher:hover{background:#0ff;}
 </style>
 </head>
 <body>
 
-<!-- ABOUT SECTION -->
-<section id="about">
-  <div class="section-title"><h2>About Me</h2></div>
-  <p>Aspiring AI/ML Engineer skilled in Python, C, TensorFlow, PyTorch, OpenCV, Docker, and Generative AI (LLMs, LangChain, RAG, Prompt Engineering). Experienced in AI + RPA automation (UiPath) and Streamlit deployment. Passionate about building scalable, enterprise-ready AI solutions.</p>
+<!-- THEME SWITCHER -->
+<div id="themeSwitcher">Switch Theme</div>
+
+<!-- HEADER -->
+<section id="header">
+  <h1>Vinayak Girish Hotanahalli</h1>
+  <p>Email: vinayakhotanahalli72@gmail.com | Phone: +91 8970393850 | 
+    <a href="https://www.linkedin.com/in/vinayak-hotanahalli-2775b929b" style="color:#33ffd1;" target="_blank">LinkedIn</a> | 
+    <a href="https://github.com/Vinayak-Hotanahalli" style="color:#33ffd1;" target="_blank">GitHub</a>
+  </p>
+  <p>Aspiring AI/ML Engineer skilled in Python, C, TensorFlow, PyTorch, OpenCV, Docker, Generative AI (LLMs, LangChain, RAG), UiPath RPA, and Streamlit. Passionate about building scalable AI solutions.</p>
 </section>
 
 <!-- INTERNSHIP EXPERIENCE -->
@@ -166,32 +177,24 @@
 </section>
 
 <script>
-/* SEE MORE BUTTON TOGGLE */
+/* === SEE MORE BUTTON === */
 document.querySelectorAll('.see-more-btn').forEach(btn=>{
-  btn.addEventListener('click',()=>{
-    btn.classList.toggle('active');
-  });
+  btn.addEventListener('click',()=>{btn.classList.toggle('active');});
 });
 
-/* SKILLS CANVAS INTERACTIVE */
+/* === SKILLS CANVAS === */
 const canvas=document.getElementById('skillCanvas');
 const ctx=canvas.getContext('2d');
 canvas.width=window.innerWidth-40;
 canvas.height=400;
+
 const skills=[
   'Python','C','SQL','OOPS','Data Structures','TensorFlow','PyTorch','OpenCV','ML','DL','CV','NLP','MLOps','ANN','CNN','RNN','Data Science',
   'Generative AI','LLM Workflows','Prompt Engineering','UiPath RPA','Docker','Streamlit','Azure AI','Openfabric SDK'
 ];
 let nodes=[];
 skills.forEach(skill=>{
-  nodes.push({
-    x:Math.random()*canvas.width,
-    y:Math.random()*canvas.height,
-    r:25,
-    text:skill,
-    dx:(Math.random()-0.5)*0.7,
-    dy:(Math.random()-0.5)*0.7
-  });
+  nodes.push({x:Math.random()*canvas.width,y:Math.random()*canvas.height,r:25,text:skill,dx:(Math.random()-0.5)*0.7,dy:(Math.random()-0.5)*0.7});
 });
 
 function draw(){
@@ -203,29 +206,18 @@ function draw(){
 
     ctx.beginPath();
     ctx.arc(n.x,n.y,n.r,0,Math.PI*2);
-    ctx.fillStyle='rgba(51,255,209,0.2)';
-    ctx.fill();
-    ctx.strokeStyle='#33ffd1';
-    ctx.stroke();
+    ctx.fillStyle='rgba(51,255,209,0.2)'; ctx.fill();
+    ctx.strokeStyle='#33ffd1'; ctx.stroke();
 
-    ctx.fillStyle='#fff';
-    ctx.font='12px Poppins';
-    ctx.textAlign='center';
-    ctx.textBaseline='middle';
+    ctx.fillStyle='#fff'; ctx.font='12px Poppins'; ctx.textAlign='center'; ctx.textBaseline='middle';
     ctx.fillText(n.text,n.x,n.y);
   });
 
   for(let i=0;i<nodes.length;i++){
     for(let j=i+1;j<nodes.length;j++){
-      let dx=nodes[i].x-nodes[j].x;
-      let dy=nodes[i].y-nodes[j].y;
-      let dist=Math.sqrt(dx*dx+dy*dy);
-      if(dist<160){
-        ctx.beginPath();
-        ctx.moveTo(nodes[i].x,nodes[i].y);
-        ctx.lineTo(nodes[j].x,nodes[j].y);
-        ctx.strokeStyle='rgba(51,255,209,'+(1-dist/160)*0.3+')';
-        ctx.stroke();
+      let dx=nodes[i].x-nodes[j].x, dy=nodes[i].y-nodes[j].y, dist=Math.sqrt(dx*dx+dy*dy);
+      if(dist<160){ ctx.beginPath(); ctx.moveTo(nodes[i].x,nodes[i].y); ctx.lineTo(nodes[j].x,nodes[j].y);
+        ctx.strokeStyle='rgba(51,255,209,'+(1-dist/160)*0.3+')'; ctx.stroke();
       }
     }
   }
@@ -235,14 +227,19 @@ draw();
 
 canvas.addEventListener('mousemove',e=>{
   nodes.forEach(n=>{
-    let dx=n.x-e.clientX;
-    let dy=n.y-e.clientY;
-    let dist=Math.sqrt(dx*dx+dy*dy);
-    if(dist<100){
-      n.x+=dx*0.02;
-      n.y+=dy*0.02;
-    }
+    let dx=n.x-e.clientX, dy=n.y-e.clientY, dist=Math.sqrt(dx*dx+dy*dy);
+    if(dist<100){ n.x+=dx*0.02; n.y+=dy*0.02; }
   });
+});
+
+/* === THEME SWITCHER === */
+const themeBtn=document.getElementById('themeSwitcher');
+themeBtn.addEventListener('click',()=>{
+  if(document.body.style.background==='white'){
+    document.body.style.background='var(--bg-color)'; document.body.style.color='var(--text-color)';
+  }else{
+    document.body.style.background='white'; document.body.style.color='black';
+  }
 });
 </script>
 </body>
