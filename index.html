@@ -179,45 +179,65 @@ Replace any placeholder text if you want to tweak wording or add links.
   <!-- MAIN CONTENT -->
   <main>
 
-    <!-- ABOUT -->
-    <section id="about">
-      <div class="container">
-        <div class="glass" style="display:grid;grid-template-columns:1fr 360px;gap:20px;align-items:center">
-          <div>
-            <h2 style="font-size:24px;margin:0">About Me</h2>
-            <p style="color:#bcd3ff;margin-top:12px;line-height:1.6">
-              I'm an AI/ML engineer with hands-on experience in Computer Vision, Deep Learning, and Generative AI. I build reliable models and production pipelines — from data collection and annotation to model training, explainability (Grad-CAM/SHAP), and deployment (FastAPI, Docker). Currently focused on robust detection systems (YOLO/CNN) and local LLM integrations.
-            </p>
+   <!-- ABOUT -->
+<section id="about">
+  <div class="container">
+    <div class="glass" style="display:grid;grid-template-columns:1fr 360px;gap:20px;align-items:start">
+      <div>
+        <h2 style="font-size:24px;margin:0">About Me</h2>
+        <p style="color:#bcd3ff;margin-top:12px;line-height:1.6">
+          I'm an AI/ML engineer with hands-on experience in Computer Vision, Deep Learning, and Generative AI. I build reliable models and production pipelines — from data collection and annotation to model training, explainability (Grad-CAM/SHAP), and deployment (FastAPI, Docker). Currently focused on robust detection systems (YOLO/CNN), EEG-based drowsiness detection, and local LLM integrations. Passionate about researching, developing, and deploying AI solutions that solve real-world problems efficiently.
+        </p>
 
-            <div style="display:flex;gap:12px;margin-top:16px;flex-wrap:wrap">
-              <div class="glass" style="padding:12px; min-width:200px;">
-                <strong>Education</strong>
-                <div style="margin-top:8px;font-size:13px;color:#cfe6ff">
-                  BE - Electronics & Communication, KLS Gogte Institute of Technology — 2021–2025 (CGPA 8.33)
-                </div>
-              </div>
-
-              <div class="glass" style="padding:12px; min-width:200px;">
-                <strong>Experience</strong>
-                <div style="margin-top:8px;font-size:13px;color:#cfe6ff">
-                  AI/ML Intern — DocketRun Tech (Hubli). Projects: Cement & Sand detection (YOLO/CNN), model explainability, and deployment.
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <div style="text-align:center" class="glass">
-            <h3 style="margin-top:0">Quick Contact</h3>
-            <p style="color:#bcd3ff;margin:6px 0">Email: <a href="mailto:vinayakhotanahalli72@gmail.com" style="color:#bcd3ff;text-decoration:none">vinayakhotanahalli72@gmail.com</a></p>
-            <p style="color:#bcd3ff;margin:6px 0">Phone: <a href="tel:+918970393850" style="color:#bcd3ff;text-decoration:none">+91 8970393850</a></p>
-            <div style="margin-top:10px;display:flex;gap:10px;justify-content:center">
-              <a href="https://www.linkedin.com/in/vinayak-hotanahalli-2775b929b/" target="_blank" style="color:#bcd3ff;text-decoration:none">LinkedIn</a>
-              <a href="https://github.com/Vinayak-Hotanahalli" target="_blank" style="color:#bcd3ff;text-decoration:none">GitHub</a>
+        <!-- Education -->
+        <div style="display:flex;gap:12px;margin-top:16px;flex-wrap:wrap">
+          <div class="glass" style="padding:12px; min-width:220px;">
+            <strong>Education</strong>
+            <div style="margin-top:8px;font-size:13px;color:#cfe6ff;line-height:1.4">
+              BE (Bachelor of Engineering) — Electronics & Communication Engineering<br>
+              KLS Gogte Institute of Technology, Belgaum, India<br>
+              2021 – 2025<br>
+              CGPA: 8.33
             </div>
           </div>
         </div>
       </div>
-    </section>
+
+      <!-- Quick Contact with logos -->
+      <div style="text-align:center" class="glass">
+        <h3 style="margin-top:0">Quick Contact</h3>
+        <div style="display:flex;flex-direction:column;gap:12px;align-items:center;margin-top:8px">
+          <a href="mailto:vinayakhotanahalli72@gmail.com" style="display:flex;align-items:center;gap:6px;text-decoration:none;color:#bcd3ff">
+            <img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/gmail.svg" alt="Email" width="22"> vinayakhotanahalli72@gmail.com
+          </a>
+          <a href="tel:+918970393850" style="display:flex;align-items:center;gap:6px;text-decoration:none;color:#bcd3ff">
+            <img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/phonelink.svg" alt="Phone" width="22"> +91 8970393850
+          </a>
+          <a href="https://www.linkedin.com/in/vinayak-hotanahalli-2775b929b/" target="_blank" style="display:flex;align-items:center;gap:6px;text-decoration:none;color:#bcd3ff">
+            <img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/linkedin.svg" alt="LinkedIn" width="22"> LinkedIn
+          </a>
+          <a href="https://github.com/Vinayak-Hotanahalli" target="_blank" style="display:flex;align-items:center;gap:6px;text-decoration:none;color:#bcd3ff">
+            <img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/github.svg" alt="GitHub" width="22"> GitHub
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <!-- EXPERIENCE -->
+    <div class="glass" style="margin-top:24px">
+      <h2>Experience</h2>
+      <div class="ach" style="margin-top:12px">
+        <strong>AI/ML Intern — DocketRun Tech, Hubli</strong>
+        <div style="margin-top:8px;color:#cfe6ff;font-size:13px;line-height:1.4">
+          Projects:<br>
+          • Cement & Sand detection using YOLO/CNN pipelines — focused on container detection, segmentation, container-only bounding boxes, and eliminating false positives (wheels/ground).<br>
+          • Model explainability via Grad-CAM & SHAP.<br>
+          • Deployment using FastAPI and Docker.
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
 
     <!-- SKILLS -->
     <section id="skills">
