@@ -1,69 +1,84 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="utf-8" />
-<meta name="viewport" content="width=device-width,initial-scale=1" />
-<title>Vinayak Hotanahalli — AI / ML Engineer</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Vinayak Hotanahalli — AI/ML Portfolio</title>
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
 <style>
-:root {
-  --bg: #071025;
-  --accent: #33ffd1;
-  --accent-2: #4dd0ff;
-  --muted: #bfcfe6;
-  --card-bg: rgba(255,255,255,0.05);
-  --glass: rgba(255,255,255,0.04);
-  --shadow: 0 15px 40px rgba(0,0,0,0.6);
+:root{
+  --bg:#0b0f1a;
+  --accent:#33ffd1;
+  --accent2:#4dd0ff;
+  --muted:#bfcfe6;
+  --card-bg:rgba(255,255,255,0.05);
+  --glass:rgba(255,255,255,0.04);
+  --shadow:0 15px 40px rgba(0,0,0,0.6);
+  --neon:#33ffd1;
+  --neon2:#4dd0ff;
 }
-* {box-sizing:border-box;margin:0;padding:0;font-family:'Poppins',sans-serif;}
-body {background:var(--bg);color:var(--muted);overflow-x:hidden;}
-.wrap {max-width:1200px;margin:0 auto;padding:20px;}
-header {display:flex;justify-content:space-between;align-items:center;position:relative;z-index:10;}
-.logo {font-weight:700;color:var(--bg);background:var(--accent);padding:12px 16px;border-radius:12px;box-shadow:var(--shadow);}
-nav {display:flex;gap:16px;}
-nav a {color:var(--muted);text-decoration:none;font-weight:600;padding:8px 12px;border-radius:8px;transition:.2s;}
-nav a:hover {background:var(--glass);color:var(--accent);}
-.theme-switch {display:flex;gap:8px;}
-.theme-btn {border:1px solid rgba(255,255,255,0.08);padding:6px 10px;border-radius:8px;background:transparent;color:var(--muted);cursor:pointer;transition:.2s;}
-.theme-btn.active {box-shadow:0 6px 20px rgba(0,0,0,0.25);}
-.hero {display:grid;grid-template-columns:1fr 480px;gap:32px;align-items:center;padding:40px 0;position:relative;}
-.hero-left {position:relative;z-index:2;}
-.hero h1 {font-size:2.5rem;color:var(--accent);letter-spacing:-0.5px;}
-.hero p {margin-top:12px;line-height:1.5;font-size:1.05rem;}
-.cta {margin-top:20px;display:flex;gap:12px;}
-.btn-primary {background:linear-gradient(90deg,var(--accent),var(--accent-2));padding:12px 20px;border-radius:10px;font-weight:700;color:var(--bg);border:none;cursor:pointer;box-shadow:0 10px 30px rgba(0,0,0,0.18);}
-.btn-ghost {background:transparent;color:var(--muted);padding:12px 20px;border-radius:10px;border:1px solid rgba(255,255,255,0.06);font-weight:700;cursor:pointer;}
-.mini-card {background:var(--card-bg);padding:16px;border-radius:12px;text-align:center;border:1px solid rgba(255,255,255,0.03);box-shadow:var(--shadow);}
-.stats-grid {display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:20px;}
-section {padding:40px 0;position:relative;}
-.section-title h2 {color:var(--accent);margin-bottom:24px;font-size:1.4rem;letter-spacing:1px;}
-.grid {display:grid;gap:24px;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));}
-.card {background:var(--card-bg);padding:24px;border-radius:16px;box-shadow:var(--shadow);border:1px solid rgba(255,255,255,0.03);transition:.3s;transform-style:preserve-3d;}
-.card:hover {transform:translateY(-10px) rotateX(2deg) rotateY(2deg);}
-.card h3 {color:var(--accent);margin-bottom:12px;}
-.skill {margin-bottom:18px;}
-.skill svg {width:100%;height:120px;}
-.skill circle {fill:none;stroke-width:10;stroke-linecap:round;}
-.skill .bg {stroke:rgba(255,255,255,0.07);}
-.skill .progress {stroke:linear-gradient(90deg,var(--accent),var(--accent-2));stroke-dasharray:314;stroke-dashoffset:314;transition:stroke-dashoffset 1.4s cubic-bezier(.2,.9,.3,1);}
-.project-item {background:var(--card-bg);padding:20px;border-radius:16px;box-shadow:var(--shadow);border:1px solid rgba(255,255,255,0.03);transition:.3s;transform-style:preserve-3d;}
-.project-item:hover {transform:rotateY(5deg) rotateX(5deg) translateZ(12px);}
-.tag {display:inline-block;background:rgba(255,255,255,0.03);padding:6px 10px;border-radius:10px;color:var(--muted);font-size:0.8rem;margin:3px 3px 0 0;}
-.contact-grid {display:flex;flex-wrap:wrap;gap:20px;align-items:center;justify-content:space-between;}
-.contact-left h3 {color:var(--accent);}
-footer {text-align:center;color:var(--muted);padding:24px 0;font-size:0.92rem;}
+*{margin:0;padding:0;box-sizing:border-box;font-family:'Poppins',sans-serif;}
+body{background:var(--bg);color:var(--muted);overflow-x:hidden;}
+a{text-decoration:none;color:var(--muted);}
+.wrap{max-width:1200px;margin:0 auto;padding:20px;}
+header{display:flex;justify-content:space-between;align-items:center;position:relative;z-index:10;}
+.logo{font-weight:700;color:var(--bg);background:var(--accent);padding:12px 16px;border-radius:12px;box-shadow:var(--shadow);}
+nav{display:flex;gap:16px;}
+nav a{color:var(--muted);font-weight:600;padding:8px 12px;border-radius:8px;transition:.2s;}
+nav a:hover{background:var(--glass);color:var(--accent);}
+.theme-switch{display:flex;gap:8px;}
+.theme-btn{border:1px solid rgba(255,255,255,0.08);padding:6px 10px;border-radius:8px;background:transparent;color:var(--muted);cursor:pointer;transition:.2s;}
+.theme-btn.active{box-shadow:0 6px 20px rgba(0,0,0,0.25);}
+section{padding:60px 0;position:relative;z-index:1;}
+.section-title h2{color:var(--accent);margin-bottom:24px;font-size:1.5rem;letter-spacing:1px;}
+.grid{display:grid;gap:24px;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));}
+.card{background:var(--card-bg);padding:24px;border-radius:16px;box-shadow:var(--shadow);border:1px solid rgba(255,255,255,0.03);transition:.3s;transform-style:preserve-3d;}
+.card:hover{transform:translateY(-10px) rotateX(2deg) rotateY(2deg);}
+
+/* Hero */
+.hero{display:flex;justify-content:space-between;align-items:center;gap:32px;padding:40px 0;}
+.hero h1{font-size:2.5rem;color:var(--accent);letter-spacing:-0.5px;}
+.hero p{margin-top:12px;line-height:1.5;font-size:1.05rem;}
+.cta{margin-top:20px;display:flex;gap:12px;}
+.btn-primary{background:linear-gradient(90deg,var(--accent),var(--accent2));padding:12px 20px;border-radius:10px;font-weight:700;color:var(--bg);border:none;cursor:pointer;box-shadow:0 10px 30px rgba(0,0,0,0.18);}
+.btn-ghost{background:transparent;color:var(--muted);padding:12px 20px;border-radius:10px;border:1px solid rgba(255,255,255,0.06);font-weight:700;cursor:pointer;transition:.3s;}
+.btn-ghost:hover{box-shadow:0 0 12px var(--accent);color:var(--accent);}
+
+/* Skills */
+.skills-container{position:relative;}
+.skill-card{position:relative;background:var(--card-bg);padding:20px;border-radius:16px;overflow:hidden;box-shadow:var(--shadow);}
+.skill-card h3{color:var(--accent);margin-bottom:12px;}
+.skill-nodes{position:absolute;top:0;left:0;width:100%;height:100%;pointer-events:none;}
+.node{position:absolute;width:12px;height:12px;background:var(--neon);border-radius:50%;box-shadow:0 0 8px var(--neon),0 0 16px var(--neon2);}
+
+/* Projects */
+.project-item{background:var(--card-bg);padding:20px;border-radius:16px;box-shadow:var(--shadow);border:1px solid rgba(255,255,255,0.03);cursor:pointer;transform-style:preserve-3d;transition:.5s;}
+.project-item:hover{transform:rotateY(10deg) rotateX(5deg) translateZ(15px);}
+.project-item h4{color:var(--accent);margin-bottom:12px;}
+.tag{display:inline-block;background:rgba(255,255,255,0.03);padding:6px 10px;border-radius:10px;color:var(--muted);font-size:0.8rem;margin:3px 3px 0 0;transition:.3s;}
+.tag:hover{box-shadow:0 0 8px var(--accent);color:var(--accent);}
 
 /* Reveal Animations */
-.reveal {opacity:0;transform:translateY(20px);transition:opacity .8s ease, transform .8s ease;}
-.reveal.show {opacity:1;transform:none;}
+.reveal{opacity:0;transform:translateY(20px);transition:opacity .8s ease, transform .8s ease;}
+.reveal.show{opacity:1;transform:none;}
 
-/* Particle Canvas */
-#bgCanvas {position:fixed;top:0;left:0;width:100%;height:100%;z-index:0;pointer-events:none;mix-blend-mode:screen;opacity:0.22;}
+/* Contact */
+.contact-grid{display:flex;flex-wrap:wrap;gap:20px;align-items:center;justify-content:space-between;}
+.contact-left h3{color:var(--accent);}
+footer{text-align:center;color:var(--muted);padding:24px 0;font-size:0.92rem;}
+
+/* Detailed points toggle */
+.detail{display:none;margin-top:10px;font-size:0.95rem;color:var(--muted);}
+.show-detail{display:block;}
+
+/* Canvas background for AI network */
+#bgCanvas{position:fixed;top:0;left:0;width:100%;height:100%;z-index:0;pointer-events:none;}
 </style>
 </head>
 <body>
 <canvas id="bgCanvas"></canvas>
 <div class="wrap">
+
 <header>
   <div class="logo">VG</div>
   <nav>
@@ -81,61 +96,45 @@ footer {text-align:center;color:var(--muted);padding:24px 0;font-size:0.92rem;}
 </header>
 
 <main>
-<!-- HERO -->
-<section class="hero">
-  <div class="hero-left reveal">
+<section class="hero reveal">
+  <div>
     <h1 id="heroTitle"></h1>
-    <p>I build <strong>explainable, scalable AI systems</strong> — deep learning, computer vision, and generative AI. Translating research into production-ready pipelines with robust MLOps.</p>
+    <p>I build <strong>scalable AI & ML solutions</strong> with a futuristic approach — deep learning, computer vision, and generative AI pipelines.</p>
     <div class="cta">
       <a class="btn-primary" href="#projects">View Projects</a>
-      <a class="btn-ghost" href="mailto:vinayakhotanahalli72@gmail.com">Contact Me</a>
+      <a class="btn-ghost" href="#contact">Contact Me</a>
     </div>
-    <div class="stats-grid">
-      <div class="mini-card"><h4>Experience</h4><p>AI/ML Intern @ DocketRun</p></div>
-      <div class="mini-card"><h4>Publications</h4><p>IEEE NCCON 2024</p></div>
-    </div>
-  </div>
-  <div class="hero-right reveal">
-    <img src="https://cdn.pixabay.com/photo/2016/03/31/19/58/artificial-intelligence-1295396_1280.png" style="width:100%;border-radius:20px;transform-style:preserve-3d;" id="heroImg">
   </div>
 </section>
 
-<!-- ABOUT -->
-<section id="about" class="reveal">
-  <div class="section-title"><h2>About Me</h2></div>
+<!-- ABOUT / INTERNSHIP -->
+<section id="experience" class="reveal">
+  <div class="section-title"><h2>Internship Experience</h2></div>
   <div class="card reveal">
-    <p>I'm an <strong>AI/ML Engineer</strong> focused on deep learning, computer vision, and generative AI. I create production-ready pipelines with TensorFlow, PyTorch, OpenCV, and integrate local LLMs & RAG workflows. My work emphasizes performance, explainability (Grad-CAM, SHAP, LIME), and MLOps best practices.</p>
+    <h3>AI/ML & Computer Vision Intern — DocketRun Tech Pvt. Ltd.</h3>
+    <p>January 2025 – May 2025</p>
+    <ul>
+      <li>Developed and deployed <strong>YOLO & CNN models</strong> for automated material detection in truck containers, improving logistics monitoring.</li>
+      <li>Designed real-time computer vision pipelines with <strong>TensorFlow & OpenCV</strong>, ensuring fast and accurate detection.</li>
+      <li>Optimized model inference speed and accuracy for production use cases.</li>
+      <li>Reduced manual monitoring time by <strong>30%</strong> using AI-driven alerts.</li>
+      <li><span class="toggle-btn" style="color:var(--accent);cursor:pointer;">See more...</span></li>
+      <div class="detail">
+        <li>Implemented data augmentation, preprocessing, and model evaluation metrics to improve real-time detection accuracy.</li>
+        <li>Collaborated with the engineering team to integrate AI detection into existing monitoring dashboard.</li>
+        <li>Documented AI pipeline workflows, enabling reproducibility and easier maintenance.</li>
+      </div>
+    </ul>
   </div>
 </section>
 
 <!-- SKILLS -->
 <section id="skills" class="reveal">
   <div class="section-title"><h2>Skills</h2></div>
-  <div class="grid">
-    <div class="card reveal">
-      <h3>Deep Learning</h3>
-      <div class="skill">
-        <svg viewBox="0 0 100 100">
-          <circle class="bg" cx="50" cy="50" r="50"></circle>
-          <circle class="progress" cx="50" cy="50" r="50"></circle>
-        </svg>
-        <p>94%</p>
-      </div>
-      <div class="skill">
-        <svg viewBox="0 0 100 100">
-          <circle class="bg" cx="50" cy="50" r="50"></circle>
-          <circle class="progress" cx="50" cy="50" r="50"></circle>
-        </svg>
-        <p>Computer Vision 92%</p>
-      </div>
-      <div class="skill">
-        <svg viewBox="0 0 100 100">
-          <circle class="bg" cx="50" cy="50" r="50"></circle>
-          <circle class="progress" cx="50" cy="50" r="50"></circle>
-        </svg>
-        <p>Generative AI 88%</p>
-      </div>
-    </div>
+  <div class="skills-container card reveal">
+    <h3>Technical Skills</h3>
+    <div id="skillNodes" class="skill-nodes"></div>
+    <p>Python, TensorFlow, PyTorch, OpenCV, Keras, Pandas, NumPy, Machine Learning, Deep Learning, Computer Vision, Generative AI, NLP, ANN, CNN, EEG data processing, Hyperparameter tuning, Explainable AI, MLOps, Docker, Streamlit, Git, GitHub.</p>
   </div>
 </section>
 
@@ -143,20 +142,30 @@ footer {text-align:center;color:var(--muted);padding:24px 0;font-size:0.92rem;}
 <section id="projects" class="reveal">
   <div class="section-title"><h2>Projects</h2></div>
   <div class="grid">
-    <div class="project-item reveal card">
+    <div class="project-item card reveal">
+      <h4>Driver Drowsiness Detection System</h4>
+      <p>EEG-based ANN system detecting driver drowsiness in real-time.</p>
+      <ul class="detail">
+        <li>Used EEG dataset from Kaggle, processed with ANN achieving 92% accuracy.</li>
+        <li>Hyperparameter tuning and cross-validation for optimized model performance.</li>
+        <li>Integrates facial expressions and eye-blink analysis.</li>
+      </ul>
+    </div>
+    <div class="project-item card reveal">
       <h4>AI-Powered Text-to-3D Pipeline</h4>
-      <p>Local LLM + RAG + Openfabric SDK converting prompts into 3D assets. Dockerized microservices + Streamlit demo.</p>
-      <div class="tags"><span class="tag">Python</span><span class="tag">LLM</span><span class="tag">Docker</span></div>
+      <p>Generates 3D assets from text prompts using local LLM + RAG.</p>
+      <ul class="detail">
+        <li>Dockerized microservices with Streamlit interactive demo.</li>
+        <li>Custom pipeline for converting text to 3D models efficiently.</li>
+      </ul>
     </div>
-    <div class="project-item reveal card">
+    <div class="project-item card reveal">
       <h4>CNN Explainability Dashboard</h4>
-      <p>Grad-CAM, LIME, SHAP heatmaps + interpretability reports for model debugging.</p>
-      <div class="tags"><span class="tag">TensorFlow</span><span class="tag">CV</span><span class="tag">XAI</span></div>
-    </div>
-    <div class="project-item reveal card">
-      <h4>Driver Drowsiness Detection</h4>
-      <p>EEG-based ANN achieving 92% accuracy. Hyperparameter tuning, cross-validation, published IEEE NCCON 2024.</p>
-      <div class="tags"><span class="tag">Research</span><span class="tag">ANN</span><span class="tag">EEG</span></div>
+      <p>Grad-CAM, LIME, SHAP integrated dashboard for model interpretability.</p>
+      <ul class="detail">
+        <li>Generates visual explanations for CNN predictions.</li>
+        <li>Supports model debugging and performance analysis.</li>
+      </ul>
     </div>
   </div>
 </section>
@@ -176,9 +185,8 @@ footer {text-align:center;color:var(--muted);padding:24px 0;font-size:0.92rem;}
     </div>
   </div>
 </section>
-</main>
 
-<footer>© <span id="year"></span> Vinayak Girish Hotanahalli — Next-level AI Engineer Portfolio</footer>
+<footer>© <span id="year"></span> Vinayak Girish Hotanahalli — Futuristic AI/ML Portfolio</footer>
 </div>
 
 <script>
@@ -191,7 +199,7 @@ themeButtons.forEach(b=>b.addEventListener('click', ()=>{
 }));
 
 // Typing Hero
-const heroText="Hi — I'm Vinayak Girish Hotanahalli. Aspiring AI/ML Engineer.";
+const heroText="Hi — I'm Vinayak Girish Hotanahalli. Futuristic AI/ML Engineer.";
 let idx=0;const heading=document.getElementById('heroTitle');
 function typeHero(){ if(idx<=heroText.length){ heading.textContent=heroText.slice(0,idx++); setTimeout(typeHero,28); } }
 typeHero();
@@ -200,26 +208,30 @@ typeHero();
 const reveals=document.querySelectorAll('.reveal');
 window.addEventListener('scroll',()=>{ reveals.forEach(el=>{ const rect=el.getBoundingClientRect(); if(rect.top<window.innerHeight-80) el.classList.add('show'); }); });
 
-// Particle background
-const canvas=document.getElementById('bgCanvas');const ctx=canvas.getContext('2d');
-let W,H,particles=[];function resize(){ W=canvas.width=innerWidth; H=canvas.height=innerHeight; }
-window.addEventListener('resize',resize);resize();
-function initParticles(){ particles=[]; const count=Math.max(40,Math.floor((W*H)/90000)); for(let i=0;i<count;i++){ particles.push({x:Math.random()*W,y:Math.random()*H,vx:(Math.random()-0.5)*0.4,vy:(Math.random()-0.5)*0.4,r:Math.random()*1.6+0.6}); } }
-initParticles();let hue=170;
-function draw(){ ctx.clearRect(0,0,W,H); particles.forEach(p=>{ ctx.fillStyle=`hsla(${hue},80%,60%,0.95)`; ctx.beginPath(); ctx.arc(p.x,p.y,p.r,0,Math.PI*2); ctx.fill(); p.x+=p.vx;p.y+=p.vy;if(p.x<0)p.x=W;if(p.x>W)p.x=0;if(p.y<0)p.y=H;if(p.y>H)p.y=0;}); requestAnimationFrame(draw);}
-draw();
-
-// Animate Skill Bars
-const skills=document.querySelectorAll('.skill .progress');
-window.addEventListener('scroll',()=>{ skills.forEach((c,i)=>{ const rect=c.getBoundingClientRect(); if(rect.top<window.innerHeight-50){ c.style.strokeDashoffset=314*(1-( [0.94,0.92,0.88][i] || 0 )); } }); });
-
-// 3D tilt on hero img
-const heroImg=document.getElementById('heroImg');
-document.querySelector('.hero').addEventListener('mousemove',e=>{ const x=(e.clientX/window.innerWidth-0.5)*30; const y=(e.clientY/window.innerHeight-0.5)*30; heroImg.style.transform=`rotateY(${x}deg) rotateX(${y}deg)`; });
-document.querySelector('.hero').addEventListener('mouseleave',()=>{ heroImg.style.transform=`rotateY(0deg) rotateX(0deg)`; });
-
 // Year
 document.getElementById('year').textContent=new Date().getFullYear();
+
+// Toggle detailed points
+document.querySelectorAll('.toggle-btn').forEach(btn=>{
+  btn.addEventListener('click',()=>{
+    const detail = btn.nextElementSibling;
+    detail.classList.toggle('show-detail');
+    btn.textContent = detail.classList.contains('show-detail') ? "See less..." : "See more...";
+  });
+});
+
+// Particle/AI network background
+const canvas=document.getElementById('bgCanvas');const ctx=canvas.getContext('2d');let W,H,particles=[];function resize(){W=canvas.width=innerWidth;H=canvas.height=innerHeight;}window.addEventListener('resize',resize);resize();
+function initParticles(){particles=[];const count=Math.max(40,Math.floor((W*H)/90000));for(let i=0;i<count;i++){particles.push({x:Math.random()*W,y:Math.random()*H,vx:(Math.random()-0.5)*0.3,vy:(Math.random()-0.5)*0.3,r:Math.random()*2+1});}}initParticles();
+function draw(){ctx.clearRect(0,0,W,H);particles.forEach(p=>{ctx.fillStyle=`hsla(180,80%,60%,0.9)`;ctx.beginPath();ctx.arc(p.x,p.y,p.r,0,Math.PI*2);ctx.fill();p.x+=p.vx;p.y+=p.vy;if(p.x<0)p.x=W;if(p.x>W)p.x=0;if(p.y<0)p.y=H;if(p.y>H)p.y=0;});for(let i=0;i<particles.length;i++){for(let j=i+1;j<particles.length;j++){let dx=particles[i].x-particles[j].x;let dy=particles[i].y-particles[j].y;let dist=Math.sqrt(dx*dx+dy*dy);if(dist<120){ctx.strokeStyle=`hsla(180,80%,60%,${1-dist/120})`;ctx.beginPath();ctx.moveTo(particles[i].x,particles[i].y);ctx.lineTo(particles[j].x,particles[j].y);ctx.stroke();}}}requestAnimationFrame(draw);}
+draw();
+
+// Skills AI nodes
+const skillNodes=document.getElementById('skillNodes');
+let nodes=[];
+for(let i=0;i<25;i++){const node=document.createElement('div');node.className='node';node.style.left=Math.random()*100+'%';node.style.top=Math.random()*100+'%';skillNodes.appendChild(node);nodes.push({el:node,x:Math.random()*W,y:Math.random()*H,vx:(Math.random()-0.5)*0.3,vy:(Math.random()-0.5)*0.3}));}
+function animateNodes(){nodes.forEach(n=>{let rect=skillNodes.getBoundingClientRect();n.x+=n.vx;n.y+=n.vy;if(n.x<0)n.x=rect.width;if(n.x>rect.width)n.x=0;if(n.y<0)n.y=rect.height;if(n.y>rect.height)n.y=0;n.el.style.transform=`translate(${n.x}px,${n.y}px)`;});requestAnimationFrame(animateNodes);}
+animateNodes();
 </script>
 </body>
 </html>
