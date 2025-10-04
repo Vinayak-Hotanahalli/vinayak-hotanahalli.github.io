@@ -7,74 +7,46 @@
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
 
 <style>
-  :root{
-    --bg:#071025;
-    --accent:#33ffd1;
-    --accent2:#4dd0ff;
-    --muted:#bfcfe6;
-    --card-bg:rgba(255,255,255,0.04);
-    --glass:rgba(255,255,255,0.04);
-    --shadow:0 10px 30px rgba(2,6,23,0.6);
-  }
-
-  *{margin:0;padding:0;box-sizing:border-box;}
-  body{font-family:'Poppins',sans-serif;background:var(--bg);color:var(--muted);overflow-x:hidden;}
-  h1,h2,h3,h4,h5,h6{color:var(--accent);}
-  a{text-decoration:none;color:var(--accent);}
-  button{cursor:pointer;font-weight:600;border:none;border-radius:8px;padding:10px 16px;transition:all .3s;}
-  button:hover{box-shadow:0 0 15px var(--accent), 0 0 25px var(--accent2);}
-
-  .wrap{max-width:1200px;margin:0 auto;padding:20px;}
-
-  header{display:flex;justify-content:space-between;align-items:center;padding:10px 0;}
-  .logo{font-size:1.5rem;font-weight:700;color:var(--accent);}
-  nav a{margin-left:15px;font-weight:600;}
-  nav a:hover{color:var(--accent2);}
-
-  /* Hero */
-  .hero{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;padding:50px 0;position:relative;}
-  .hero-left{flex:1;min-width:300px;}
-  .hero-left h1{font-size:2rem;margin-bottom:10px;}
-  .hero-left p{margin:15px 0;line-height:1.5;}
-  .hero-left .cta{margin-top:20px;display:flex;gap:15px;}
-  .hero-left .mini-card{margin-top:20px;padding:15px;background:var(--card-bg);border-radius:12px;box-shadow:var(--shadow);}
-  .hero-right{flex:1;min-width:250px;display:flex;flex-direction:column;gap:15px;}
-
-  /* Sections */
-  section{margin:60px 0;position:relative;}
-  .section-title{margin-bottom:25px;}
-  .section-title h2{font-size:1.5rem;color:var(--accent);border-bottom:1px solid var(--accent);display:inline-block;padding-bottom:5px;}
-
-  /* Cards */
-  .card{background:var(--card-bg);padding:20px;border-radius:12px;box-shadow:var(--shadow);margin-bottom:20px;transition:transform 0.3s;}
-  .card:hover{transform:translateY(-5px) scale(1.02);}
-
-  /* Projects 3D Flip */
-  .project-card{perspective:1000px;cursor:pointer;}
-  .project-inner{position:relative;width:100%;height:220px;transform-style:preserve-3d;transition:transform 0.6s;}
-  .project-card:hover .project-inner{transform:rotateY(180deg);}
-  .project-front,.project-back{position:absolute;width:100%;height:100%;backface-visibility:hidden;border-radius:12px;padding:20px;display:flex;flex-direction:column;justify-content:center;}
-  .project-front{background:linear-gradient(135deg,#33ffd1,#4dd0ff);}
-  .project-back{background:linear-gradient(135deg,#071025,#0f1235);color:white;transform:rotateY(180deg);}
-
-  /* Skills Network */
-  .skill-network{position:relative;width:100%;height:350px;margin-top:30px;}
-  .skill-node{position:absolute;width:70px;height:70px;background:rgba(51,255,209,0.2);border:2px solid var(--accent);border-radius:50%;display:flex;align-items:center;justify-content:center;font-weight:600;color:#fff;transition:transform 0.3s;}
-  .skill-node:hover{transform:scale(1.3);box-shadow:0 0 15px var(--accent),0 0 25px var(--accent2);}
-
-  /* See More */
-  .more-info{display:none;margin-top:10px;color:var(--muted);line-height:1.5;}
-  .see-more.active + .more-info{display:block;}
-
-  /* Footer */
-  footer{text-align:center;padding:20px 0;color:var(--muted);font-size:0.9rem;}
-
-  /* Background Canvas */
-  #bgCanvas{position:fixed;top:0;left:0;width:100%;height:100%;z-index:-1;}
-
-  /* Scroll animations */
-  .reveal{opacity:0;transform:translateY(20px);transition:all 0.6s ease;}
-  .reveal.show{opacity:1;transform:translateY(0);}
+:root{
+  --bg:#071025;
+  --accent:#33ffd1;
+  --accent2:#4dd0ff;
+  --muted:#bfcfe6;
+  --card-bg:rgba(255,255,255,0.04);
+  --glass:rgba(255,255,255,0.04);
+  --shadow:0 10px 30px rgba(2,6,23,0.6);
+}
+*{margin:0;padding:0;box-sizing:border-box;}
+body{font-family:'Poppins',sans-serif;background:var(--bg);color:var(--muted);overflow-x:hidden;}
+h1,h2,h3,h4,h5,h6{color:var(--accent);}
+a{text-decoration:none;color:var(--accent);}
+button{cursor:pointer;font-weight:600;border:none;border-radius:8px;padding:10px 16px;transition:all .3s;}
+button:hover{box-shadow:0 0 15px var(--accent), 0 0 25px var(--accent2);}
+.wrap{max-width:1200px;margin:0 auto;padding:20px;}
+header{display:flex;justify-content:space-between;align-items:center;padding:10px 0;}
+.logo{font-size:1.5rem;font-weight:700;color:var(--accent);}
+nav a{margin-left:15px;font-weight:600;}
+nav a:hover{color:var(--accent2);}
+section{margin:60px 0;position:relative;}
+.section-title{margin-bottom:25px;}
+.section-title h2{font-size:1.5rem;color:var(--accent);border-bottom:1px solid var(--accent);display:inline-block;padding-bottom:5px;}
+.card{background:var(--card-bg);padding:20px;border-radius:12px;box-shadow:var(--shadow);margin-bottom:20px;transition:transform 0.3s;}
+.card:hover{transform:translateY(-5px) scale(1.02);}
+.project-card{perspective:1000px;cursor:pointer;margin-bottom:20px;}
+.project-inner{position:relative;width:100%;height:220px;transform-style:preserve-3d;transition:transform 0.6s;}
+.project-card:hover .project-inner{transform:rotateY(180deg);}
+.project-front,.project-back{position:absolute;width:100%;height:100%;backface-visibility:hidden;border-radius:12px;padding:20px;display:flex;flex-direction:column;justify-content:center;}
+.project-front{background:linear-gradient(135deg,#33ffd1,#4dd0ff);color:#071025;font-weight:600;font-size:1.1rem;}
+.project-back{background:linear-gradient(135deg,#071025,#0f1235);color:white;transform:rotateY(180deg);overflow-y:auto;font-size:0.95rem;}
+.skill-network{position:relative;width:100%;height:350px;margin-top:30px;}
+.skill-node{position:absolute;width:70px;height:70px;background:rgba(51,255,209,0.2);border:2px solid var(--accent);border-radius:50%;display:flex;align-items:center;justify-content:center;font-weight:600;color:#fff;transition:transform 0.3s;}
+.skill-node:hover{transform:scale(1.3);box-shadow:0 0 15px var(--accent),0 0 25px var(--accent2);}
+.more-info{display:none;margin-top:10px;color:var(--muted);line-height:1.5;}
+.see-more.active + .more-info{display:block;}
+footer{text-align:center;padding:20px 0;color:var(--muted);font-size:0.9rem;}
+#bgCanvas{position:fixed;top:0;left:0;width:100%;height:100%;z-index:-1;}
+.reveal{opacity:0;transform:translateY(20px);transition:all 0.6s ease;}
+.reveal.show{opacity:1;transform:translateY(0);}
 </style>
 </head>
 <body>
@@ -86,40 +58,21 @@
   <div class="logo">VG</div>
   <nav>
     <a href="#about">About</a>
+    <a href="#experience">Internship</a>
     <a href="#skills">Skills</a>
     <a href="#projects">Projects</a>
-    <a href="#experience">Experience</a>
     <a href="#contact">Contact</a>
   </nav>
 </header>
 
-<!-- Hero -->
+<!-- Hero Section -->
 <section class="hero reveal">
   <div class="hero-left">
     <h1>Hi — I'm Vinayak Girish Hotanahalli</h1>
-    <p>I build <strong>explainable, scalable AI systems</strong> — deep learning, computer vision, generative AI, and MLOps. I translate research into production-ready pipelines.</p>
+    <p>I create <strong>next-level AI & ML systems</strong> — from deep learning models, computer vision pipelines, to generative AI solutions.</p>
     <div class="cta">
       <button onclick="document.getElementById('projects').scrollIntoView({behavior:'smooth'})">View Projects</button>
       <button onclick="document.getElementById('contact').scrollIntoView({behavior:'smooth'})">Contact Me</button>
-    </div>
-    <div class="mini-card">
-      <h4>Experience</h4>
-      <p>AI/ML Intern @ DocketRun (2025)</p>
-    </div>
-    <div class="mini-card">
-      <h4>Publications</h4>
-      <p>IEEE NCCON 2024</p>
-    </div>
-  </div>
-  <div class="hero-right">
-    <div class="mini-card">
-      <h4>Role</h4><p>Aspiring AI/ML Engineer</p>
-    </div>
-    <div class="mini-card">
-      <h4>Focus</h4><p>Deep Learning • CV • Generative AI • MLOps</p>
-    </div>
-    <div class="mini-card">
-      <h4>Location</h4><p>India</p>
     </div>
   </div>
 </section>
@@ -128,41 +81,54 @@
 <section id="about" class="reveal">
   <div class="section-title"><h2>About Me</h2></div>
   <div class="card">
-    <p>I am an <strong>AI/ML Engineer in the making</strong> with hands-on experience in deep learning, neural networks, and computer vision. I design modular, production-ready pipelines using TensorFlow, PyTorch, OpenCV, and integrate LLMs with RAG for generative workflows.</p>
-    <h3>Internship Experience</h3>
-    <div>
-      <p><strong>AI/ML & Computer Vision Intern — DocketRun Tech Pvt. Ltd., Hubli</strong> (Jan 2025 – May 2025)</p>
+    <p>I am an AI/ML Engineer in training with hands-on expertise in Deep Learning, CNNs, RNNs, Computer Vision, NLP, and MLOps. I translate research into production pipelines, design explainable AI models, and optimize neural network performance for real-world applications.</p>
+  </div>
+</section>
+
+<!-- Internship Section -->
+<section id="experience" class="reveal">
+  <div class="section-title"><h2>Internship Experience</h2></div>
+  <div class="card">
+    <h3>AI/ML & Computer Vision Intern — DocketRun Tech Pvt. Ltd., Hubli (Jan 2025 – May 2025)</h3>
+    <ul>
+      <li>Developed & deployed YOLO & CNN pipelines for automated material detection in truck containers.</li>
+      <li>Engineered real-time CV systems with TensorFlow & OpenCV, reducing manual monitoring by 30%.</li>
+      <li>Optimized model inference speed & accuracy for production use.</li>
+    </ul>
+    <button class="see-more">See More...</button>
+    <div class="more-info">
       <ul>
-        <li>Developed & deployed YOLO & CNN pipelines for automated material detection in truck containers.</li>
-        <li>Engineered real-time CV systems with TensorFlow & OpenCV, reducing manual monitoring by 30%.</li>
-        <li>Optimized model inference speed & accuracy for production use.</li>
+        <li>Implemented data preprocessing, augmentation, hyperparameter tuning, and cross-validation for EEG-based driver drowsiness detection.</li>
+        <li>Collaborated with dev & ops teams to integrate AI solutions into enterprise workflows.</li>
+        <li>Documented pipelines for reproducibility and long-term maintenance.</li>
+        <li>Created dashboards & reports to visualize model performance and interpretability metrics.</li>
       </ul>
-      <button class="see-more">See More...</button>
-      <div class="more-info">
-        <p>Implemented data preprocessing, augmentation, hyperparameter tuning, and cross-validation for EEG-based driver drowsiness detection system.</p>
-        <p>Collaborated with dev & operations teams to integrate AI into enterprise workflows.</p>
-        <p>Documented AI pipelines for reproducibility and efficient maintenance.</p>
-      </div>
     </div>
   </div>
 </section>
 
-<!-- Skills -->
+<!-- Skills Section -->
 <section id="skills" class="reveal">
   <div class="section-title"><h2>Technical Skills</h2></div>
   <div class="skill-network" id="skillNetwork"></div>
 </section>
 
-<!-- Projects -->
+<!-- Projects Section -->
 <section id="projects" class="reveal">
   <div class="section-title"><h2>Projects</h2></div>
+
   <div class="project-card reveal">
     <div class="project-inner">
       <div class="project-front">
-        <h3>AI-Powered Text-to-3D Generation</h3>
+        AI-Powered Text-to-3D Generation
       </div>
       <div class="project-back">
-        <p>Local LLM pipeline (DeepSeek, LLaMA) + RAG + Openfabric SDK to convert prompts into 3D assets. Built Dockerized microservices with Streamlit demo.</p>
+        <ul>
+          <li>Built a pipeline integrating LLaMA, DeepSeek & RAG to convert text prompts into 3D assets.</li>
+          <li>Used Dockerized microservices & Streamlit for interactive live demos.</li>
+          <li>Optimized inference latency with GPU acceleration.</li>
+          <li>Implemented feature extraction & asset post-processing for high-quality outputs.</li>
+        </ul>
       </div>
     </div>
   </div>
@@ -170,10 +136,15 @@
   <div class="project-card reveal">
     <div class="project-inner">
       <div class="project-front">
-        <h3>CNN Explainability Dashboard</h3>
+        CNN Explainability Dashboard
       </div>
       <div class="project-back">
-        <p>Feature map visualization using Grad-CAM, LIME, SHAP. Heatmaps, ROC analysis, and interpretability reports for model debugging.</p>
+        <ul>
+          <li>Visualized feature maps using Grad-CAM, LIME & SHAP for interpretability.</li>
+          <li>Generated heatmaps, ROC curves, and detailed model performance reports.</li>
+          <li>Enabled debugging & performance tuning of deep learning models.</li>
+          <li>Integrated interactive dashboard with Python & Plotly for live model evaluation.</li>
+        </ul>
       </div>
     </div>
   </div>
@@ -181,16 +152,22 @@
   <div class="project-card reveal">
     <div class="project-inner">
       <div class="project-front">
-        <h3>Driver Drowsiness Detection (EEG + ANN)</h3>
+        Driver Drowsiness Detection (EEG + ANN)
       </div>
       <div class="project-back">
-        <p>EEG-based ANN model achieving 92% accuracy. Hyperparameter search, cross-validation, published in IEEE NCCON 2024. Integrated eye blink detection + facial recognition.</p>
+        <ul>
+          <li>Designed EEG-based ANN achieving 92% accuracy for drowsiness detection.</li>
+          <li>Combined eye blink & facial expression detection for hybrid model.</li>
+          <li>Implemented hyperparameter tuning & cross-validation.</li>
+          <li>Published work in IEEE NCCON 2024, integrated explainable AI metrics.</li>
+        </ul>
       </div>
     </div>
   </div>
+
 </section>
 
-<!-- Contact -->
+<!-- Contact Section -->
 <section id="contact" class="reveal">
   <div class="section-title"><h2>Contact</h2></div>
   <div class="card">
@@ -206,79 +183,78 @@
 </footer>
 </div>
 
-<!-- Scripts -->
 <script>
-  // Reveal on scroll
-  const reveals = document.querySelectorAll('.reveal');
-  window.addEventListener('scroll',()=>{
-    for(let i=0;i<reveals.length;i++){
-      const windowHeight=window.innerHeight;
-      const elementTop=reveals[i].getBoundingClientRect().top;
-      const elementVisible=150;
-      if(elementTop<windowHeight-elementVisible){
-        reveals[i].classList.add('show');
+// Reveal on scroll
+const reveals = document.querySelectorAll('.reveal');
+window.addEventListener('scroll',()=>{
+  for(let i=0;i<reveals.length;i++){
+    const windowHeight=window.innerHeight;
+    const elementTop=reveals[i].getBoundingClientRect().top;
+    const elementVisible=150;
+    if(elementTop<windowHeight-elementVisible){
+      reveals[i].classList.add('show');
+    }
+  }
+});
+
+// See more toggle
+const seeButtons=document.querySelectorAll('.see-more');
+seeButtons.forEach(btn=>{
+  btn.addEventListener('click',()=>{
+    btn.classList.toggle('active');
+  });
+});
+
+// Skills network nodes
+const skills=['Python','TensorFlow','PyTorch','OpenCV','ML','DL','CV','NLP','MLOps','ANN','CNN','RNN','Data Science','Generative AI'];
+const container=document.getElementById('skillNetwork');
+skills.forEach(skill=>{
+  const node=document.createElement('div');
+  node.classList.add('skill-node');
+  node.textContent=skill;
+  node.style.top=Math.random()*250+'px';
+  node.style.left=Math.random()*500+'px';
+  container.appendChild(node);
+});
+
+// Background animated AI network lines
+const canvas=document.getElementById('bgCanvas');
+const ctx=canvas.getContext('2d');
+canvas.width=window.innerWidth;
+canvas.height=window.innerHeight;
+const nodes=[];
+for(let i=0;i<40;i++){
+  nodes.push({x:Math.random()*canvas.width,y:Math.random()*canvas.height,vx:(Math.random()-0.5)*0.5,vy:(Math.random()-0.5)*0.5,r:Math.random()*3+1});
+}
+function animate(){
+  ctx.clearRect(0,0,canvas.width,canvas.height);
+  nodes.forEach(n=>{
+    n.x+=n.vx;
+    n.y+=n.vy;
+    if(n.x<0||n.x>canvas.width)n.vx*=-1;
+    if(n.y<0||n.y>canvas.height)n.vy*=-1;
+    ctx.beginPath();
+    ctx.arc(n.x,n.y,n.r,0,Math.PI*2);
+    ctx.fillStyle='rgba(51,255,209,0.3)';
+    ctx.fill();
+  });
+  for(let i=0;i<nodes.length;i++){
+    for(let j=i+1;j<nodes.length;j++){
+      const dx=nodes[i].x-nodes[j].x;
+      const dy=nodes[i].y-nodes[j].y;
+      const dist=Math.sqrt(dx*dx+dy*dy);
+      if(dist<120){
+        ctx.beginPath();
+        ctx.moveTo(nodes[i].x,nodes[i].y);
+        ctx.lineTo(nodes[j].x,nodes[j].y);
+        ctx.strokeStyle='rgba(51,255,209,'+(1-dist/120)*0.3+')';
+        ctx.stroke();
       }
     }
-  });
-
-  // See more toggle
-  const seeButtons=document.querySelectorAll('.see-more');
-  seeButtons.forEach(btn=>{
-    btn.addEventListener('click',()=>{
-      btn.classList.toggle('active');
-    });
-  });
-
-  // Skills network nodes
-  const skills=['Python','TensorFlow','OpenCV','ML','DL','Computer Vision','Data Science','MLOps','ANN','CNN','RNN','NLP'];
-  const container=document.getElementById('skillNetwork');
-  skills.forEach(skill=>{
-    const node=document.createElement('div');
-    node.classList.add('skill-node');
-    node.textContent=skill;
-    node.style.top=Math.random()*250+'px';
-    node.style.left=Math.random()*500+'px';
-    container.appendChild(node);
-  });
-
-  // Background animated AI network lines
-  const canvas=document.getElementById('bgCanvas');
-  const ctx=canvas.getContext('2d');
-  canvas.width=window.innerWidth;
-  canvas.height=window.innerHeight;
-  const nodes=[];
-  for(let i=0;i<30;i++){
-    nodes.push({x:Math.random()*canvas.width,y:Math.random()*canvas.height,vx:(Math.random()-0.5)*0.5,vy:(Math.random()-0.5)*0.5,r:Math.random()*3+1});
   }
-  function animate(){
-    ctx.clearRect(0,0,canvas.width,canvas.height);
-    nodes.forEach(n=>{
-      n.x+=n.vx;
-      n.y+=n.vy;
-      if(n.x<0||n.x>canvas.width)n.vx*=-1;
-      if(n.y<0||n.y>canvas.height)n.vy*=-1;
-      ctx.beginPath();
-      ctx.arc(n.x,n.y,n.r,0,Math.PI*2);
-      ctx.fillStyle='rgba(51,255,209,0.3)';
-      ctx.fill();
-    });
-    for(let i=0;i<nodes.length;i++){
-      for(let j=i+1;j<nodes.length;j++){
-        const dx=nodes[i].x-nodes[j].x;
-        const dy=nodes[i].y-nodes[j].y;
-        const dist=Math.sqrt(dx*dx+dy*dy);
-        if(dist<100){
-          ctx.beginPath();
-          ctx.moveTo(nodes[i].x,nodes[i].y);
-          ctx.lineTo(nodes[j].x,nodes[j].y);
-          ctx.strokeStyle='rgba(51,255,209,'+(1-dist/100)*0.3+')';
-          ctx.stroke();
-        }
-      }
-    }
-    requestAnimationFrame(animate);
-  }
-  animate();
+  requestAnimationFrame(animate);
+}
+animate();
 </script>
 </body>
 </html>
