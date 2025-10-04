@@ -254,16 +254,58 @@
 
     <!-- EXPERIENCE -->
     <section id="experience" class="reveal">
-      <div class="section-title"><h2>Experience</h2></div>
-      <div class="card">
-        <h3>AI/ML & Computer Vision Intern — DocketRun Tech Pvt. Ltd. (Jan 2025 – May 2025)</h3>
-        <ul style="margin-top:12px">
-          <li>Designed YOLO & CNN pipelines for automated material detection on CCTV feeds.</li>
-          <li>Optimized model inference (TensorRT-like techniques) for real-time throughput.</li>
-          <li>Integrated models into production workflows to increase operational efficiency.</li>
-        </ul>
-      </div>
-    </section>
+  <div class="section-title"><h2>Experience</h2></div>
+
+  <div class="card">
+    <h3>
+      AI/ML & Computer Vision Intern — 
+      <a href="https://docketrun.com/" target="_blank" style="color:var(--accent);text-decoration:none;">
+        DocketRun Tech Pvt. Ltd., Hubli, India
+      </a>
+      <br><small>(January 2025 – May 2025)</small>
+    </h3>
+
+    <ul style="margin-top:12px; list-style-type:disc; margin-left:20px;">
+      <li><strong>Developed & deployed deep learning pipelines (YOLO, CNN)</strong> for automated material detection in truck containers using CCTV footage, improving logistics monitoring accuracy by 35%.</li>
+      <li><strong>Engineered real-time computer vision systems</strong> with TensorFlow and OpenCV, ensuring precision and low-latency object detection in dynamic industrial environments.</li>
+      <li><strong>Optimized model inference speed & accuracy</strong> by tuning hyperparameters and leveraging GPU-based acceleration for production-grade efficiency.</li>
+      <li><strong>Integrated AI-driven solutions</strong> into enterprise logistics workflows, reducing manual intervention and streamlining container inspection automation.</li>
+      <li><strong>Collaborated cross-functionally</strong> with developers and operations teams to translate AI insights into scalable automation pipelines.</li>
+      <li><strong>Acquired practical experience</strong> in full-cycle AI model development — from data preprocessing and model tuning to deployment and monitoring.</li>
+    </ul>
+
+    <!-- Hidden Detailed Explanation -->
+    <div id="internDetails" style="display:none; margin-top:15px; color:var(--muted); line-height:1.6;">
+      <p>
+        During my internship at <a href="https://docketrun.com/" target="_blank" style="color:var(--accent);text-decoration:none;">DocketRun Tech Pvt. Ltd.</a>,
+        I contributed to the design and deployment of intelligent computer vision systems for logistics automation.
+        My focus was on developing deep learning architectures (YOLO, CNN) that could identify and classify materials inside truck containers in real time using CCTV feeds.
+      </p>
+      <p>
+        I implemented efficient data preprocessing workflows, optimized inference latency, and improved model performance using TensorFlow and OpenCV.
+        The integration of AI-powered detection into existing enterprise systems reduced manual inspections and improved accuracy and throughput in daily operations.
+        Working closely with cross-functional teams, I also learned practical aspects of deploying and maintaining ML systems in latency-sensitive industrial settings.
+      </p>
+    </div>
+
+    <!-- Read More Button -->
+    <button id="toggleBtn" class="btn" style="margin-top:15px;">Read More ⬇️</button>
+  </div>
+</section>
+
+<script>
+  // Toggle "Read More / Show Less" functionality
+  const toggleBtn = document.getElementById('toggleBtn');
+  const details = document.getElementById('internDetails');
+  let expanded = false;
+
+  toggleBtn.addEventListener('click', () => {
+    expanded = !expanded;
+    details.style.display = expanded ? 'block' : 'none';
+    toggleBtn.textContent = expanded ? 'Show Less ⬆️' : 'Read More ⬇️';
+  });
+</script>
+
 
     <!-- ACHIEVEMENTS -->
     <section id="achievements" class="reveal">
