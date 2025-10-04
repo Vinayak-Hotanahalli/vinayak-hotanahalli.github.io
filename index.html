@@ -3,242 +3,262 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Vinayak Girish Hotanahalli | AI/ML Engineer</title>
-<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@700&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+<title>Vinayak Hotanahalli | AI/ML Portfolio</title>
+<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700&family=Poppins:wght@400;600&display=swap" rel="stylesheet">
 <style>
-  :root {
-    --bg-color:#0d0d0d;
-    --text-color:#fff;
-    --accent-color:#33ffd1;
-    --highlight-color:#ff33ff;
-    --card-bg:#111;
-    --btn-bg:#33ffd1;
-  }
-  body {margin:0; font-family:'Poppins',sans-serif; background:var(--bg-color); color:var(--text-color); overflow-x:hidden;}
-  h1,h2,h3{margin:0;}
-  h1{font-family:'Orbitron',sans-serif; font-size:52px; color:var(--accent-color); white-space:nowrap; overflow:hidden; border-right:.15em solid var(--accent-color);}
-  h2{font-family:'Orbitron',sans-serif; font-size:36px; color:var(--highlight-color); text-align:center; margin-bottom:30px;}
-  h3{color:var(--accent-color);}
-  p{line-height:1.6;}
-  section{padding:80px 20px; position:relative;}
-  .card{background:var(--card-bg); padding:25px; border-radius:15px; box-shadow:0 0 30px rgba(51,255,209,0.3); margin-bottom:30px; transition: transform 0.4s;}
-  .card:hover{transform:translateY(-10px);}
-  ul{padding-left:20px;}
-  button{cursor:pointer;background:var(--btn-bg); border:none; color:#000; font-weight:600; padding:10px 20px; border-radius:10px; transition:0.3s; margin-top:10px;}
-  button:hover{background:#0ff;color:#000;}
-  .more-info-panel{max-height:0; overflow:hidden; transition:max-height 0.6s ease, padding 0.5s ease; padding-left:0;}
-  .show-less-btn{display:none; margin-top:10px;}
+  /* Reset */
+  *{margin:0;padding:0;box-sizing:border-box;font-family:'Poppins',sans-serif;}
+  html, body{height:100%;overflow-x:hidden;background:#0d0d0d;color:#fff;scroll-behavior:smooth;}
+  h1,h2,h3{font-family:'Orbitron',sans-serif;}
+  section{padding:80px 5%;position:relative;z-index:1;}
+  .section-title h2{font-size:2.5em;margin-bottom:40px;text-align:center;background:linear-gradient(90deg,#33ffd1,#ff33f6);-webkit-background-clip:text;-webkit-text-fill-color:transparent;}
+  
+  /* Theme Switcher */
+  .theme-switcher{position:fixed;top:20px;right:20px;z-index:999;}
+  .theme-btn{padding:10px 20px;margin:5px;border:none;border-radius:5px;cursor:pointer;font-weight:600;color:#fff;}
+  .matrix{background:#0d0d0d;color:#33ff33;}
+  .cyberpunk{background:#0d0d0d;color:#ff33f6;}
+  .neonpurple{background:#0d0d0d;color:#9933ff;}
+  
+  /* Hero */
+  #hero{display:flex;flex-direction:column;align-items:center;justify-content:center;height:100vh;text-align:center;}
+  #hero h1{font-size:3em;margin-bottom:20px;background:linear-gradient(90deg,#33ffd1,#ff33f6,#9933ff);-webkit-background-clip:text;-webkit-text-fill-color:transparent;}
+  #hero p{font-size:1.3em;margin-bottom:40px;line-height:1.5;color:#ccc;}
+  
+  /* Cards */
+  .card-container{display:flex;flex-wrap:wrap;justify-content:center;gap:30px;}
+  .card{background:rgba(255,255,255,0.05);border:1px solid rgba(51,255,209,0.3);border-radius:15px;padding:25px;width:300px;transition:transform 0.4s;transform-style:preserve-3d;cursor:pointer;}
+  .card:hover{transform:rotateY(10deg) rotateX(5deg) scale(1.05);}
+  .card h3{margin-bottom:20px;font-size:1.2em;color:#33ffd1;}
+  .card ul{list-style:disc;padding-left:20px;text-align:justify;line-height:1.5;}
+  .see-more-btn{margin-top:15px;padding:8px 15px;border:none;border-radius:5px;background:linear-gradient(90deg,#33ffd1,#ff33f6);color:#fff;cursor:pointer;transition:0.3s;}
+  .see-more-btn:hover{transform:scale(1.05);}
+  .more-info-panel{max-height:0;overflow:hidden;transition:max-height 0.5s ease;padding-left:20px;}
+  .card.active .more-info-panel{max-height:500px;margin-top:10px;}
+  .card.active .see-more-btn::after{content:"Show Less";}
+  .card .see-more-btn::after{content:"See More...";}
+  
+  /* Skills Canvas */
+  #skills{height:450px;position:relative;}
+  #skillCanvas{position:absolute;top:0;left:0;width:100%;height:100%;z-index:0;}
+  .skill-label{position:absolute;z-index:1;background:rgba(51,255,209,0.2);padding:5px 10px;border-radius:5px;color:#fff;font-weight:600;font-size:12px;cursor:pointer;transition:0.3s;}
   
   /* Projects */
-  .projects-container {display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:30px;}
-  .project-card{perspective:1500px;}
-  .project-card-inner{position:relative;width:100%;height:350px;transform-style:preserve-3d;transition: transform 0.8s;}
-  .project-card:hover .project-card-inner{transform:rotateY(180deg);}
-  .project-front, .project-back{
-    position:absolute;width:100%;height:100%;backface-visibility:hidden;
-    border-radius:15px;box-shadow:0 0 30px rgba(51,255,209,0.3);padding:20px;overflow:auto; transition:background 0.3s;
-  }
-  .project-front{background:var(--card-bg);}
-  .project-back{background:#222; transform:rotateY(180deg);}
-  .project-front h3,.project-back h3{color:var(--accent-color);}
+  .project-card{background:rgba(255,255,255,0.05);border:1px solid rgba(51,255,209,0.3);border-radius:15px;padding:20px;width:300px;transition:transform 0.4s;transform-style:preserve-3d;position:relative;}
+  .project-card:hover{transform:rotateY(10deg) rotateX(5deg) scale(1.05);}
+  .project-card h4{margin-bottom:10px;color:#ff33f6;}
+  .project-card p{color:#ccc;text-align:justify;line-height:1.5;}
+  .project-card a{color:#33ffd1;text-decoration:none;font-weight:600;}
+  .project-container{display:flex;flex-wrap:wrap;justify-content:center;gap:30px;}
   
-  /* Skills */
-  #skillCanvas{display:block;margin:auto;border-radius:12px;background:#111;cursor:pointer;}
-
-  /* Contact */
-  #contact{display:flex;justify-content:center;gap:20px; margin-top:50px;}
-  #contact a{padding:15px 25px; border-radius:12px; font-weight:600; text-decoration:none; background:var(--accent-color); color:#000; transition:0.3s;}
-  #contact a:hover{background:var(--highlight-color); color:#fff;}
-
-  /* Theme Switcher */
-  #themeSwitcher {position:fixed;top:20px;right:20px;cursor:pointer;padding:10px 15px;border-radius:10px;background:var(--accent-color);color:#000;font-weight:bold;z-index:1000;transition:0.3s;}
-  #themeSwitcher:hover{background:#0ff;}
+  /* Footer */
+  footer{padding:50px;text-align:center;}
+  .contact-btn{margin:0 10px;padding:12px 25px;border:none;border-radius:5px;background:linear-gradient(90deg,#33ffd1,#ff33f6);color:#fff;font-weight:600;cursor:pointer;transition:0.3s;}
+  .contact-btn:hover{transform:scale(1.05);}
   
-  /* Fade-in & slide */
-  .reveal{opacity:0; transform:translateY(50px); transition:all 0.8s ease;}
-  .reveal.active{opacity:1; transform:translateY(0);}
-  
-  /* Floating AI neuron background */
-  #neuronCanvas{position:fixed;top:0;left:0;width:100%;height:100%;z-index:-1;}
+  /* Particle + Matrix */
+  canvas#particleCanvas{position:fixed;top:0;left:0;width:100%;height:100%;z-index:-2;}
+  canvas#matrixCanvas{position:fixed;top:0;left:0;width:100%;height:100%;z-index:-1;}
 </style>
 </head>
-<body>
+<body class="matrix">
 
-<canvas id="neuronCanvas"></canvas>
-<div id="themeSwitcher">Switch Theme</div>
+<!-- Theme Switcher -->
+<div class="theme-switcher">
+  <button class="theme-btn" onclick="switchTheme('matrix')">Matrix Green</button>
+  <button class="theme-btn" onclick="switchTheme('cyberpunk')">Cyberpunk Pink</button>
+  <button class="theme-btn" onclick="switchTheme('neonpurple')">Neon Purple</button>
+</div>
 
-<!-- Header -->
-<section id="header" class="reveal">
-  <h1 id="nameTyping"></h1>
-  <p id="roleTyping" style="font-size:20px; margin-top:10px;"></p>
-  <p>Email: vinayakhotanahalli72@gmail.com | Phone: +91 8970393850 | 
-    <a href="https://www.linkedin.com/in/vinayak-hotanahalli-2775b929b" target="_blank" style="color:#33ffd1;">LinkedIn</a> | 
-    <a href="https://github.com/Vinayak-Hotanahalli" target="_blank" style="color:#33ffd1;">GitHub</a>
-  </p>
-  <p>Aspiring AI/ML Engineer skilled in Python, C, TensorFlow, PyTorch, OpenCV, Docker, Generative AI (LLMs, LangChain, RAG), UiPath RPA, and Streamlit. Passionate about building scalable, enterprise-ready AI solutions.</p>
+<!-- Hero -->
+<section id="hero">
+  <h1>Vinayak Girish Hotanahalli</h1>
+  <p>Aspiring AI/ML Engineer skilled in Python, C, TensorFlow, PyTorch, OpenCV, Docker, and Generative AI. Passionate about building scalable, enterprise-ready AI solutions.</p>
 </section>
 
-<!-- Internship Experience -->
-<section id="experience" class="reveal">
-  <h2>Internship Experience</h2>
-  <div class="card">
-    <h3>AI/ML & Computer Vision Intern — DocketRun Tech Pvt. Ltd., Hubli (Jan 2025 – May 2025)</h3>
-    <ul style="text-align:justify;">
-      <li>Developed & deployed YOLO & CNN pipelines for automated material detection in truck containers.</li>
-      <li>Engineered real-time CV systems with TensorFlow & OpenCV, reducing manual monitoring by 30%.</li>
-      <li>Optimized model inference speed & accuracy for production use.</li>
-    </ul>
-    <button class="see-more-btn">See More...</button>
-    <div class="more-info-panel">
-      <ul style="text-align:justify;">
+<!-- Internship Section -->
+<section id="experience">
+  <div class="section-title"><h2>Internship Experience</h2></div>
+  <div class="card-container">
+    <div class="card">
+      <h3>AI/ML & Computer Vision Intern — DocketRun Tech Pvt. Ltd., Hubli (Jan 2025 – May 2025)</h3>
+      <ul>
+        <li>Developed & deployed YOLO & CNN pipelines for automated material detection in truck containers.</li>
+        <li>Engineered real-time CV systems with TensorFlow & OpenCV, reducing manual monitoring by 30%.</li>
+        <li>Optimized model inference speed & accuracy for production use.</li>
         <li>Implemented data preprocessing, augmentation, hyperparameter tuning, and cross-validation for EEG-based driver drowsiness detection.</li>
         <li>Collaborated with dev & ops teams to integrate AI solutions into enterprise workflows.</li>
         <li>Documented pipelines for reproducibility and long-term maintenance.</li>
         <li>Created dashboards & reports to visualize model performance and interpretability metrics.</li>
       </ul>
-      <button class="show-less-btn">Show Less</button>
+      <button class="see-more-btn"></button>
+      <div class="more-info-panel"></div>
     </div>
   </div>
 </section>
 
-<!-- Projects -->
-<section id="projects" class="reveal">
-  <h2>Projects</h2>
-  <div class="projects-container">
-    <!-- Project cards as 3D tilt & flip -->
-    <div class="project-card">
-      <div class="project-card-inner">
-        <div class="project-front">
-          <h3>AI-Powered Text-to-3D Pipeline</h3><p>May 2025 – July 2025</p>
-        </div>
-        <div class="project-back">
-          <ul style="text-align:justify;">
-            <li>Local AI pipeline converting prompts into 3D models using Openfabric SDK & LLMs (DeepSeek, LLaMA).</li>
-            <li>Modular architecture with CLI, Streamlit UI, Docker, and MLOps practices.</li>
-            <li>Context-aware generation via RAG and vector-based retrieval.</li>
-            <li>Production-ready with API/SDK integration, Swagger testing, GitHub workflow support.</li>
-          </ul>
-        </div>
-      </div>
-    </div>
+<!-- Skills Section -->
+<section id="skills">
+  <div class="section-title"><h2>Technical Skills</h2></div>
+  <canvas id="skillCanvas"></canvas>
+</section>
 
+<!-- Projects Section -->
+<section id="projects">
+  <div class="section-title"><h2>Projects</h2></div>
+  <div class="project-container">
     <div class="project-card">
-      <div class="project-card-inner">
-        <div class="project-front">
-          <h3>CNN Layer Visualization & Explainability</h3><p>Sep 2024 – Dec 2024</p>
-        </div>
-        <div class="project-back">
-          <ul style="text-align:justify;">
-            <li>Implemented Grad-CAM, LIME & SHAP for CNN interpretability.</li>
-            <li>Analyzed optimizers, activations, and backprop using heatmaps & ROC curves.</li>
-            <li>Achieved 94.56% accuracy demonstrating robust model performance.</li>
-          </ul>
-        </div>
-      </div>
+      <h4>AI-Powered Text-to-3D Pipeline</h4>
+      <p>Local AI pipeline converting prompts into 3D models using Openfabric SDK & LLMs (DeepSeek, LLaMA). Modular architecture with CLI, Streamlit UI, Docker, and MLOps practices. Context-aware generation via RAG and vector-based retrieval. Production-ready with API/SDK integration, Swagger testing, GitHub workflow support.</p>
+      <a href="#">GitHub Link</a>
     </div>
-
     <div class="project-card">
-      <div class="project-card-inner">
-        <div class="project-front">
-          <h3>Driver Drowsiness Detection via EEG & ANN</h3><p>Apr 2024 – Aug 2024</p>
-        </div>
-        <div class="project-back">
-          <ul style="text-align:justify;">
-            <li>Real-time detection system using EEG & ANN, achieving 92% accuracy.</li>
-            <li>Backprop implemented manually to validate ANN training flow.</li>
-            <li>Hyperparameter tuning improved real-time responsiveness in safety-critical scenarios.</li>
-          </ul>
-        </div>
-      </div>
+      <h4>CNN Layer Visualization & Explainability</h4>
+      <p>Implemented Grad-CAM, LIME & SHAP for CNN interpretability. Analyzed optimizers, activations, and backprop using heatmaps & ROC curves. Achieved 94.56% accuracy demonstrating robust model performance.</p>
+      <a href="#">GitHub Link</a>
+    </div>
+    <div class="project-card">
+      <h4>Driver Drowsiness Detection via EEG & ANN</h4>
+      <p>Real-time detection system using EEG & ANN, achieving 92% accuracy. Backprop implemented manually to validate ANN training flow. Hyperparameter tuning improved real-time responsiveness in safety-critical scenarios.</p>
+      <a href="#">GitHub Link</a>
     </div>
   </div>
 </section>
 
-<!-- Skills -->
-<section id="skills" class="reveal">
-  <h2>Technical Skills</h2>
-  <canvas id="skillCanvas" width="1000" height="500"></canvas>
-</section>
+<!-- Footer -->
+<footer>
+  <button class="contact-btn" onclick="window.open('https://github.com/Vinayak-Hotanahalli')">GitHub</button>
+  <button class="contact-btn" onclick="window.open('https://www.linkedin.com/in/vinayak-hotanahalli-2775b929b/')">LinkedIn</button>
+  <button class="contact-btn" onclick="window.open('mailto:vinayakhotanahalli72@gmail.com')">Email</button>
+</footer>
 
-<!-- Contact -->
-<section id="contact" class="reveal">
-  <a href="https://www.linkedin.com/in/vinayak-hotanahalli-2775b929b" target="_blank">LinkedIn</a>
-  <a href="mailto:vinayakhotanahalli72@gmail.com">Email</a>
-  <a href="https://github.com/Vinayak-Hotanahalli" target="_blank">GitHub</a>
-</section>
+<!-- Floating Particles & Matrix -->
+<canvas id="particleCanvas"></canvas>
+<canvas id="matrixCanvas"></canvas>
 
 <script>
-/* === TYPING EFFECT === */
-const nameText="Vinayak Girish Hotanahalli";
-const roleText="Aspiring AI/ML Engineer";
-let nameIndex=0, roleIndex=0;
-function typeName(){ if(nameIndex<nameText.length){document.getElementById('nameTyping').innerHTML+=nameText.charAt(nameIndex); nameIndex++; setTimeout(typeName,100);} else typeRole();}
-function typeRole(){ if(roleIndex<roleText.length){document.getElementById('roleTyping').innerHTML+=roleText.charAt(roleIndex); roleIndex++; setTimeout(typeRole,80);}}
-typeName();
+/* Theme Switcher */
+function switchTheme(theme){
+  document.body.className = theme;
+}
 
-/* === INTERNSHIP SEE MORE/LESS === */
-document.querySelectorAll('.see-more-btn').forEach(btn=>{
+/* Internship See More Toggle */
+document.querySelectorAll('.card').forEach(card=>{
+  const btn = card.querySelector('.see-more-btn');
   btn.addEventListener('click',()=>{
-    const panel=btn.nextElementSibling;
-    panel.style.maxHeight="800px"; panel.style.paddingLeft="20px"; btn.style.display="none";
-    panel.querySelector('.show-less-btn').style.display="block";
-  });
-});
-document.querySelectorAll('.show-less-btn').forEach(btn=>{
-  btn.addEventListener('click',()=>{
-    const panel=btn.parentElement;
-    panel.style.maxHeight="0"; panel.style.paddingLeft="0"; panel.querySelector('.show-less-btn').style.display="none";
-    panel.previousElementSibling.style.display="inline-block";
+    card.classList.toggle('active');
   });
 });
 
-/* === SKILLS CANVAS FLOATING & MATRIX ALIGN === */
-const canvas=document.getElementById('skillCanvas'); const ctx=canvas.getContext('2d');
-canvas.width=window.innerWidth-40; canvas.height=500;
-const skills=[
-  'Python','C','SQL','OOPS','Data Structures','TensorFlow','PyTorch','OpenCV','ML','DL','CV','NLP','MLOps','ANN','CNN','RNN','Data Science',
-  'Generative AI','LLM Workflows','Prompt Engineering','UiPath RPA','Docker','Streamlit','Azure AI','Openfabric SDK'
-];
-let nodes=[]; skills.forEach((skill,i)=>{ nodes.push({x:Math.random()*canvas.width,y:Math.random()*canvas.height,r:25,text:skill,dx:(Math.random()-0.5)*0.7,dy:(Math.random()-0.5)*0.7,index:i});});
-let aligned=false;
-function draw(){ ctx.clearRect(0,0,canvas.width,canvas.height);
+/* Floating Skill Neurons */
+const skillCanvas=document.getElementById('skillCanvas');
+const ctx=skillCanvas.getContext('2d');
+skillCanvas.width=window.innerWidth;
+skillCanvas.height=400;
+const skills=['Python','C','TensorFlow','PyTorch','OpenCV','ML','DL','CV','NLP','MLOps','ANN','CNN','RNN','Data Science','Generative AI','LangChain','RAG','UiPath','Streamlit','Docker','SQL','OOP','AI Automation'];
+let nodes=[];
+skills.forEach(skill=>{
+  nodes.push({
+    x:Math.random()*skillCanvas.width,
+    y:Math.random()*skillCanvas.height,
+    r:30,
+    text:skill,
+    dx:(Math.random()-0.5)*0.7,
+    dy:(Math.random()-0.5)*0.7
+  });
+});
+function drawSkills(){
+  ctx.clearRect(0,0,skillCanvas.width,skillCanvas.height);
   nodes.forEach(n=>{
-    if(!aligned){ n.x+=n.dx; n.y+=n.dy; if(n.x<0||n.x>canvas.width)n.dx*=-1;if(n.y<0||n.y>canvas.height)n.dy*=-1;} 
-    else{ let col=6,row=Math.ceil(nodes.length/6); let stepX=canvas.width/col,stepY=canvas.height/row; let targetX=(n.index%col)*stepX+stepX/2, targetY=Math.floor(n.index/col)*stepY+stepY/2; n.x+=(targetX-n.x)*0.1; n.y+=(targetY-n.y)*0.1;}
-    ctx.beginPath(); ctx.arc(n.x,n.y,n.r,0,Math.PI*2); ctx.fillStyle='rgba(51,255,209,0.2)'; ctx.fill(); ctx.strokeStyle='#33ffd1'; ctx.stroke();
-    ctx.fillStyle='#fff'; ctx.font='12px Poppins'; ctx.textAlign='center'; ctx.textBaseline='middle'; ctx.fillText(n.text,n.x,n.y);
+    n.x+=n.dx; n.y+=n.dy;
+    if(n.x<0||n.x>skillCanvas.width)n.dx*=-1;
+    if(n.y<0||n.y>skillCanvas.height)n.dy*=-1;
+    ctx.beginPath();
+    ctx.arc(n.x,n.y,n.r,0,Math.PI*2);
+    ctx.fillStyle='rgba(51,255,209,0.2)';
+    ctx.fill();
+    ctx.strokeStyle='#33ffd1';
+    ctx.stroke();
+    ctx.fillStyle='#fff';
+    ctx.font='12px Poppins';
+    ctx.textAlign='center';
+    ctx.textBaseline='middle';
+    ctx.fillText(n.text,n.x,n.y);
   });
-  for(let i=0;i<nodes.length;i++){ for(let j=i+1;j<nodes.length;j++){ let dx=nodes[i].x-nodes[j].x,dy=nodes[i].y-nodes[j].y,dist=Math.sqrt(dx*dx+dy*dy); if(dist<160){ ctx.beginPath(); ctx.moveTo(nodes[i].x,nodes[i].y); ctx.lineTo(nodes[j].x,nodes[j].y); ctx.strokeStyle='rgba(51,255,209,'+(1-dist/160)*0.3+')'; ctx.stroke();}}}
-  requestAnimationFrame(draw);}
-draw();
-canvas.addEventListener('click',()=>{ aligned=!aligned; });
-
-/* === THEME SWITCHER === */
-document.getElementById('themeSwitcher').addEventListener('click',()=>{
-  if(document.body.style.background==='white'){document.body.style.background='var(--bg-color)';document.body.style.color='var(--text-color)';}
-  else{document.body.style.background='white';document.body.style.color='black';}
+  for(let i=0;i<nodes.length;i++){
+    for(let j=i+1;j<nodes.length;j++){
+      let dx=nodes[i].x-nodes[j].x;
+      let dy=nodes[i].y-nodes[j].y;
+      let dist=Math.sqrt(dx*dx+dy*dy);
+      if(dist<150){
+        ctx.beginPath();
+        ctx.moveTo(nodes[i].x,nodes[i].y);
+        ctx.lineTo(nodes[j].x,nodes[j].y);
+        ctx.strokeStyle='rgba(51,255,209,'+(1-dist/150)*0.3+')';
+        ctx.stroke();
+      }
+    }
+  }
+  requestAnimationFrame(drawSkills);
+}
+drawSkills();
+skillCanvas.addEventListener('mousemove',e=>{
+  nodes.forEach(n=>{
+    let dx=n.x-e.clientX;
+    let dy=n.y-e.clientY;
+    let dist=Math.sqrt(dx*dx+dy*dy);
+    if(dist<100){ n.x+=dx*0.02; n.y+=dy*0.02; }
+  });
 });
 
-/* === SCROLL REVEAL === */
-const reveals=document.querySelectorAll('.reveal');
-window.addEventListener('scroll',()=>{
-  reveals.forEach(el=>{
-    const top=el.getBoundingClientRect().top;
-    const height=window.innerHeight;
-    if(top<height-100){el.classList.add('active');}else{el.classList.remove('active');}
+/* Particle Background */
+const pCanvas=document.getElementById('particleCanvas');
+const pCtx=pCanvas.getContext('2d');
+pCanvas.width=window.innerWidth;
+pCanvas.height=window.innerHeight;
+let particles=[];
+for(let i=0;i<80;i++){
+  particles.push({x:Math.random()*pCanvas.width,y:Math.random()*pCanvas.height,r:Math.random()*2+1,dx:(Math.random()-0.5)*1,dy:(Math.random()-0.5)*1});
+}
+function drawParticles(){
+  pCtx.clearRect(0,0,pCanvas.width,pCanvas.height);
+  particles.forEach(p=>{
+    p.x+=p.dx; p.y+=p.dy;
+    if(p.x<0||p.x>pCanvas.width)p.dx*=-1;
+    if(p.y<0||p.y>pCanvas.height)p.dy*=-1;
+    pCtx.beginPath();
+    pCtx.arc(p.x,p.y,p.r,0,Math.PI*2);
+    pCtx.fillStyle='rgba(255,255,255,0.2)';
+    pCtx.fill();
   });
-});
+  requestAnimationFrame(drawParticles);
+}
+drawParticles();
 
-/* === FLOATING AI NEURON BACKGROUND === */
-const neuronCanvas=document.getElementById('neuronCanvas'); const nctx=neuronCanvas.getContext('2d');
-neuronCanvas.width=window.innerWidth; neuronCanvas.height=window.innerHeight;
-let neurons=[]; for(let i=0;i<60;i++){neurons.push({x:Math.random()*neuronCanvas.width,y:Math.random()*neuronCanvas.height,dx:(Math.random()-0.5)*1.5,dy:(Math.random()-0.5)*1.5,r:Math.random()*3+2});}
-function drawNeurons(){ nctx.clearRect(0,0,neuronCanvas.width,neuronCanvas.height); neurons.forEach(n=>{ n.x+=n.dx; n.y+=n.dy; if(n.x<0||n.x>neuronCanvas.width)n.dx*=-1; if(n.y<0||n.y>neuronCanvas.height)n.dy*=-1;
-  nctx.beginPath(); nctx.arc(n.x,n.y,n.r,0,Math.PI*2); nctx.fillStyle='rgba(51,255,209,0.7)'; nctx.fill();});
-  // connect lines
-  for(let i=0;i<neurons.length;i++){for(let j=i+1;j<neurons.length;j++){let dx=neurons[i].x-neurons[j].x,dy=neurons[i].y-neurons[j].y,dist=Math.sqrt(dx*dx+dy*dy); if(dist<120){nctx.beginPath(); nctx.moveTo(neurons[i].x,neurons[i].y); nctx.lineTo(neurons[j].x,neurons[j].y); nctx.strokeStyle='rgba(51,255,209,'+(1-dist/120)*0.3+')'; nctx.stroke();}}}
-  requestAnimationFrame(drawNeurons);}
-drawNeurons();
+/* Matrix Effect */
+const mCanvas=document.getElementById('matrixCanvas');
+const mCtx=mCanvas.getContext('2d');
+mCanvas.width=window.innerWidth;
+mCanvas.height=window.innerHeight;
+const letters='ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789';
+const fontSize=14;
+const columns=Math.floor(mCanvas.width/fontSize);
+let drops=[];
+for(let x=0;x<columns;x++){drops[x]=Math.random()*mCanvas.height;}
+function drawMatrix(){
+  mCtx.fillStyle='rgba(0,0,0,0.1)';
+  mCtx.fillRect(0,0,mCanvas.width,mCanvas.height);
+  mCtx.fillStyle='#0F0';
+  mCtx.font=fontSize+'px monospace';
+  for(let i=0;i<drops.length;i++){
+    let text=letters[Math.floor(Math.random()*letters.length)];
+    mCtx.fillText(text,i*fontSize,drops[i]*fontSize);
+    if(drops[i]*fontSize>mCanvas.height && Math.random()>0.975)drops[i]=0;
+    drops[i]++;
+  }
+  requestAnimationFrame(drawMatrix);
+}
+drawMatrix();
 </script>
 </body>
 </html>
