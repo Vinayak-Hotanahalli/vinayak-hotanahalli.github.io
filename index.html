@@ -1,246 +1,547 @@
-<!DOCTYPE html>
+<!--
+Profilero — Vinayak Girish Hotanahalli
+Single-file personal portfolio (resume) — copy to index.html and host on GitHub Pages / Vercel.
+
+What's included:
+- 3D hero (Three.js) with rotating low-poly "brain"
+- Particle background
+- Custom cursor with hover effect & click ripple
+- GSAP scroll reveals & card tilt
+- Neon/glassmorphism theme & dark/light toggle
+- Sections: Hero, About, Skills, Projects, Certifications & Achievements, Contact
+- Responsive & optimized for static hosting
+
+Personal info pulled from your resume:
+- Name: Vinayak Girish Hotanahalli
+- Tagline: AI/ML Engineer | Computer Vision | Generative AI | Deep Learning Enthusiast
+- Email: vinayakhotanahalli72@gmail.com
+- Phone: +91 8970393850
+- LinkedIn: https://www.linkedin.com/in/vinayak-hotanahalli-2775b929b/
+- GitHub: https://github.com/Vinayak-Hotanahalli
+
+Replace any placeholder text if you want to tweak wording or add links.
+-->
+<!doctype html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Vinayak Girish Hotanahalli - AI/ML Portfolio</title>
-<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500&family=Roboto+Mono&family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
-<style>
-/* --- Global Styles --- */
-*{margin:0;padding:0;box-sizing:border-box;}
-body, html{width:100%;height:100%;overflow-x:hidden;font-family:'Roboto Mono', monospace;background:#0a0a0a;color:#fff;scroll-behavior:smooth;}
-a{text-decoration:none;color:inherit;}
-h1,h2,h3,h4,h5,h6{margin-bottom:10px;}
-section{padding:80px 50px;position:relative;}
-.section-title{font-family:'Orbitron', sans-serif;font-size:2rem;text-align:center;margin-bottom:50px;background:linear-gradient(90deg,#33ffd1,#ff33f6);-webkit-background-clip:text;-webkit-text-fill-color:transparent;}
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Profilero — Vinayak Girish Hotanahalli</title>
+  <meta name="description" content="Profilero — Personal portfolio of Vinayak Girish Hotanahalli (AI/ML, Computer Vision). 3D web resume with interactive effects." />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
 
-/* --- Landing Page --- */
-#landing{display:flex;flex-direction:column;justify-content:center;align-items:center;height:100vh;text-align:center;position:relative;}
-#landing h1{font-size:4rem;font-family:'Orbitron', sans-serif;color:#33ffd1;white-space:nowrap;}
-#landing h2{font-size:1.5rem;margin-top:20px;color:#ff33f6;}
-#dropdown-btn{position:fixed;right:20px;bottom:20px;background:#33ffd1;color:#000;padding:12px 18px;border:none;border-radius:10px;cursor:pointer;font-weight:bold;box-shadow:0 0 10px #33ffd1;z-index:1000;transition:0.3s;}
-#dropdown-btn:hover{background:#ff33f6;color:#fff;box-shadow:0 0 20px #ff33f6;}
+  <style>
+    :root{
+      --bg:#05060a;
+      --panel: rgba(255,255,255,0.04);
+      --muted: rgba(255,255,255,0.72);
+      --accent1:#00d0ff;
+      --accent2:#8a2be2;
+      --glass: rgba(255,255,255,0.04);
+      --glass-border: rgba(255,255,255,0.06);
+    }
+    *{box-sizing:border-box}
+    html,body{height:100%}
+    body{
+      margin:0;
+      font-family:Inter,system-ui,Arial;
+      background:linear-gradient(180deg,var(--bg),#071026 72%);
+      color:#e8f0ff;
+      -webkit-font-smoothing:antialiased;
+      -moz-osx-font-smoothing:grayscale;
+      overflow-x:hidden;
+    }
 
-/* --- Cards --- */
-.card{background:rgba(30,30,30,0.8);backdrop-filter:blur(10px);border-radius:15px;padding:20px;margin:20px 0;transition:0.5s;cursor:pointer;position:relative;}
-.card:hover{transform:rotateY(10deg) rotateX(5deg);box-shadow:0 0 20px #33ffd1;}
+    /* NAV */
+    header.navbar{
+      position:fixed; top:18px; left:18px; right:18px; z-index:70;
+      display:flex; justify-content:space-between; align-items:center; gap:12px;
+    }
+    .brand{font-weight:800; letter-spacing:0.6px; display:flex;gap:10px;align-items:center}
+    .brand .dot{width:11px;height:11px;border-radius:999px;background:linear-gradient(90deg,var(--accent1),var(--accent2));box-shadow:0 6px 20px rgba(138,43,226,0.18)}
+    nav.links{display:flex;gap:8px;align-items:center}
+    nav.links button{background:transparent;border:1px solid var(--glass-border);padding:8px 12px;border-radius:10px;color:var(--muted);backdrop-filter: blur(6px);cursor:pointer}
+    nav.links button:hover{transform:translateY(-3px);border-color:rgba(255,255,255,0.14)}
 
-/* --- See More Toggle --- */
-.more-info-panel{max-height:0;overflow:hidden;transition:max-height 0.6s ease;padding-left:20px;}
-.see-more-btn{margin-top:15px;padding:8px 12px;background:#ff33f6;color:#fff;border:none;border-radius:8px;cursor:pointer;transition:0.3s;}
-.see-more-btn:hover{background:#33ffd1;color:#000;}
-.see-more-btn.active + .more-info-panel{max-height:1000px;}
+    /* HERO */
+    .hero{
+      height:85vh; min-height:560px; position:relative; display:flex; align-items:center; justify-content:center; overflow:hidden;
+    }
+    #three-wrap{position:absolute;inset:0;z-index:1;pointer-events:none}
+    .hero-content{position:relative;z-index:10;text-align:center;padding:28px;max-width:980px}
+    .title{font-size: clamp(28px,5vw,56px); font-weight:900; line-height:1;}
+    .subtitle{margin-top:14px;color:#bcd3ff;font-size:18px;max-width:820px;margin-left:auto;margin-right:auto}
 
-/* --- Skill Canvas --- */
-#skillCanvas{display:block;margin:50px auto;background:transparent;}
+    .cta-group{margin-top:22px;display:flex; gap:12px; justify-content:center; flex-wrap:wrap}
+    .btn{
+      border-radius:999px;padding:12px 20px;font-weight:700;border:none;cursor:pointer;
+      background:linear-gradient(90deg,var(--accent1),var(--accent2));
+      box-shadow:0 10px 34px rgba(138,43,226,0.12); color:#021025;
+    }
+    .btn.secondary{background:transparent;border:1px solid rgba(255,255,255,0.06); color:var(--muted)}
 
-/* --- Project Cards --- */
-.project-card{background:rgba(20,20,20,0.85);border:2px solid #33ffd1;border-radius:15px;padding:20px;margin:20px;transition:0.5s;cursor:pointer;}
-.project-card:hover{transform:rotateY(8deg) rotateX(4deg);box-shadow:0 0 25px #ff33f6;}
+    /* Custom cursor */
+    .cursor {
+      position: fixed;
+      width: 18px; height:18px; border-radius:50%;
+      pointer-events:none; z-index:9999; transform:translate3d(-50%,-50%,0);
+      transition: transform .12s ease, width .12s ease, height .12s ease, background .12s ease;
+      mix-blend-mode:screen;
+      background: radial-gradient(circle at 30% 30%, rgba(0,208,255,0.95), rgba(138,43,226,0.95));
+      box-shadow: 0 6px 30px rgba(0,0,0,0.35);
+    }
+    .cursor.hovering{width:48px;height:48px;background:linear-gradient(90deg,var(--accent2),var(--accent1));}
 
-/* --- Publication Card --- */
-.publication-card{background:rgba(25,25,25,0.85);border-left:5px solid #33ffd1;padding:20px;margin:20px 0;transition:0.5s;}
-.publication-card:hover{box-shadow:0 0 25px #ff33f6;}
+    /* Sections */
+    section{padding: 84px 18px;}
+    .container{max-width:1120px;margin:0 auto;padding:0 18px}
+    .glass{
+      background: linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));
+      border: 1px solid var(--glass-border);
+      padding:18px;border-radius:14px;
+      backdrop-filter: blur(8px);
+    }
 
-/* --- Contact Icons --- */
-.contact-icons{display:flex;justify-content:center;margin-top:30px;}
-.contact-icons a{margin:0 15px;font-size:2rem;color:#33ffd1;transition:0.3s;}
-.contact-icons a:hover{color:#ff33f6;transform:scale(1.2);}
+    /* Projects grid */
+    .projects-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:18px;margin-top:18px}
+    .card{
+      border-radius:14px;padding:18px;min-height:160px;position:relative;overflow:hidden;
+      background: linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));
+      border:1px solid rgba(255,255,255,0.03);transition:transform .28s cubic-bezier(.2,.9,.3,1), box-shadow .28s;
+    }
+    .card:hover{transform:translateY(-10px) scale(1.01); box-shadow:0 22px 60px rgba(2,16,36,0.6)}
+    .tag{font-size:12px;color:#bcd3ff; font-weight:700}
+    .card h3{margin:8px 0 0 0;font-size:18px}
+    .card p{color:#9fb6ea;font-size:14px;margin-top:8px}
 
-/* --- Floating Neurons --- */
-.neuron-canvas{position:fixed;top:0;left:0;width:100%;height:100%;z-index:-1;}
+    /* Skills */
+    .skill-badges{display:flex;gap:8px;flex-wrap:wrap;margin-top:12px}
+    .badge{padding:8px 12px;border-radius:999px;border:1px solid rgba(255,255,255,0.04); background:rgba(255,255,255,0.02);font-weight:600;font-size:13px;color:#dff4ff}
 
-/* --- Smooth Fade Animations --- */
-.reveal{opacity:0;transform:translateY(50px);transition:all 0.8s ease;}
-.reveal.active{opacity:1;transform:translateY(0);}
+    /* Certifications & Achievements */
+    .list-row{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:12px}
+    .ach{padding:12px;border-radius:10px;background:linear-gradient(180deg,rgba(255,255,255,0.01),transparent);border:1px solid rgba(255,255,255,0.03)}
 
-/* --- Theme Styles --- */
-body[data-theme="matrix"]{background:#0a0a0a;color:#33ff33;}
-body[data-theme="cyberpunk"]{background:#0a0a0a;color:#ff33f6;}
-body[data-theme="neonblue"]{background:#0a0a0a;color:#33d4ff;}
-</style>
+    /* Contact */
+    .contact-grid{display:grid;grid-template-columns:1fr 1fr;gap:18px}
+    .input, textarea{width:100%; padding:12px;border-radius:10px;border:1px solid rgba(255,255,255,0.04);background:transparent;color:#eaf3ff}
+
+    footer{padding:28px 18px;text-align:center;color:#8ea8dc}
+
+    /* Responsive */
+    @media (max-width:880px){
+      .hero{height:68vh}
+      .contact-grid{grid-template-columns:1fr}
+    }
+
+    .neon-line{height:3px;background:linear-gradient(90deg,var(--accent1),var(--accent2));border-radius:2px;margin-top:12px;width:120px;margin-left:auto;margin-right:auto}
+  </style>
 </head>
-<body data-theme="matrix">
+<body>
 
-<!-- --- Floating Neuron Canvas --- -->
-<canvas id="neuronCanvas" class="neuron-canvas"></canvas>
+  <!-- Custom cursor -->
+  <div class="cursor" id="cursor"></div>
 
-<!-- --- Landing Page --- -->
-<div id="landing">
-  <h1 id="typed-name"></h1>
-  <h2>Aspiring AI/ML & Software Engineer</h2>
-</div>
-
-<!-- --- Dropdown Button --- -->
-<button id="dropdown-btn">Open Portfolio</button>
-
-<!-- --- Main Content --- -->
-<div id="portfolio" style="display:none;">
-
-<!-- About Section -->
-<section id="about" class="reveal">
-  <div class="section-title">About Me</div>
-  <p>Aspiring AI/ML Engineer skilled in Python, C, TensorFlow, PyTorch, OpenCV, Docker, and Generative AI (LLMs, LangChain, RAG, Prompt Engineering). Experienced in AI + RPA automation (UiPath) and Streamlit deployment. Passionate about building scalable, enterprise-ready AI solutions.</p>
-</section>
-
-<!-- Internship Section -->
-<section id="experience" class="reveal">
-  <div class="section-title">Internship Experience</div>
-  <div class="card">
-    <h3>AI/ML & Computer Vision Intern — DocketRun Tech Pvt. Ltd., Hubli (Jan 2025 – May 2025)</h3>
-    <ul style="text-align:justify;">
-      <li>Developed & deployed YOLO & CNN pipelines for automated material detection in truck containers.</li>
-      <li>Engineered real-time CV systems with TensorFlow & OpenCV, reducing manual monitoring by 30%.</li>
-      <li>Optimized model inference speed & accuracy for production use.</li>
-      <li>Implemented data preprocessing, augmentation, hyperparameter tuning, and cross-validation for EEG-based driver drowsiness detection.</li>
-    </ul>
-    <button class="see-more-btn">See More...</button>
-    <div class="more-info-panel">
-      <ul style="text-align:justify;">
-        <li>Collaborated with dev & ops teams to integrate AI solutions into enterprise workflows.</li>
-        <li>Documented pipelines for reproducibility and long-term maintenance.</li>
-        <li>Created dashboards & reports to visualize model performance and interpretability metrics.</li>
-        <li>Company Website: <a href="https://docketrun.com" target="_blank">https://docketrun.com</a></li>
-      </ul>
-      <button class="see-more-btn">Show Less</button>
+  <!-- NAV -->
+  <header class="navbar">
+    <div class="brand">
+      <div class="dot" aria-hidden="true"></div>
+      <div style="font-size:16px">Profilero</div>
     </div>
-  </div>
-</section>
 
-<!-- Projects Section -->
-<section id="projects" class="reveal">
-  <div class="section-title">Projects</div>
-  <div class="project-card">
-    <h3>AI-Powered Text-to-3D Generation Pipeline</h3>
-    <p>May 2025 – July 2025</p>
-    <ul style="text-align:justify;">
-      <li>Local AI pipeline converting natural language prompts into 3D models using Openfabric SDK & LLMs (DeepSeek, LLaMA).</li>
-      <li>Modular architecture with CLI, Streamlit UI, Docker, and MLOps practices.</li>
-      <li>Context-aware generation via RAG and vector-based retrieval.</li>
-    </ul>
-    <a href="https://github.com/vinayak-hotanahalli/text-to-3D" target="_blank">GitHub Link</a>
-  </div>
-  <div class="project-card">
-    <h3>CNN Layer Visualization & Explainability</h3>
-    <p>Sep 2024 – Dec 2024</p>
-    <ul style="text-align:justify;">
-      <li>Implemented Grad-CAM, LIME & SHAP for CNN interpretability.</li>
-      <li>Analyzed optimizers, activations, and backprop using heatmaps & ROC curves.</li>
-      <li>Achieved 94.56% accuracy demonstrating robust model performance.</li>
-    </ul>
-    <a href="https://github.com/vinayak-hotanahalli/CNN-Explainability" target="_blank">GitHub Link</a>
-  </div>
-</section>
+    <nav class="links" aria-label="Main navigation">
+      <button data-to="about">About</button>
+      <button data-to="skills">Skills</button>
+      <button data-to="projects">Projects</button>
+      <button data-to="certs">Certifications</button>
+      <button data-to="contact">Contact</button>
+      <button id="toggleTheme" title="Toggle Theme">Toggle</button>
+    </nav>
+  </header>
 
-<!-- Skills Section -->
-<section id="skills" class="reveal">
-  <div class="section-title">Technical Skills</div>
-  <canvas id="skillCanvas" width="1000" height="400"></canvas>
-</section>
+  <!-- HERO -->
+  <section class="hero" role="banner">
+    <div id="three-wrap" aria-hidden="true"></div>
 
-<!-- Publications Section -->
-<section id="publications" class="reveal">
-  <div class="section-title">Publications</div>
-  <div class="publication-card">
-    <h3>IEEE NKCON 2024</h3>
-    <p>“An Approach to Hyperparameter Tuning and Optimizers for Driver Drowsiness Detection Using Artificial Neural Networks”</p>
-    <ul style="text-align:justify;">
-      <li>Published peer-reviewed research on EEG-based ANN models for drowsiness detection.</li>
-      <li>Designed and fine-tuned ANN architectures with advanced optimizers (Adam, RMSProp).</li>
-      <li>Achieved 92% model accuracy while reducing overfitting via hyperparameter search & cross-validation.</li>
-    </ul>
-    <button class="see-more-btn">See More...</button>
-    <div class="more-info-panel">
-      <ul style="text-align:justify;">
-        <li>Contributed to AI in automotive safety emphasizing real-time detection and performance optimization.</li>
-      </ul>
-      <button class="see-more-btn">Show Less</button>
+    <div class="hero-content">
+      <h1 class="title">Vinayak Girish Hotanahalli</h1>
+      <div class="neon-line" aria-hidden="true"></div>
+      <p class="subtitle">AI/ML Engineer | Computer Vision | Generative AI | Deep Learning Enthusiast</p>
+
+      <div class="cta-group">
+        <button class="btn" id="exploreProjects">Explore Projects</button>
+        <button class="btn secondary" id="downloadResume">Download Resume</button>
+        <a href="mailto:vinayakhotanahalli72@gmail.com" class="btn secondary" style="display:inline-flex;align-items:center;gap:8px">Contact</a>
+      </div>
     </div>
-  </div>
-</section>
+  </section>
 
-<!-- Contact Section -->
-<section id="contact" class="reveal">
-  <div class="section-title">Contact</div>
-  <div class="contact-icons">
-    <a href="https://www.linkedin.com/in/vinayak-hotanahalli-2775b929b/" target="_blank">LinkedIn</a>
-    <a href="https://github.com/Vinayak-Hotanahalli" target="_blank">GitHub</a>
-    <a href="mailto:vinayakhotanahalli72@gmail.com">Mail</a>
-    <a href="https://x.com/89_vinayak?t=2QrrDv-EYoLnZbVonv0JEQ&s=08" target="_blank">Twitter</a>
-  </div>
-</section>
+  <!-- MAIN CONTENT -->
+  <main>
 
-<!-- --- Scripts --- -->
-<script src="https://cdn.jsdelivr.net/npm/typed.js@2.0.12"></script>
-<script>
-/* --- Typed.js Name Animation --- */
-var typed = new Typed('#typed-name', {
-  strings: ['Vinayak Girish Hotanahalli'],
-  typeSpeed: 100,
-  backSpeed:50,
-  loop:false
-});
+    <!-- ABOUT -->
+    <section id="about">
+      <div class="container">
+        <div class="glass" style="display:grid;grid-template-columns:1fr 360px;gap:20px;align-items:center">
+          <div>
+            <h2 style="font-size:24px;margin:0">About Me</h2>
+            <p style="color:#bcd3ff;margin-top:12px;line-height:1.6">
+              I'm an AI/ML engineer with hands-on experience in Computer Vision, Deep Learning, and Generative AI. I build reliable models and production pipelines — from data collection and annotation to model training, explainability (Grad-CAM/SHAP), and deployment (FastAPI, Docker). Currently focused on robust detection systems (YOLO/CNN) and local LLM integrations.
+            </p>
 
-/* --- Dropdown Portfolio Button --- */
-const dropdownBtn=document.getElementById('dropdown-btn');
-const portfolio=document.getElementById('portfolio');
-dropdownBtn.addEventListener('click',()=>{portfolio.style.display='block';window.scrollTo({top:0,behavior:'smooth'});});
+            <div style="display:flex;gap:12px;margin-top:16px;flex-wrap:wrap">
+              <div class="glass" style="padding:12px; min-width:200px;">
+                <strong>Education</strong>
+                <div style="margin-top:8px;font-size:13px;color:#cfe6ff">
+                  BE - Electronics & Communication, KLS Gogte Institute of Technology — 2021–2025 (CGPA 8.33)
+                </div>
+              </div>
 
-/* --- See More Toggle --- */
-document.querySelectorAll('.see-more-btn').forEach(btn=>{
-  btn.addEventListener('click',()=>{
-    btn.classList.toggle('active');
-    const panel=btn.nextElementSibling;
-    if(panel.style.maxHeight && panel.style.maxHeight!=='0px'){panel.style.maxHeight='0px';}
-    else{panel.style.maxHeight='500px';}
-  });
-});
+              <div class="glass" style="padding:12px; min-width:200px;">
+                <strong>Experience</strong>
+                <div style="margin-top:8px;font-size:13px;color:#cfe6ff">
+                  AI/ML Intern — DocketRun Tech (Hubli). Projects: Cement & Sand detection (YOLO/CNN), model explainability, and deployment.
+                </div>
+              </div>
+            </div>
+          </div>
 
-/* --- Scroll Reveal --- */
-const reveals=document.querySelectorAll('.reveal');
-window.addEventListener('scroll',()=>{
-  reveals.forEach(el=>{
-    const top=el.getBoundingClientRect().top;
-    if(top<window.innerHeight-100){el.classList.add('active');}
-  });
-});
+          <div style="text-align:center" class="glass">
+            <h3 style="margin-top:0">Quick Contact</h3>
+            <p style="color:#bcd3ff;margin:6px 0">Email: <a href="mailto:vinayakhotanahalli72@gmail.com" style="color:#bcd3ff;text-decoration:none">vinayakhotanahalli72@gmail.com</a></p>
+            <p style="color:#bcd3ff;margin:6px 0">Phone: <a href="tel:+918970393850" style="color:#bcd3ff;text-decoration:none">+91 8970393850</a></p>
+            <div style="margin-top:10px;display:flex;gap:10px;justify-content:center">
+              <a href="https://www.linkedin.com/in/vinayak-hotanahalli-2775b929b/" target="_blank" style="color:#bcd3ff;text-decoration:none">LinkedIn</a>
+              <a href="https://github.com/Vinayak-Hotanahalli" target="_blank" style="color:#bcd3ff;text-decoration:none">GitHub</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
 
-/* --- Skill Floating Neurons --- */
-const skillCanvas=document.getElementById('skillCanvas');
-const ctx=skillCanvas.getContext('2d');
-skillCanvas.width=window.innerWidth-40; skillCanvas.height=400;
-const skills=['Python','C Programming','TensorFlow','PyTorch','OpenCV','Machine Learning','Deep Learning','Computer Vision','Natural Language Processing','Generative AI','AI Automation','ANN','CNN','RNN','Data Science','MLOps'];
-let nodes=[];
-skills.forEach(skill=>{nodes.push({x:Math.random()*skillCanvas.width,y:Math.random()*skillCanvas.height,r:30,text:skill,dx:(Math.random()-0.5)*0.5,dy:(Math.random()-0.5)*0.5});});
-function drawSkills(){
-  ctx.clearRect(0,0,skillCanvas.width,skillCanvas.height);
-  nodes.forEach(n=>{
-    n.x+=n.dx;n.y+=n.dy;
-    if(n.x<0||n.x>skillCanvas.width)n.dx*=-1;
-    if(n.y<0||n.y>skillCanvas.height)n.dy*=-1;
-    ctx.beginPath();ctx.arc(n.x,n.y,n.r,0,Math.PI*2);ctx.fillStyle='rgba(51,255,209,0.2)';ctx.fill();ctx.strokeStyle='#33ffd1';ctx.stroke();
-    ctx.fillStyle='#fff';ctx.font='12px Poppins';ctx.textAlign='center';ctx.textBaseline='middle';ctx.fillText(n.text,n.x,n.y);
-  });
-  // connection lines
-  for(let i=0;i<nodes.length;i++){for(let j=i+1;j<nodes.length;j++){
-    let dx=nodes[i].x-nodes[j].x; let dy=nodes[i].y-nodes[j].y; let dist=Math.sqrt(dx*dx+dy*dy);
-    if(dist<150){ctx.beginPath();ctx.moveTo(nodes[i].x,nodes[i].y);ctx.lineTo(nodes[j].x,nodes[j].y);ctx.strokeStyle='rgba(51,255,209,'+(1-dist/150)*0.3+')';ctx.stroke();}
-  }}
-  requestAnimationFrame(drawSkills);
-}
-drawSkills();
-skillCanvas.addEventListener('mousemove',e=>{nodes.forEach(n=>{let dx=n.x-e.clientX,dy=n.y-e.clientY,dist=Math.sqrt(dx*dx+dy*dy);if(dist<100){n.x+=dx*0.02;n.y+=dy*0.02;}});});
+    <!-- SKILLS -->
+    <section id="skills">
+      <div class="container">
+        <h2>Skills</h2>
+        <p style="color:#9fb6ea;margin-top:8px">Core competencies and technologies I use regularly.</p>
 
-/* --- Floating Neuron Background --- */
-const neuronCanvas=document.getElementById('neuronCanvas');const nCtx=neuronCanvas.getContext('2d');neuronCanvas.width=window.innerWidth;neuronCanvas.height=window.innerHeight;
-let neuronNodes=[];for(let i=0;i<50;i++){neuronNodes.push({x:Math.random()*neuronCanvas.width,y:Math.random()*neuronCanvas.height,dx:(Math.random()-0.5)*1,dy:(Math.random()-0.5)*1,r:2});}
-function drawNeurons(){nCtx.clearRect(0,0,neuronCanvas.width,neuronCanvas.height);
-neuronNodes.forEach(n=>{n.x+=n.dx;n.y+=n.dy;if(n.x<0||n.x>neuronCanvas.width)n.dx*=-1;if(n.y<0||n.y>neuronCanvas.height)n.dy*=-1;nCtx.beginPath();nCtx.arc(n.x,n.y,n.r,0,Math.PI*2);nCtx.fillStyle='rgba(51,255,209,0.8)';nCtx.fill();});
-for(let i=0;i<neuronNodes.length;i++){for(let j=i+1;j<neuronNodes.length;j++){let dx=neuronNodes[i].x-neuronNodes[j].x,dy=neuronNodes[i].y-neuronNodes[j].y,dist=Math.sqrt(dx*dx+dy*dy);if(dist<200){nCtx.beginPath();nCtx.moveTo(neuronNodes[i].x,neuronNodes[i].y);nCtx.lineTo(neuronNodes[j].x,neuronNodes[j].y);nCtx.strokeStyle='rgba(51,255,209,'+(1-dist/200)*0.3+')';nCtx.stroke();}}}requestAnimationFrame(drawNeurons);}
-drawNeurons();
+        <div style="margin-top:12px">
+          <div class="skill-badges">
+            <div class="badge">Python</div>
+            <div class="badge">PyTorch</div>
+            <div class="badge">TensorFlow</div>
+            <div class="badge">OpenCV</div>
+            <div class="badge">YOLOv8</div>
+            <div class="badge">FastAPI</div>
+            <div class="badge">Docker</div>
+            <div class="badge">LangChain</div>
+            <div class="badge">LLaMA / Local LLMs</div>
+            <div class="badge">Grad-CAM / SHAP</div>
+            <div class="badge">React / Three.js</div>
+          </div>
+        </div>
+      </div>
+    </section>
 
-/* --- Theme Changer --- */
-document.addEventListener('keydown',e=>{if(e.key==='1'){document.body.setAttribute('data-theme','matrix');}if(e.key==='2'){document.body.setAttribute('data-theme','cyberpunk');}if(e.key==='3'){document.body.setAttribute('data-theme','neonblue');}});
-</script>
+    <!-- PROJECTS -->
+    <section id="projects" style="background:linear-gradient(180deg, rgba(255,255,255,0.008), rgba(0,0,0,0.02))">
+      <div class="container">
+        <h2>Selected Projects</h2>
+        <p style="color:#9fb6ea;margin-top:8px">A curated list of hands-on projects from my resume.</p>
+
+        <div class="projects-grid" id="projectsGrid">
+          <article class="card" data-tilt>
+            <div class="tag">Computer Vision</div>
+            <h3>Truck Container Material Detection</h3>
+            <p>Built YOLO & CNN-based pipelines to detect cement and sand inside truck/tractor containers. Focused on precise container detection, segmentation, container-only bounding boxes, and eliminating false positives (wheels/ground). Improved accuracy via data augmentation and post-processing masks.</p>
+          </article>
+
+          <article class="card" data-tilt>
+            <div class="tag">Generative AI</div>
+            <h3>Text → 3D Generation Pipeline</h3>
+            <p>Created a pipeline to convert textual prompts into 3D assets using local LLM orchestration and generative model tools. Dockerized for consistent deployments and integrated with a lightweight Streamlit UI for demos.</p>
+          </article>
+
+          <article class="card" data-tilt>
+            <div class="tag">Explainability</div>
+            <h3>Grad-CAM & SHAP Visualizations</h3>
+            <p>Implemented explainability tools to visualize CNN decisions. Used Grad-CAM for spatial explanations and SHAP for feature importance to debug and harden models.</p>
+          </article>
+
+          <article class="card" data-tilt>
+            <div class="tag">Signal Processing</div>
+            <h3>EEG Drowsiness Detection</h3>
+            <p>Designed ANN models for driver drowsiness detection using EEG data with hyperparameter tuning and cross-validation, achieving strong accuracy in experimental settings.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- CERTIFICATIONS / ACHIEVEMENTS -->
+    <section id="certs">
+      <div class="container">
+        <h2>Certifications & Achievements</h2>
+        <div class="list-row">
+          <div class="ach">
+            <strong>NVIDIA — Intro to Deep Learning (2025)</strong>
+            <div style="margin-top:8px;color:#cfe6ff;font-size:13px">Foundational deep learning concepts, CNNs, transfer learning.</div>
+          </div>
+          <div class="ach">
+            <strong>IBM — AI Engineering (2025)</strong>
+            <div style="margin-top:8px;color:#cfe6ff;font-size:13px">ML pipelines, model evaluation, deployment.</div>
+          </div>
+        </div>
+
+        <div style="margin-top:12px;display:flex;gap:12px;flex-wrap:wrap">
+          <div class="ach" style="min-width:220px">
+            <strong>IEEE Publication (NKCON 2024)</strong>
+            <div style="margin-top:8px;color:#cfe6ff;font-size:13px">Research on optimizer selection & hyperparameter tuning for ANN-based drowsiness detection.</div>
+          </div>
+
+          <div class="ach" style="min-width:220px">
+            <strong>MATLAB Onramp (2023)</strong>
+            <div style="margin-top:8px;color:#cfe6ff;font-size:13px">Signal processing & prototyping skills.</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CONTACT -->
+    <section id="contact">
+      <div class="container">
+        <h2>Contact</h2>
+        <p style="color:#9fb6ea;margin-top:8px">I'm open to internships or roles in ML, Computer Vision, and AI research. Reach out for collaborations or interviews.</p>
+
+        <div class="glass" style="margin-top:16px">
+          <div class="contact-grid">
+            <div>
+              <h4 style="margin:0">Get in touch</h4>
+              <p style="color:#bcd3ff;margin-top:8px">Email: <a href="mailto:vinayakhotanahalli72@gmail.com" style="color:#bcd3ff;text-decoration:none">vinayakhotanahalli72@gmail.com</a></p>
+              <p style="color:#bcd3ff;margin-top:2px">Phone: <a href="tel:+918970393850" style="color:#bcd3ff;text-decoration:none">+91 8970393850</a></p>
+              <p style="margin-top:10px">
+                <a href="https://www.linkedin.com/in/vinayak-hotanahalli-2775b929b/" target="_blank" style="color:#bcd3ff;text-decoration:none;margin-right:12px">LinkedIn</a>
+                <a href="https://github.com/Vinayak-Hotanahalli" target="_blank" style="color:#bcd3ff;text-decoration:none">GitHub</a>
+              </p>
+            </div>
+
+            <div>
+              <form id="contactForm" onsubmit="submitContact(event)" style="display:flex;flex-direction:column;gap:10px">
+                <input id="name" class="input" placeholder="Your name" required />
+                <input id="email" class="input" placeholder="Email" required />
+                <textarea id="message" class="input" placeholder="Message / Role you're interested in" rows="4"></textarea>
+                <div style="display:flex;gap:8px;justify-content:flex-end">
+                  <button class="btn" type="submit">Send</button>
+                  <button type="button" class="btn secondary" onclick="downloadCV()">Download CV</button>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <footer>
+    © <span id="year"></span> Vinayak Girish Hotanahalli • Built with WebGL & Profilero
+  </footer>
+
+  <!-- Scripts: Three.js (module) & GSAP -->
+  <script type="module">
+    import * as THREE from 'https://unpkg.com/three@0.152.0/build/three.module.js';
+    import { OrbitControls } from 'https://unpkg.com/three@0.152.0/examples/jsm/controls/OrbitControls.js';
+
+    // three.js scene
+    const container = document.getElementById('three-wrap');
+    const scene = new THREE.Scene();
+    scene.fog = new THREE.FogExp2(0x051025, 0.03);
+
+    const camera = new THREE.PerspectiveCamera(45, container.clientWidth / container.clientHeight, 0.1, 1000);
+    camera.position.set(0, 0.6, 6);
+
+    const renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true });
+    renderer.setSize(container.clientWidth, container.clientHeight);
+    renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+    renderer.setClearColor(0x000000, 0); // transparent
+    container.appendChild(renderer.domElement);
+
+    // lights
+    const hemi = new THREE.HemisphereLight(0xffffff, 0x080820, 0.8);
+    scene.add(hemi);
+    const dir = new THREE.DirectionalLight(0xaaffff, 0.8);
+    dir.position.set(5, 10, 7);
+    scene.add(dir);
+
+    // brain-like low-poly object
+    const geo = new THREE.DodecahedronGeometry(1.2, 0);
+    const mat = new THREE.MeshStandardMaterial({
+      color: 0x77e6ff,
+      metalness: 0.7,
+      roughness: 0.25,
+      emissive: 0x00263a,
+      emissiveIntensity: 0.9,
+      side: THREE.DoubleSide
+    });
+    const brain = new THREE.Mesh(geo, mat);
+    scene.add(brain);
+
+    // wire overlay
+    const wire = new THREE.Mesh(geo, new THREE.MeshBasicMaterial({ color: 0x8a2be2, wireframe: true, transparent: true, opacity: 0.12 }));
+    wire.scale.set(1.02, 1.02, 1.02);
+    scene.add(wire);
+
+    // particles
+    const particlesCount = 700;
+    const positions = new Float32Array(particlesCount * 3);
+    for (let i = 0; i < particlesCount; i++) {
+      positions[i * 3 + 0] = (Math.random() - 0.5) * 30;
+      positions[i * 3 + 1] = (Math.random() - 0.5) * 12;
+      positions[i * 3 + 2] = (Math.random() - 0.5) * 30;
+    }
+    const pGeo = new THREE.BufferGeometry();
+    pGeo.setAttribute('position', new THREE.BufferAttribute(positions, 3));
+    const pMat = new THREE.PointsMaterial({ size: 0.07, sizeAttenuation: true, transparent: true });
+    const points = new THREE.Points(pGeo, pMat);
+    scene.add(points);
+
+    // controls
+    const controls = new OrbitControls(camera, renderer.domElement);
+    controls.autoRotate = true;
+    controls.autoRotateSpeed = 0.2;
+    controls.enableZoom = false;
+    controls.enablePan = false;
+    controls.enableDamping = true;
+
+    function onResize() {
+      camera.aspect = container.clientWidth / container.clientHeight;
+      camera.updateProjectionMatrix();
+      renderer.setSize(container.clientWidth, container.clientHeight);
+    }
+    window.addEventListener('resize', onResize);
+
+    const clock = new THREE.Clock();
+    function animate() {
+      requestAnimationFrame(animate);
+      const t = clock.getElapsedTime();
+      brain.rotation.y += 0.004;
+      brain.rotation.x = Math.sin(t / 6) * 0.09;
+      wire.rotation.y += 0.006;
+      points.rotation.y = Math.sin(t / 10) * 0.02;
+      controls.update();
+      renderer.render(scene, camera);
+    }
+    animate();
+  </script>
+
+  <!-- GSAP -->
+  <script src="https://unpkg.com/gsap@3.12.2/dist/gsap.min.js"></script>
+  <script src="https://unpkg.com/gsap@3.12.2/dist/ScrollTrigger.min.js"></script>
+
+  <script>
+    document.getElementById('year').textContent = new Date().getFullYear();
+
+    // Nav scroll
+    document.querySelectorAll('nav.links button[data-to]').forEach(btn => {
+      btn.addEventListener('click', () => {
+        const id = btn.getAttribute('data-to');
+        if (id && document.getElementById(id)) document.getElementById(id).scrollIntoView({behavior:'smooth', block:'start'});
+      });
+    });
+
+    // CTA
+    document.getElementById('exploreProjects').onclick = ()=> document.getElementById('projects').scrollIntoView({behavior:'smooth'});
+    document.getElementById('downloadResume').onclick = downloadCV;
+
+    // GSAP reveals
+    gsap.registerPlugin(ScrollTrigger);
+    gsap.from('.card', { y: 30, opacity:0, stagger:0.12, duration:0.9, ease:'power3.out', scrollTrigger:{trigger:'#projects', start:'top 80%'} });
+    gsap.from('#about .glass', { y: 20, opacity:0, duration:0.9, ease:'power3.out', scrollTrigger:{trigger:'#about', start:'top 80%'} });
+
+    // Tilt effect
+    document.querySelectorAll('[data-tilt]').forEach(card => {
+      card.addEventListener('mousemove', (e)=>{
+        const rect = card.getBoundingClientRect();
+        const x = (e.clientX - rect.left) / rect.width;
+        const y = (e.clientY - rect.top) / rect.height;
+        const rx = (y - 0.5) * -9;
+        const ry = (x - 0.5) * 12;
+        card.style.transform = `perspective(900px) rotateX(${rx}deg) rotateY(${ry}deg) translateZ(6px)`;
+      });
+      card.addEventListener('mouseleave', ()=> card.style.transform = '');
+    });
+
+    // Contact form (demo)
+    function submitContact(e){
+      e.preventDefault();
+      const n = document.getElementById('name').value;
+      alert('Thanks ' + n + '! This demo site does not send messages. Connect form action to your email/API in production.');
+      e.target.reset();
+    }
+    window.submitContact = submitContact;
+
+    // Download CV (attempts to download resume PDF if hosted in repo root as Vinayak_Hotanahalli.pdf)
+    function downloadCV(){
+      // if file exists at repo root, this will download it; otherwise, fallback to opening mailto
+      const url = './Vinayak_Hotanahalli.pdf';
+      fetch(url, {method:'HEAD'}).then(res=>{
+        if(res.ok){
+          window.location.href = url;
+        } else {
+          window.location.href = 'mailto:vinayakhotanahalli72@gmail.com?subject=Resume%20Request';
+        }
+      }).catch(()=> window.location.href = 'mailto:vinayakhotanahalli72@gmail.com?subject=Resume%20Request');
+    }
+    window.downloadCV = downloadCV;
+
+    // Theme toggle
+    const toggle = document.getElementById('toggleTheme');
+    toggle.addEventListener('click', ()=>{
+      const isLight = document.body.dataset.light === '1';
+      if(isLight){
+        document.body.style.background = 'linear-gradient(180deg,var(--bg),#071026 72%)';
+        document.body.style.color = '#e8f0ff';
+        delete document.body.dataset.light;
+      } else {
+        document.body.style.background = 'linear-gradient(180deg,#f7fbff,#eef6ff)';
+        document.body.style.color = '#041025';
+        document.body.dataset.light = '1';
+      }
+    });
+
+    // Custom cursor
+    const cursor = document.getElementById('cursor');
+    const hoverTargets = ['button', 'a', '.card', '.btn', 'input', 'textarea'];
+    document.addEventListener('mousemove', e => {
+      cursor.style.left = e.clientX + 'px';
+      cursor.style.top = e.clientY + 'px';
+    });
+    document.addEventListener('mouseover', e=>{
+      const el = e.target.closest(hoverTargets.join(','));
+      if(el) cursor.classList.add('hovering'); else cursor.classList.remove('hovering');
+    });
+    // Click ripple effect
+    document.addEventListener('click', e=>{
+      const pulse = document.createElement('div');
+      pulse.style.position='fixed';
+      pulse.style.left = e.clientX + 'px';
+      pulse.style.top = e.clientY + 'px';
+      pulse.style.width = pulse.style.height = '14px';
+      pulse.style.borderRadius = '999px';
+      pulse.style.transform = 'translate(-50%,-50%)';
+      pulse.style.background = 'radial-gradient(circle, rgba(140,50,255,0.9), rgba(0,208,255,0.2))';
+      pulse.style.opacity = '0.9';
+      pulse.style.zIndex = 9998;
+      pulse.style.pointerEvents = 'none';
+      document.body.appendChild(pulse);
+      setTimeout(()=> pulse.style.transition='all .6s ease', 10);
+      setTimeout(()=> { pulse.style.transform='translate(-50%,-50%) scale(6)'; pulse.style.opacity='0'; }, 30);
+      setTimeout(()=> document.body.removeChild(pulse), 700);
+    });
+  </script>
+
+  <!-- Integration note (short):
+       - If you want contact form to work: add a server endpoint (Netlify functions, Vercel serverless, or a simple POST endpoint) to accept form data and send email.
+       - Place your resume file (Vinayak_Hotanahalli.pdf) at the site root to enable Download Resume button.
+  -->
 </body>
 </html>
