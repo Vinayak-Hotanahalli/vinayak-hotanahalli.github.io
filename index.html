@@ -1,199 +1,421 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Vinayak Girish Hotanahalli | AI/ML Engineer</title>
-
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>Vinayak Hotanahalli — AI / ML Engineer</title>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
 
 <style>
-*{margin:0;padding:0;box-sizing:border-box;font-family:'Poppins',sans-serif;scroll-behavior:smooth;}
-body{
-  background:linear-gradient(270deg,#0a192f,#1b2e4a,#1c4b63,#0a192f);
-  background-size:800% 800%;
-  animation:gradmove 18s ease infinite;
-  color:#e6f1ff;line-height:1.6;
-}
-@keyframes gradmove{
-  0%{background-position:0% 50%;}
-  50%{background-position:100% 50%;}
-  100%{background-position:0% 50%;}
-}
+  :root{
+    --bg: #071025;
+    --card-bg: rgba(255,255,255,0.04);
+    --muted: #bfcfe6;
+    --accent: #64ffda;
+    --glass: rgba(255,255,255,0.04);
+    --glass-2: rgba(255,255,255,0.02);
+    --shadow: 0 10px 30px rgba(2,6,23,0.6);
+  }
 
-/* HEADER */
-header{
-  text-align:center;
-  padding:120px 10% 90px;
-  background:rgba(0,0,0,0.45);
-  box-shadow:0 3px 12px rgba(0,0,0,0.4);
-}
-header h1{font-size:2.6rem;color:#64ffda;}
-header h2{font-weight:400;font-size:1.15rem;margin-top:12px;color:#ccd6f6;}
+  /* Theme variables for three vibes */
+  :root[data-theme="futuristic"]{
+    --bg: linear-gradient(135deg,#020617 0%,#071025 50%, #071025 100%);
+    --accent: #33ffd1; /* neon green */
+    --accent-2: #4dd0ff; /* neon blue */
+    --card-bg: rgba(51,255,209,0.06);
+    --muted: #cfeef8;
+    --glass: rgba(34,44,52,0.45);
+    --shadow: 0 14px 40px rgba(0,0,0,0.6);
+  }
+  :root[data-theme="colorful"]{
+    --bg: linear-gradient(120deg,#6a11cb 0%, #2575fc 50%, #ff6a88 100%);
+    --accent: #ffd166; /* warm accent */
+    --accent-2: #fff1f2;
+    --card-bg: rgba(255,255,255,0.08);
+    --muted: rgba(20,20,30,0.9);
+    --glass: rgba(255,255,255,0.08);
+    --shadow: 0 12px 28px rgba(10,10,20,0.3);
+  }
+  :root[data-theme="corporate"]{
+    --bg: linear-gradient(180deg,#f6f9fc, #eef6ff);
+    --accent: #0b63d6; /* corporate blue */
+    --accent-2: #0a2a66;
+    --card-bg: rgba(255,255,255,0.9);
+    --muted: #3b4b63;
+    --glass: rgba(255,255,255,0.9);
+    --shadow: 0 10px 30px rgba(11,38,86,0.08);
+  }
 
-/* NAV */
-nav{
-  background:rgba(11,34,57,0.95);
-  backdrop-filter:blur(8px);
-  text-align:center;
-  padding:14px 0;
-  position:sticky;top:0;z-index:10;
-  box-shadow:0 2px 10px rgba(0,0,0,0.4);
-}
-nav a{
-  color:#64ffda;text-decoration:none;margin:0 22px;font-weight:500;transition:.2s;
-}
-nav a:hover{color:#fff;}
+  *{box-sizing:border-box}
+  html,body{height:100%;margin:0;font-family:'Poppins',system-ui,-apple-system,Segoe UI,Roboto,"Helvetica Neue",Arial;}
+  body{background:var(--bg);color:var(--muted);-webkit-font-smoothing:antialiased;transition:background 0.6s ease,color 0.4s ease;}
 
-/* SECTION CONTAINERS */
-section{padding:80px 10%;}
-section:nth-child(even){background:rgba(255,255,255,0.05);}
-h2{color:#64ffda;font-size:1.9rem;margin-bottom:20px;text-transform:uppercase;letter-spacing:1px;}
-p,li{color:#d8e0ef;font-size:1rem;}
-ul{margin-top:10px;list-style:square inside;}
+  /* Layout */
+  .wrap{max-width:1100px;margin:0 auto;padding:28px;}
+  header{display:flex;align-items:center;justify-content:space-between;gap:16px;padding:8px 0;}
+  .brand{display:flex;align-items:center;gap:14px}
+  .logo{
+    width:54px;height:54px;border-radius:12px;display:flex;align-items:center;justify-content:center;font-weight:700;
+    color:var(--bg);background:var(--accent);box-shadow:var(--shadow);
+  }
+  .brand .title{font-weight:700;color:var(--muted);font-size:1.05rem}
+  nav{display:flex;gap:14px;align-items:center}
+  nav a{color:var(--muted);text-decoration:none;padding:10px 12px;border-radius:8px;font-weight:600;transition:all .18s}
+  nav a:hover{background:var(--glass);color:var(--accent)}
 
-/* CARDS */
-.card{
-  background:rgba(255,255,255,0.08);
-  border-left:4px solid #64ffda;
-  border-radius:8px;
-  padding:25px;
-  margin:18px 0;
-  box-shadow:0 2px 8px rgba(0,0,0,0.3);
-  transition:all .3s ease;
-}
-.card:hover{transform:translateY(-6px);background:rgba(255,255,255,0.15);}
+  /* Theme switcher */
+  .theme-switch{display:flex;gap:8px;align-items:center}
+  .theme-btn{background:transparent;border:1px solid rgba(255,255,255,0.06);padding:8px;border-radius:8px;color:var(--muted);cursor:pointer}
+  .theme-btn.active{box-shadow:0 6px 20px rgba(0,0,0,0.25);outline:2px solid rgba(255,255,255,0.04)}
 
-/* BUTTONS */
-.btn{
-  display:inline-block;background:#64ffda;color:#0a192f;
-  padding:9px 18px;border-radius:5px;text-decoration:none;font-weight:600;
-  transition:.3s;box-shadow:0 2px 5px rgba(0,0,0,0.4);
-}
-.btn:hover{background:#52d6b9;}
+  /* Hero */
+  .hero{display:grid;grid-template-columns:1fr 420px;gap:28px;align-items:center;padding:34px 0}
+  .hero-card{background:linear-gradient(180deg, rgba(255,255,255,0.03), rgba(255,255,255,0.02));padding:34px;border-radius:14px;box-shadow:var(--shadow);border:1px solid rgba(255,255,255,0.03)}
+  .hero h1{font-size:2rem;margin:0;color:var(--accent);letter-spacing:-0.5px}
+  .hero p.lead{margin-top:12px;color:var(--muted);font-size:1.02rem;line-height:1.45}
+  .hero .cta{margin-top:18px;display:flex;gap:12px;flex-wrap:wrap}
+  .btn-primary{background:linear-gradient(90deg,var(--accent),var(--accent-2));color:var(--bg);padding:10px 16px;border-radius:10px;font-weight:700;border:none;cursor:pointer;box-shadow:0 10px 30px rgba(10,10,20,0.18)}
+  .btn-ghost{background:transparent;color:var(--muted);padding:10px 16px;border-radius:10px;border:1px solid rgba(255,255,255,0.06);font-weight:700;cursor:pointer}
 
-/* STATS IMAGES */
-.stats{display:flex;flex-wrap:wrap;justify-content:center;}
-.stats img{width:100%;max-width:420px;border-radius:10px;margin:10px;}
+  /* hero right: summary cards and stats */
+  .stats-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+  .mini-card{background:var(--card-bg);padding:14px;border-radius:10px;border:1px solid rgba(255,255,255,0.03);text-align:center}
+  .mini-card h4{margin:0;font-size:0.95rem;color:var(--accent)}
+  .mini-card p{margin:8px 0 0;font-size:0.92rem;color:var(--muted)}
 
-/* FOOTER */
-footer{
-  background:rgba(11,34,57,0.95);
-  text-align:center;color:#8892b0;
-  padding:30px;font-size:.95rem;
-  box-shadow:0 -2px 10px rgba(0,0,0,0.4);
-}
+  /* Sections */
+  section{padding:28px 0}
+  .section-title{display:flex;align-items:center;gap:12px;margin-bottom:18px}
+  .section-title h2{margin:0;color:var(--accent);font-size:1.05rem;letter-spacing:1px}
+  .grid{display:grid;grid-template-columns:repeat(2,1fr);gap:20px}
+
+  /* Cards */
+  .card{background:var(--card-bg);padding:18px;border-radius:12px;border:1px solid rgba(255,255,255,0.03);box-shadow:var(--shadow)}
+  .card h3{margin:0;color:var(--accent);font-size:1rem}
+  .card p{margin-top:10px;color:var(--muted);font-size:0.95rem}
+
+  /* Skill bars */
+  .skill{margin-bottom:12px}
+  .skill .label{display:flex;justify-content:space-between;font-weight:600;font-size:0.92rem;color:var(--muted)}
+  .bar{height:10px;border-radius:8px;background:rgba(255,255,255,0.07);margin-top:8px;overflow:hidden}
+  .bar > i{display:block;height:100%;width:0%;background:linear-gradient(90deg,var(--accent),var(--accent-2));border-radius:8px;transition:width 1.2s cubic-bezier(.2,.9,.3,1)}
+
+  /* project cards */
+  .project-list{display:grid;gap:14px}
+  .project-item{display:flex;flex-direction:column;gap:10px;padding:14px;border-radius:10px;background:linear-gradient(180deg,rgba(255,255,255,0.02),rgba(255,255,255,0.01));border:1px solid rgba(255,255,255,0.03)}
+  .project-item h4{margin:0;color:var(--accent)}
+  .project-item .tags{display:flex;gap:8px;flex-wrap:wrap}
+  .tag{font-size:0.78rem;padding:6px 8px;border-radius:8px;background:rgba(255,255,255,0.03);color:var(--muted)}
+
+  /* contact area */
+  .contact-grid{display:flex;gap:14px;align-items:center;justify-content:space-between;flex-wrap:wrap}
+  .contact-left{max-width:680px}
+  .contact-right{display:flex;gap:12px;align-items:center}
+
+  /* footer */
+  footer{margin-top:28px;padding:20px 0;text-align:center;color:var(--muted);font-size:0.92rem}
+
+  /* responsive */
+  @media (max-width:980px){
+    .hero{grid-template-columns:1fr; text-align:center}
+    .grid{grid-template-columns:1fr}
+    .stats-grid{grid-template-columns:1fr 1fr}
+    nav{display:none}
+    .wrap{padding:18px}
+  }
+
+  /* small animations */
+  .reveal{opacity:0;transform:translateY(10px);transition:opacity .6s ease, transform .6s ease}
+  .reveal.show{opacity:1;transform:none}
+
+  /* particle canvas overlay (futuristic subtle) */
+  #bgCanvas{position:fixed;inset:0;z-index:0;pointer-events:none;opacity:0.22;mix-blend-mode:screen}
+  main{position:relative;z-index:2}
 </style>
 </head>
+<body data-theme="futuristic">
+<canvas id="bgCanvas"></canvas>
 
-<body>
+<div class="wrap" role="main">
+  <header>
+    <div class="brand">
+      <div class="logo">VG</div>
+      <div class="title">Vinayak Girish Hotanahalli</div>
+    </div>
 
-<header>
-  <h1 id="typing"></h1>
-  <h2>🚀 Aspiring AI/ML Engineer | Deep Learning | Computer Vision | Generative AI | MLOps Enthusiast</h2>
-</header>
+    <nav aria-label="Primary navigation">
+      <a href="#about">About</a>
+      <a href="#skills">Skills</a>
+      <a href="#projects">Projects</a>
+      <a href="#experience">Experience</a>
+      <a href="#achievements">Achievements</a>
+      <a href="#contact">Contact</a>
+    </nav>
 
-<nav>
-  <a href="#about">About</a>
-  <a href="#skills">Skills</a>
-  <a href="#projects">Projects</a>
-  <a href="#experience">Experience</a>
-  <a href="#achievements">Achievements</a>
-  <a href="#contact">Contact</a>
-</nav>
+    <div class="theme-switch" role="toolbar" aria-label="Theme switcher">
+      <button class="theme-btn" data-theme="futuristic" title="Futuristic (Neon) — ⚡">⚡</button>
+      <button class="theme-btn" data-theme="colorful" title="Colorful Gradient — 🌈">🌈</button>
+      <button class="theme-btn" data-theme="corporate" title="Corporate — 🧠">🧠</button>
+    </div>
+  </header>
 
-<section id="about">
-  <h2>About Me</h2>
-  <div class="card">
-    <p>I am an <strong>AI/ML Engineer in the making</strong> passionate about designing and deploying
-    <strong>intelligent, explainable, and scalable AI systems</strong>. Skilled in
-    <strong>Deep Learning, Computer Vision, Generative AI (LLMs, LangChain, RAG)</strong>, and
-    <strong>AI + RPA automation</strong> using UiPath. Focused on building
-    <strong>enterprise-grade AI pipelines</strong> with TensorFlow, PyTorch and OpenCV.</p>
-  </div>
-</section>
+  <main>
+    <!-- HERO -->
+    <section class="hero">
+      <div class="hero-card reveal" id="heroLeft">
+        <h1 id="heroTitle"> </h1>
+        <p class="lead">I build <strong>explainable, scalable AI systems</strong> — deep learning, computer vision, and generative AI. I specialize in translating research into production-ready pipelines with robust MLOps practices.</p>
+        <div class="cta">
+          <a class="btn-primary" href="#projects">View Projects</a>
+          <a class="btn-ghost" href="mailto:vinayakhotanahalli72@gmail.com">Contact Me</a>
+        </div>
 
-<section id="skills">
-  <h2>Technical Skills</h2>
-  <div class="card">
-    <ul>
-      <li><b>Languages:</b> Python, C, SQL, OOP, Data Structures</li>
-      <li><b>Frameworks:</b> TensorFlow, PyTorch, Keras, Scikit-learn, OpenCV</li>
-      <li><b>Generative AI:</b> LangChain, DeepSeek, LLaMA, RAG, Prompt Engineering</li>
-      <li><b>MLOps & Tools:</b> Docker, Streamlit, Swagger UI, Azure AI, Openfabric SDK</li>
-      <li><b>Databases:</b> Oracle SQL, SQLite</li>
-    </ul>
-  </div>
-</section>
+        <div style="margin-top:22px;display:flex;gap:12px;flex-wrap:wrap">
+          <div class="mini-card" style="flex:1">
+            <h4>Experience</h4><p>AI/ML Intern @ DocketRun (2025)</p>
+          </div>
+          <div class="mini-card" style="flex:1">
+            <h4>Publications</h4><p>IEEE NCCON 2024</p>
+          </div>
+        </div>
+      </div>
 
-<section id="projects">
-  <h2>Projects</h2>
-  <div class="card">
-    <h3>AI-Powered Text-to-3D Generation Pipeline</h3>
-    <p>Local AI pipeline converting natural-language prompts into 3D models using LLMs (DeepSeek, LLaMA) and Openfabric SDK.</p>
-  </div>
-  <div class="card">
-    <h3>CNN Explainability Dashboard</h3>
-    <p>Implemented Grad-CAM, LIME and SHAP to visualize CNN predictions and achieved 94.56 % accuracy.</p>
-  </div>
-  <div class="card">
-    <h3>Driver Drowsiness Detection (EEG + ANN)</h3>
-    <p>Developed ANN-based system with 92 % accuracy. Published research at IEEE NCCON 2024.</p>
-  </div>
-</section>
+      <aside style="display:flex;flex-direction:column;gap:12px;align-items:stretch">
+        <div class="mini-card reveal">
+          <h4>Role</h4><p>Aspiring AI/ML Engineer</p>
+        </div>
+        <div class="mini-card reveal">
+          <h4>Focus</h4><p>Deep Learning • CV • Generative AI • MLOps</p>
+        </div>
+        <div class="mini-card reveal">
+          <h4>Location</h4><p>India</p>
+        </div>
+      </aside>
+    </section>
 
-<section id="experience">
-  <h2>Experience</h2>
-  <div class="card">
-    <h3>AI/ML & Computer Vision Intern — DocketRun Tech Pvt. Ltd. (Jan 2025 – May 2025)</h3>
-    <ul>
-      <li>Developed deep-learning models for automated material detection using CCTV footage.</li>
-      <li>Engineered real-time YOLO + CNN pipelines for logistics optimization.</li>
-      <li>Integrated models into production, enhancing automation efficiency.</li>
-    </ul>
-  </div>
-</section>
+    <!-- ABOUT -->
+    <section id="about" class="reveal">
+      <div class="section-title"><h2>About</h2></div>
+      <div class="card">
+        <p>I am an <strong>AI/ML Engineer in the making</strong> with hands-on experience in deep learning, neural networks, and computer vision. I design modular, production-ready pipelines using TensorFlow, PyTorch, and OpenCV, and I integrate local LLMs and RAG for generative workflows. My work focuses on performance, explainability (Grad-CAM, SHAP, LIME), and reliable MLOps.</p>
+      </div>
+    </section>
 
-<section id="achievements">
-  <h2>Achievements & Certifications</h2>
-  <div class="card">
-    <ul>
-      <li>🏆 First Place – Avalanche 2024 (AI-driven automation project, +30 % efficiency)</li>
-      <li>📘 IEEE NCCON 2024 Paper – “Hyperparameter Tuning & Optimizers for Driver Drowsiness Detection Using ANN”</li>
-      <li>🎓 NVIDIA Deep Learning | IBM AI Engineering | MATLAB Onramp | NPTEL Verilog</li>
-    </ul>
-  </div>
-</section>
+    <!-- SKILLS -->
+    <section id="skills" class="reveal">
+      <div class="section-title"><h2>Technical Skills</h2></div>
+      <div class="grid">
+        <div class="card">
+          <h3>Core Languages & Tools</h3>
+          <p>Python · C · SQL · Pandas · NumPy · Scikit-learn</p>
+          <div style="height:12px"></div>
 
-<section class="stats">
-  <h2>GitHub Highlights</h2>
-  <img src="https://github-readme-streak-stats.herokuapp.com?user=Vinayak-Hotanahalli&theme=tokyonight&hide_border=true" alt="GitHub Streak"/>
-  <img src="https://github-readme-stats.vercel.app/api?username=Vinayak-Hotanahalli&show_icons=true&theme=tokyonight&hide_border=true" alt="GitHub Stats"/>
-  <img src="https://github-readme-stats.vercel.app/api/top-langs/?username=Vinayak-Hotanahalli&layout=compact&theme=tokyonight&hide_border=true" alt="Top Languages"/>
-</section>
+          <div class="skill"><div class="label"><span>Deep Learning</span><span>94%</span></div><div class="bar"><i style="width:94%"></i></div></div>
+          <div class="skill"><div class="label"><span>Computer Vision</span><span>92%</span></div><div class="bar"><i style="width:92%"></i></div></div>
+          <div class="skill"><div class="label"><span>Generative AI (LLMs)</span><span>88%</span></div><div class="bar"><i style="width:88%"></i></div></div>
+          <div class="skill"><div class="label"><span>MLOps & Deployment</span><span>85%</span></div><div class="bar"><i style="width:85%"></i></div></div>
+        </div>
 
-<section id="contact">
-  <h2>Contact</h2>
-  <div class="card" style="text-align:center;">
-    <p>
-      📧 <a href="mailto:vinayakhotanahalli72@gmail.com" class="btn">Email Me</a><br><br>
-      🔗 <a href="https://www.linkedin.com/in/vinayak-hotanahalli-2775b929b" target="_blank" class="btn">LinkedIn</a>
-      <a href="https://github.com/Vinayak-Hotanahalli" target="_blank" class="btn">GitHub</a><br><br>
-      📱 +91 8970393850
-    </p>
-  </div>
-</section>
+        <div class="card">
+          <h3>Frameworks & Platforms</h3>
+          <p>TensorFlow · PyTorch · Keras · LangChain · LLaMA · Openfabric SDK</p>
+          <div style="height:12px"></div>
+          <div class="skill"><div class="label"><span>TensorFlow / PyTorch</span><span>92%</span></div><div class="bar"><i style="width:92%"></i></div></div>
+          <div class="skill"><div class="label"><span>LangChain / RAG</span><span>86%</span></div><div class="bar"><i style="width:86%"></i></div></div>
+          <div class="skill"><div class="label"><span>Docker / Streamlit</span><span>84%</span></div><div class="bar"><i style="width:84%"></i></div></div>
+          <div class="skill"><div class="label"><span>Explainability (SHAP/LIME)</span><span>90%</span></div><div class="bar"><i style="width:90%"></i></div></div>
+        </div>
+      </div>
+    </section>
 
-<footer>
-  <p>© 2025 Vinayak Girish Hotanahalli | Building Intelligent, Transparent and Scalable AI Solutions</p>
-</footer>
+    <!-- PROJECTS -->
+    <section id="projects" class="reveal">
+      <div class="section-title"><h2>Selected Projects</h2></div>
+      <div class="project-list">
+        <div class="project-item card">
+          <h4>AI-Powered Text-to-3D Generation Pipeline</h4>
+          <p>Local LLM pipeline (DeepSeek, LLaMA) + RAG + Openfabric SDK to convert prompts into 3D assets. Built with Dockerized microservices and Streamlit demo.</p>
+          <div class="tags"><span class="tag">Python</span><span class="tag">LLM</span><span class="tag">RAG</span><span class="tag">Docker</span></div>
+        </div>
+
+        <div class="project-item card">
+          <h4>CNN Explainability Dashboard</h4>
+          <p>Feature map visualization using Grad-CAM, LIME and SHAP. Produced heatmaps, ROC analysis and interpretability reports for model debugging.</p>
+          <div class="tags"><span class="tag">TensorFlow</span><span class="tag">CV</span><span class="tag">XAI</span></div>
+        </div>
+
+        <div class="project-item card">
+          <h4>Driver Drowsiness Detection (EEG + ANN)</h4>
+          <p>EEG-based ANN model achieving 92% accuracy. Performed hyperparameter search and cross-validation; published at IEEE NCCON 2024.</p>
+          <div class="tags"><span class="tag">Research</span><span class="tag">ANN</span><span class="tag">EEG</span></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- EXPERIENCE -->
+    <section id="experience" class="reveal">
+      <div class="section-title"><h2>Experience</h2></div>
+      <div class="card">
+        <h3>AI/ML & Computer Vision Intern — DocketRun Tech Pvt. Ltd. (Jan 2025 – May 2025)</h3>
+        <ul style="margin-top:12px">
+          <li>Designed YOLO & CNN pipelines for automated material detection on CCTV feeds.</li>
+          <li>Optimized model inference (TensorRT-like techniques) for real-time throughput.</li>
+          <li>Integrated models into production workflows to increase operational efficiency.</li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- ACHIEVEMENTS -->
+    <section id="achievements" class="reveal">
+      <div class="section-title"><h2>Achievements & Certifications</h2></div>
+      <div class="grid">
+        <div class="card">
+          <h3>Recognition</h3>
+          <p>🏆 First Place – Avalanche 2024 (AI automation, +30% efficiency)</p>
+        </div>
+        <div class="card">
+          <h3>Publications & Certs</h3>
+          <p>IEEE NCCON 2024 paper • NVIDIA Deep Learning • IBM AI Engineering • MATLAB Onramp • NPTEL Verilog</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- GITHUB STATS -->
+    <section class="reveal">
+      <div class="section-title"><h2>GitHub Highlights</h2></div>
+      <div class="stats">
+        <!-- these images are public widgets; they will render on GitHub Pages -->
+        <img src="https://github-readme-streak-stats.herokuapp.com?user=Vinayak-Hotanahalli&theme=dark" alt="streak" style="max-width:420px;border-radius:10px" />
+        <img src="https://github-readme-stats.vercel.app/api?username=Vinayak-Hotanahalli&show_icons=true&theme=tokyonight" alt="stats" style="max-width:420px;border-radius:10px" />
+      </div>
+    </section>
+
+    <!-- CONTACT -->
+    <section id="contact" class="reveal">
+      <div class="section-title"><h2>Contact</h2></div>
+      <div class="card contact-grid">
+        <div class="contact-left">
+          <h3 style="margin:0;color:var(--accent)">Let's connect</h3>
+          <p style="margin-top:8px;color:var(--muted)">I'm open to AI/ML roles, collaborations, and research opportunities. Send a message or view my GitHub for code and demos.</p>
+          <p style="margin-top:12px"><strong>Email:</strong> <a href="mailto:vinayakhotanahalli72@gmail.com" style="color:var(--accent)">${'vinayakhotanahalli72@gmail.com'}</a></p>
+        </div>
+        <div class="contact-right">
+          <a class="btn-primary" href="mailto:vinayakhotanahalli72@gmail.com">Email</a>
+          <a class="btn-ghost" href="https://www.linkedin.com/in/vinayak-hotanahalli-2775b929b" target="_blank">LinkedIn</a>
+          <a class="btn-ghost" href="https://github.com/Vinayak-Hotanahalli" target="_blank">GitHub</a>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <footer>© <span id="year"></span> Vinayak Girish Hotanahalli — Building intelligent, transparent, and scalable AI solutions</footer>
+</div>
 
 <script>
-// typing effect
-const text="👋 Hi, I'm Vinayak Girish Hotanahalli";
-let i=0;
-function type(){if(i<text.length){document.getElementById("typing").textContent+=text.charAt(i);i++;setTimeout(type,80);}}
-type();
+/* -- theme switching -- */
+const themeButtons = document.querySelectorAll('.theme-btn');
+const root = document.documentElement;
+function setTheme(t){
+  root.setAttribute('data-theme', t);
+  localStorage.setItem('site-theme', t);
+  themeButtons.forEach(b=>b.classList.toggle('active', b.dataset.theme===t));
+  // subtle background canvas opacity
+  document.getElementById('bgCanvas').style.opacity = (t==='futuristic') ? '0.22' : (t==='colorful' ? '0.14' : '0.06');
+}
+themeButtons.forEach(b=>{
+  b.addEventListener('click', ()=> setTheme(b.dataset.theme));
+});
+// restore theme
+const stored = localStorage.getItem('site-theme') || 'futuristic';
+setTheme(stored);
+
+/* -- typing hero -- */
+const heading = document.getElementById('heroTitle');
+const heroText = "Hi — I'm Vinayak Girish Hotanahalli. Aspiring AI/ML Engineer.";
+let idx=0;
+function typeHero(){
+  if(idx<=heroText.length){
+    heading.textContent = heroText.slice(0, idx++);
+    setTimeout(typeHero, 28);
+  }
+}
+typeHero();
+
+/* -- reveal on scroll -- */
+const reveals = document.querySelectorAll('.reveal');
+const onScroll = () => {
+  reveals.forEach((el, i) => {
+    const rect = el.getBoundingClientRect();
+    if(rect.top < window.innerHeight - 80) el.classList.add('show');
+  });
+};
+window.addEventListener('scroll', onScroll);
+onScroll();
+
+/* -- animate skill bars (already set inline widths) ensure they play on reveal */
+const bars = document.querySelectorAll('.bar > i');
+setTimeout(()=>{ bars.forEach(b=> b.style.width = b.style.width || b.getAttribute('data-w') ); }, 200);
+
+/* -- simple particle network for futuristic vibe -- */
+const canvas = document.getElementById('bgCanvas');
+const ctx = canvas.getContext('2d');
+let W, H, particles=[];
+function resize(){ W=canvas.width = innerWidth; H=canvas.height = innerHeight; }
+window.addEventListener('resize', resize);
+resize();
+
+function initParticles(){
+  particles = [];
+  const count = Math.max(40, Math.floor((W*H)/90000));
+  for(let i=0;i<count;i++){
+    particles.push({
+      x: Math.random()*W,
+      y: Math.random()*H,
+      vx: (Math.random()-0.5)*0.4,
+      vy: (Math.random()-0.5)*0.4,
+      r: Math.random()*1.6 + 0.6
+    });
+  }
+}
+initParticles();
+let hue=180;
+function draw(){
+  ctx.clearRect(0,0,W,H);
+  // lines
+  for(let i=0;i<particles.length;i++){
+    const p = particles[i];
+    for(let j=i+1;j<particles.length;j++){
+      const q = particles[j];
+      const dx = p.x-q.x, dy = p.y-q.y;
+      const dist = Math.sqrt(dx*dx+dy*dy);
+      if(dist<120){
+        const alpha = 0.12 * (1 - dist/120);
+        ctx.strokeStyle = `hsla(${hue},80%,60%,${alpha})`;
+        ctx.lineWidth = 1;
+        ctx.beginPath(); ctx.moveTo(p.x,p.y); ctx.lineTo(q.x,q.y); ctx.stroke();
+      }
+    }
+  }
+  // points
+  particles.forEach(p=>{
+    ctx.fillStyle = `hsla(${hue},80%,60%,0.95)`;
+    ctx.beginPath(); ctx.arc(p.x,p.y,p.r,0,Math.PI*2); ctx.fill();
+    p.x += p.vx; p.y += p.vy;
+    if(p.x<0) p.x=W;
+    if(p.x>W) p.x=0;
+    if(p.y<0) p.y=H;
+    if(p.y>H) p.y=0;
+  });
+  if(root.getAttribute('data-theme')==='colorful') hue = (hue+0.3)%360;
+  else if(root.getAttribute('data-theme')==='futuristic') hue = 170;
+  else hue = 210;
+  requestAnimationFrame(draw);
+}
+draw();
+
+/* set year */
+document.getElementById('year').textContent = new Date().getFullYear();
 </script>
 </body>
 </html>
