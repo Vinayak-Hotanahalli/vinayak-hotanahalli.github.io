@@ -3,10 +3,9 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Vinayak Hotanahalli | AI/ML Engineer</title>
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+<title>Vinayak Girish Hotanahalli | AI/ML Engineer</title>
+<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@700&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
 <style>
-  /* === GENERAL STYLING === */
   :root {
     --bg-color:#0d0d0d;
     --text-color:#fff;
@@ -15,72 +14,77 @@
   }
   body {
     margin:0;
-    font-family: 'Poppins', sans-serif;
-    background: var(--bg-color);
-    color: var(--text-color);
+    font-family:'Poppins', sans-serif;
+    background:var(--bg-color);
+    color:var(--text-color);
     transition: background 0.5s, color 0.5s;
   }
+
   h1,h2,h3 {margin:0;}
-  h1 {color:var(--accent-color);}
+  h1 {
+    color: var(--accent-color);
+    font-family:'Orbitron', sans-serif;
+    font-size:48px;
+    white-space: nowrap;
+    overflow: hidden;
+    border-right: .15em solid var(--accent-color);
+  }
+
   section {padding:60px 20px;}
-  .section-title {margin-bottom:30px; text-align:center;}
+  .section-title {margin-bottom:30px;text-align:center;}
+
   .card {
     background:var(--card-bg);
-    padding:20px; border-radius:12px;
+    padding:20px;border-radius:12px;
     box-shadow:0 0 20px rgba(51,255,209,0.2);
-    margin-bottom:30px; transition: transform 0.3s;
+    margin-bottom:30px;transition: transform 0.3s;
   }
-  .card:hover {transform: translateY(-10px);}
+  .card:hover {transform:translateY(-10px);}
   ul {padding-left:20px;}
+
   button {
     cursor:pointer;
-    background: var(--accent-color);
-    border:none;
-    color:#000;
-    font-weight:600;
-    padding:8px 16px;
-    border-radius:8px;
-    margin-top:10px;
+    background:var(--accent-color);
+    border:none;color:#000;
+    font-weight:600;padding:8px 16px;
+    border-radius:8px;margin-top:10px;
     transition:0.3s;
   }
-  button:hover {background:#0ff;color:#000;}
+  button:hover{background:#0ff;color:#000;}
 
-  /* === SEE MORE PANEL === */
+  /* Internship see more panel */
   .more-info-panel{max-height:0;overflow:hidden;transition:max-height 0.6s ease,padding 0.5s ease;padding-left:0;}
-  .see-more-btn.active + .more-info-panel{max-height:800px;padding-left:20px;}
+  .show-less-btn{display:none;margin-top:10px;}
 
-  /* === PROJECT CARDS === */
+  /* Projects */
   .projects-container {display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:30px;}
   .project-card{perspective:1500px;}
   .project-card-inner{position:relative;width:100%;height:350px;transform-style:preserve-3d;transition: transform 0.8s;}
   .project-card:hover .project-card-inner{transform:rotateY(180deg);}
   .project-front, .project-back{
     position:absolute;width:100%;height:100%;backface-visibility:hidden;
-    border-radius:12px; box-shadow:0 0 20px rgba(51,255,209,0.3); padding:20px; overflow:auto;
+    border-radius:12px;box-shadow:0 0 20px rgba(51,255,209,0.3);padding:20px;overflow:auto;
   }
   .project-front{background:var(--card-bg);}
   .project-back{background:#222; transform:rotateY(180deg);}
 
-  /* === SKILLS CANVAS === */
-  #skillCanvas{display:block;margin:auto;border-radius:12px;background:#111;}
+  /* Skills */
+  #skillCanvas{display:block;margin:auto;border-radius:12px;background:#111;cursor:pointer;}
 
-  /* === THEME SWITCHER === */
-  #themeSwitcher {
-    position:fixed;top:20px;right:20px;cursor:pointer;padding:10px 15px;
-    border-radius:8px;background:var(--accent-color);color:#000;font-weight:bold;
-    z-index:1000;transition:0.3s;
-  }
+  /* Theme Switcher */
+  #themeSwitcher {position:fixed;top:20px;right:20px;cursor:pointer;padding:10px 15px;border-radius:8px;background:var(--accent-color);color:#000;font-weight:bold;z-index:1000;transition:0.3s;}
   #themeSwitcher:hover{background:#0ff;}
 </style>
 </head>
 <body>
 
-<!-- THEME SWITCHER -->
+<!-- Theme Switcher -->
 <div id="themeSwitcher">Switch Theme</div>
 
-<!-- HEADER -->
+<!-- Header -->
 <section id="header">
-  <h1>Vinayak Girish Hotanahalli</h1>
+  <h1 id="nameTyping"></h1>
+  <p id="roleTyping"></p>
   <p>Email: vinayakhotanahalli72@gmail.com | Phone: +91 8970393850 | 
     <a href="https://www.linkedin.com/in/vinayak-hotanahalli-2775b929b" style="color:#33ffd1;" target="_blank">LinkedIn</a> | 
     <a href="https://github.com/Vinayak-Hotanahalli" style="color:#33ffd1;" target="_blank">GitHub</a>
@@ -88,7 +92,7 @@
   <p>Aspiring AI/ML Engineer skilled in Python, C, TensorFlow, PyTorch, OpenCV, Docker, Generative AI (LLMs, LangChain, RAG), UiPath RPA, and Streamlit. Passionate about building scalable AI solutions.</p>
 </section>
 
-<!-- INTERNSHIP EXPERIENCE -->
+<!-- Internship Experience -->
 <section id="experience">
   <div class="section-title"><h2>Internship Experience</h2></div>
   <div class="card">
@@ -106,15 +110,15 @@
         <li>Documented pipelines for reproducibility and long-term maintenance.</li>
         <li>Created dashboards & reports to visualize model performance and interpretability metrics.</li>
       </ul>
+      <button class="show-less-btn">Show Less</button>
     </div>
   </div>
 </section>
 
-<!-- PROJECTS -->
+<!-- Projects -->
 <section id="projects">
   <div class="section-title"><h2>Projects</h2></div>
   <div class="projects-container">
-
     <!-- Project 1 -->
     <div class="project-card">
       <div class="project-card-inner">
@@ -166,53 +170,92 @@
         </div>
       </div>
     </div>
-
   </div>
 </section>
 
-<!-- SKILLS -->
+<!-- Skills -->
 <section id="skills">
   <div class="section-title"><h2>Technical Skills</h2></div>
   <canvas id="skillCanvas" width="1000" height="400"></canvas>
+  <button id="alignSkillsBtn" style="margin-top:20px;">Align Skills</button>
 </section>
 
 <script>
-/* === SEE MORE BUTTON === */
+/* === TYPING EFFECT FOR NAME & ROLE === */
+const nameText="Vinayak Girish Hotanahalli";
+const roleText="Aspiring AI/ML Engineer";
+let nameIndex=0, roleIndex=0;
+
+function typeName(){ 
+  if(nameIndex<nameText.length){
+    document.getElementById('nameTyping').innerHTML+=nameText.charAt(nameIndex);
+    nameIndex++; setTimeout(typeName,120);
+  }else{ typeRole(); }
+}
+function typeRole(){
+  if(roleIndex<roleText.length){
+    document.getElementById('roleTyping').innerHTML+=roleText.charAt(roleIndex);
+    roleIndex++; setTimeout(typeRole,100);
+  }
+}
+typeName();
+
+/* === INTERNSHIP SEE MORE / SHOW LESS === */
 document.querySelectorAll('.see-more-btn').forEach(btn=>{
-  btn.addEventListener('click',()=>{btn.classList.toggle('active');});
+  btn.addEventListener('click',()=>{
+    const panel=btn.nextElementSibling;
+    panel.style.maxHeight="800px"; panel.style.paddingLeft="20px";
+    btn.style.display="none";
+    panel.querySelector('.show-less-btn').style.display="block";
+  });
+});
+document.querySelectorAll('.show-less-btn').forEach(btn=>{
+  btn.addEventListener('click',()=>{
+    const panel=btn.parentElement;
+    panel.style.maxHeight="0"; panel.style.paddingLeft="0";
+    panel.querySelector('.show-less-btn').style.display="none";
+    panel.previousElementSibling.style.display="inline-block";
+  });
 });
 
-/* === SKILLS CANVAS === */
+/* === SKILLS CANVAS FLOATING & ALIGN === */
 const canvas=document.getElementById('skillCanvas');
 const ctx=canvas.getContext('2d');
-canvas.width=window.innerWidth-40;
-canvas.height=400;
+canvas.width=window.innerWidth-40; canvas.height=400;
 
 const skills=[
   'Python','C','SQL','OOPS','Data Structures','TensorFlow','PyTorch','OpenCV','ML','DL','CV','NLP','MLOps','ANN','CNN','RNN','Data Science',
   'Generative AI','LLM Workflows','Prompt Engineering','UiPath RPA','Docker','Streamlit','Azure AI','Openfabric SDK'
 ];
 let nodes=[];
-skills.forEach(skill=>{
-  nodes.push({x:Math.random()*canvas.width,y:Math.random()*canvas.height,r:25,text:skill,dx:(Math.random()-0.5)*0.7,dy:(Math.random()-0.5)*0.7});
+skills.forEach((skill,i)=>{
+  nodes.push({x:Math.random()*canvas.width,y:Math.random()*canvas.height,r:25,text:skill,dx:(Math.random()-0.5)*0.7,dy:(Math.random()-0.5)*0.7,index:i});
 });
 
+let aligned=false;
 function draw(){
   ctx.clearRect(0,0,canvas.width,canvas.height);
   nodes.forEach(n=>{
-    n.x+=n.dx; n.y+=n.dy;
-    if(n.x<0||n.x>canvas.width)n.dx*=-1;
-    if(n.y<0||n.y>canvas.height)n.dy*=-1;
-
+    // move floating nodes
+    if(!aligned){ n.x+=n.dx; n.y+=n.dy;
+      if(n.x<0||n.x>canvas.width)n.dx*=-1;
+      if(n.y<0||n.y>canvas.height)n.dy*=-1;
+    }else{ // align in line
+      let step=canvas.width/nodes.length;
+      let targetX=step*n.index + step/2;
+      let targetY=canvas.height/2;
+      n.x+=(targetX-n.x)*0.1; n.y+=(targetY-n.y)*0.1;
+    }
+    // draw node
     ctx.beginPath();
     ctx.arc(n.x,n.y,n.r,0,Math.PI*2);
     ctx.fillStyle='rgba(51,255,209,0.2)'; ctx.fill();
     ctx.strokeStyle='#33ffd1'; ctx.stroke();
-
+    // text
     ctx.fillStyle='#fff'; ctx.font='12px Poppins'; ctx.textAlign='center'; ctx.textBaseline='middle';
     ctx.fillText(n.text,n.x,n.y);
   });
-
+  // lines
   for(let i=0;i<nodes.length;i++){
     for(let j=i+1;j<nodes.length;j++){
       let dx=nodes[i].x-nodes[j].x, dy=nodes[i].y-nodes[j].y, dist=Math.sqrt(dx*dx+dy*dy);
@@ -225,12 +268,7 @@ function draw(){
 }
 draw();
 
-canvas.addEventListener('mousemove',e=>{
-  nodes.forEach(n=>{
-    let dx=n.x-e.clientX, dy=n.y-e.clientY, dist=Math.sqrt(dx*dx+dy*dy);
-    if(dist<100){ n.x+=dx*0.02; n.y+=dy*0.02; }
-  });
-});
+canvas.addEventListener('click',()=>{ aligned=!aligned; });
 
 /* === THEME SWITCHER === */
 const themeBtn=document.getElementById('themeSwitcher');
