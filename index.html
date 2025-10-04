@@ -10,27 +10,79 @@
 <style>
 *{margin:0;padding:0;box-sizing:border-box;font-family:'Poppins',sans-serif;scroll-behavior:smooth;}
 body{
-  background:linear-gradient(120deg,#0a192f,#122c47);
+  background:linear-gradient(270deg,#0a192f,#1b2e4a,#1c4b63,#0a192f);
+  background-size:800% 800%;
+  animation:gradmove 18s ease infinite;
   color:#e6f1ff;line-height:1.6;
 }
-header{
-  text-align:center;padding:120px 10% 80px;background:rgba(10,25,47,0.95);
+@keyframes gradmove{
+  0%{background-position:0% 50%;}
+  50%{background-position:100% 50%;}
+  100%{background-position:0% 50%;}
 }
-header h1{font-size:2.4rem;color:#64ffda;}
-header h2{font-weight:400;font-size:1.1rem;margin-top:10px;color:#ccd6f6;}
-nav{text-align:center;background:#0b2239;padding:12px 0;position:sticky;top:0;z-index:10;}
-nav a{color:#64ffda;text-decoration:none;margin:0 18px;font-weight:500;transition:.2s;}
+
+/* HEADER */
+header{
+  text-align:center;
+  padding:120px 10% 90px;
+  background:rgba(0,0,0,0.45);
+  box-shadow:0 3px 12px rgba(0,0,0,0.4);
+}
+header h1{font-size:2.6rem;color:#64ffda;}
+header h2{font-weight:400;font-size:1.15rem;margin-top:12px;color:#ccd6f6;}
+
+/* NAV */
+nav{
+  background:rgba(11,34,57,0.95);
+  backdrop-filter:blur(8px);
+  text-align:center;
+  padding:14px 0;
+  position:sticky;top:0;z-index:10;
+  box-shadow:0 2px 10px rgba(0,0,0,0.4);
+}
+nav a{
+  color:#64ffda;text-decoration:none;margin:0 22px;font-weight:500;transition:.2s;
+}
 nav a:hover{color:#fff;}
-section{padding:70px 10%;}
-h2{color:#64ffda;font-size:1.8rem;margin-bottom:18px;text-transform:uppercase;letter-spacing:1px;}
-p,li{color:#ccd6f6;font-size:1rem;}
+
+/* SECTION CONTAINERS */
+section{padding:80px 10%;}
+section:nth-child(even){background:rgba(255,255,255,0.05);}
+h2{color:#64ffda;font-size:1.9rem;margin-bottom:20px;text-transform:uppercase;letter-spacing:1px;}
+p,li{color:#d8e0ef;font-size:1rem;}
 ul{margin-top:10px;list-style:square inside;}
-.project,.exp{margin:20px 0;background:rgba(255,255,255,0.05);padding:20px;border-radius:8px;transition:.3s;}
-.project:hover,.exp:hover{transform:translateY(-4px);background:rgba(255,255,255,0.1);}
-.btn{display:inline-block;background:#64ffda;color:#0a192f;padding:8px 15px;border-radius:5px;text-decoration:none;font-weight:600;transition:.3s;}
+
+/* CARDS */
+.card{
+  background:rgba(255,255,255,0.08);
+  border-left:4px solid #64ffda;
+  border-radius:8px;
+  padding:25px;
+  margin:18px 0;
+  box-shadow:0 2px 8px rgba(0,0,0,0.3);
+  transition:all .3s ease;
+}
+.card:hover{transform:translateY(-6px);background:rgba(255,255,255,0.15);}
+
+/* BUTTONS */
+.btn{
+  display:inline-block;background:#64ffda;color:#0a192f;
+  padding:9px 18px;border-radius:5px;text-decoration:none;font-weight:600;
+  transition:.3s;box-shadow:0 2px 5px rgba(0,0,0,0.4);
+}
 .btn:hover{background:#52d6b9;}
+
+/* STATS IMAGES */
+.stats{display:flex;flex-wrap:wrap;justify-content:center;}
 .stats img{width:100%;max-width:420px;border-radius:10px;margin:10px;}
-footer{background:#0b2239;text-align:center;color:#8892b0;padding:25px;font-size:.9rem;}
+
+/* FOOTER */
+footer{
+  background:rgba(11,34,57,0.95);
+  text-align:center;color:#8892b0;
+  padding:30px;font-size:.95rem;
+  box-shadow:0 -2px 10px rgba(0,0,0,0.4);
+}
 </style>
 </head>
 
@@ -52,61 +104,84 @@ footer{background:#0b2239;text-align:center;color:#8892b0;padding:25px;font-size
 
 <section id="about">
   <h2>About Me</h2>
-  <p>I am an <strong>AI/ML Engineer in the making</strong> passionate about designing and deploying <strong>intelligent, explainable, and scalable AI systems</strong>. Skilled in <strong>Deep Learning, Computer Vision, Generative AI (LLMs, LangChain, RAG)</strong>, and <strong>AI + RPA automation</strong> using UiPath. Focused on building <strong>enterprise-grade AI pipelines</strong> with TensorFlow, PyTorch, and OpenCV.</p>
+  <div class="card">
+    <p>I am an <strong>AI/ML Engineer in the making</strong> passionate about designing and deploying
+    <strong>intelligent, explainable, and scalable AI systems</strong>. Skilled in
+    <strong>Deep Learning, Computer Vision, Generative AI (LLMs, LangChain, RAG)</strong>, and
+    <strong>AI + RPA automation</strong> using UiPath. Focused on building
+    <strong>enterprise-grade AI pipelines</strong> with TensorFlow, PyTorch and OpenCV.</p>
+  </div>
 </section>
 
 <section id="skills">
   <h2>Technical Skills</h2>
-  <ul>
-    <li><b>Languages:</b> Python, C, SQL, OOP, Data Structures</li>
-    <li><b>Frameworks:</b> TensorFlow, PyTorch, Keras, Scikit-learn, OpenCV</li>
-    <li><b>Generative AI:</b> LangChain, DeepSeek, LLaMA, RAG, Prompt Engineering</li>
-    <li><b>MLOps & Tools:</b> Docker, Streamlit, Swagger UI, Azure AI, Openfabric SDK</li>
-    <li><b>Databases:</b> Oracle SQL, SQLite</li>
-  </ul>
+  <div class="card">
+    <ul>
+      <li><b>Languages:</b> Python, C, SQL, OOP, Data Structures</li>
+      <li><b>Frameworks:</b> TensorFlow, PyTorch, Keras, Scikit-learn, OpenCV</li>
+      <li><b>Generative AI:</b> LangChain, DeepSeek, LLaMA, RAG, Prompt Engineering</li>
+      <li><b>MLOps & Tools:</b> Docker, Streamlit, Swagger UI, Azure AI, Openfabric SDK</li>
+      <li><b>Databases:</b> Oracle SQL, SQLite</li>
+    </ul>
+  </div>
 </section>
 
 <section id="projects">
   <h2>Projects</h2>
-  <div class="project"><h3>AI-Powered Text-to-3D Generation Pipeline</h3><p>Built a local AI pipeline converting text prompts into 3D models using LLMs (DeepSeek, LLaMA) and Openfabric SDK.</p></div>
-  <div class="project"><h3>CNN Explainability Dashboard</h3><p>Implemented Grad-CAM, LIME and SHAP to visualize CNN predictions, achieving 94.56% accuracy.</p></div>
-  <div class="project"><h3>Driver Drowsiness Detection (EEG + ANN)</h3><p>Developed ANN-based system with 92% accuracy. Published at IEEE NCCON 2024.</p></div>
+  <div class="card">
+    <h3>AI-Powered Text-to-3D Generation Pipeline</h3>
+    <p>Local AI pipeline converting natural-language prompts into 3D models using LLMs (DeepSeek, LLaMA) and Openfabric SDK.</p>
+  </div>
+  <div class="card">
+    <h3>CNN Explainability Dashboard</h3>
+    <p>Implemented Grad-CAM, LIME and SHAP to visualize CNN predictions and achieved 94.56 % accuracy.</p>
+  </div>
+  <div class="card">
+    <h3>Driver Drowsiness Detection (EEG + ANN)</h3>
+    <p>Developed ANN-based system with 92 % accuracy. Published research at IEEE NCCON 2024.</p>
+  </div>
 </section>
 
 <section id="experience">
   <h2>Experience</h2>
-  <div class="exp"><h3>AI/ML & Computer Vision Intern — DocketRun Tech Pvt. Ltd. (Jan 2025 – May 2025)</h3>
-  <ul>
-    <li>Developed deep-learning models for automated material detection using CCTV footage.</li>
-    <li>Engineered real-time YOLO + CNN pipelines for logistics optimization.</li>
-    <li>Integrated models into production, enhancing automation efficiency.</li>
-  </ul></div>
+  <div class="card">
+    <h3>AI/ML & Computer Vision Intern — DocketRun Tech Pvt. Ltd. (Jan 2025 – May 2025)</h3>
+    <ul>
+      <li>Developed deep-learning models for automated material detection using CCTV footage.</li>
+      <li>Engineered real-time YOLO + CNN pipelines for logistics optimization.</li>
+      <li>Integrated models into production, enhancing automation efficiency.</li>
+    </ul>
+  </div>
 </section>
 
 <section id="achievements">
   <h2>Achievements & Certifications</h2>
-  <ul>
-    <li>🏆 First Place, Avalanche 2024 – AI-driven automation project (+30% efficiency).</li>
-    <li>📘 IEEE NCCON 2024 Paper – “Hyperparameter Tuning & Optimizers for Driver Drowsiness Detection Using ANN”.</li>
-    <li>🎓 NVIDIA Deep Learning | IBM AI Engineering | MATLAB Onramp | NPTEL Verilog</li>
-  </ul>
+  <div class="card">
+    <ul>
+      <li>🏆 First Place – Avalanche 2024 (AI-driven automation project, +30 % efficiency)</li>
+      <li>📘 IEEE NCCON 2024 Paper – “Hyperparameter Tuning & Optimizers for Driver Drowsiness Detection Using ANN”</li>
+      <li>🎓 NVIDIA Deep Learning | IBM AI Engineering | MATLAB Onramp | NPTEL Verilog</li>
+    </ul>
+  </div>
 </section>
 
 <section class="stats">
   <h2>GitHub Highlights</h2>
-  <img src="https://github-readme-streak-stats.herokuapp.com?user=Vinayak-Hotanahalli&theme=tokyonight&hide_border=true" alt="GitHub Streak" />
-  <img src="https://github-readme-stats.vercel.app/api?username=Vinayak-Hotanahalli&show_icons=true&theme=tokyonight&hide_border=true" alt="GitHub Stats" />
-  <img src="https://github-readme-stats.vercel.app/api/top-langs/?username=Vinayak-Hotanahalli&layout=compact&theme=tokyonight&hide_border=true" alt="Top Languages" />
+  <img src="https://github-readme-streak-stats.herokuapp.com?user=Vinayak-Hotanahalli&theme=tokyonight&hide_border=true" alt="GitHub Streak"/>
+  <img src="https://github-readme-stats.vercel.app/api?username=Vinayak-Hotanahalli&show_icons=true&theme=tokyonight&hide_border=true" alt="GitHub Stats"/>
+  <img src="https://github-readme-stats.vercel.app/api/top-langs/?username=Vinayak-Hotanahalli&layout=compact&theme=tokyonight&hide_border=true" alt="Top Languages"/>
 </section>
 
 <section id="contact">
   <h2>Contact</h2>
-  <p>
-    📧 <a href="mailto:vinayakhotanahalli72@gmail.com" class="btn">Email Me</a><br><br>
-    🔗 <a href="https://www.linkedin.com/in/vinayak-hotanahalli-2775b929b" target="_blank" class="btn">LinkedIn</a> 
-    <a href="https://github.com/Vinayak-Hotanahalli" target="_blank" class="btn">GitHub</a><br><br>
-    📱 +91 8970393850
-  </p>
+  <div class="card" style="text-align:center;">
+    <p>
+      📧 <a href="mailto:vinayakhotanahalli72@gmail.com" class="btn">Email Me</a><br><br>
+      🔗 <a href="https://www.linkedin.com/in/vinayak-hotanahalli-2775b929b" target="_blank" class="btn">LinkedIn</a>
+      <a href="https://github.com/Vinayak-Hotanahalli" target="_blank" class="btn">GitHub</a><br><br>
+      📱 +91 8970393850
+    </p>
+  </div>
 </section>
 
 <footer>
@@ -114,17 +189,11 @@ footer{background:#0b2239;text-align:center;color:#8892b0;padding:25px;font-size
 </footer>
 
 <script>
-// typing animation
+// typing effect
 const text="👋 Hi, I'm Vinayak Girish Hotanahalli";
 let i=0;
-function type(){
-  if(i<text.length){
-    document.getElementById("typing").textContent+=text.charAt(i);
-    i++;setTimeout(type,80);
-  }
-}
+function type(){if(i<text.length){document.getElementById("typing").textContent+=text.charAt(i);i++;setTimeout(type,80);}}
 type();
 </script>
-
 </body>
 </html>
