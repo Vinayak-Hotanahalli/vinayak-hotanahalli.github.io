@@ -2,58 +2,52 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Vinayak Hotanahalli — AI/ML Futuristic Portfolio</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Vinayak Hotanahalli - Portfolio</title>
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
 
 <style>
-:root{
-  --bg:#071025;
-  --accent:#33ffd1;
-  --accent2:#4dd0ff;
-  --muted:#bfcfe6;
-  --card-bg:rgba(255,255,255,0.05);
-  --shadow:0 12px 32px rgba(0,0,0,0.6);
+:root {
+    --bg: #071025;
+    --accent: #33ffd1;
+    --accent2: #4dd0ff;
+    --muted: #bfcfe6;
+    --card-bg: rgba(255,255,255,0.05);
+    --shadow: 0 12px 32px rgba(0,0,0,0.6);
 }
 
 *{margin:0;padding:0;box-sizing:border-box;}
-html,body{height:100%;font-family:'Poppins',sans-serif;background:var(--bg);color:var(--muted);scroll-behavior:smooth;overflow-x:hidden;cursor:none}
-a{text-decoration:none;color:inherit}
+body{font-family:'Poppins',sans-serif;background:var(--bg);color:var(--muted);scroll-behavior:smooth;}
+a{text-decoration:none;color:inherit;}
+header{display:flex;justify-content:space-between;align-items:center;padding:20px 40px;position:sticky;top:0;background:rgba(7,16,37,0.85);backdrop-filter:blur(8px);z-index:100;}
+header .logo{font-weight:700;font-size:1.5rem;color:var(--accent);}
+header nav a{margin-left:24px;font-weight:600;}
+header nav a:hover{color:var(--accent2);text-shadow:0 0 10px var(--accent2);}
 
-/* Header */
-header{display:flex;justify-content:space-between;align-items:center;padding:20px 40px;position:sticky;top:0;background:rgba(7,16,37,0.8);backdrop-filter:blur(8px);z-index:1000;}
-.logo{font-weight:700;font-size:1.5rem;color:var(--accent);text-shadow:0 0 8px var(--accent);}
-nav a{margin-left:24px;font-weight:600;transition:0.2s;}
-nav a:hover{color:var(--accent2);text-shadow:0 0 10px var(--accent2);}
+section{padding:80px 40px;opacity:0;transform:translateY(40px);transition:all 1s ease-out;}
+section.visible{opacity:1;transform:translateY(0);}
 
 /* Hero */
-section{padding:80px 40px;position:relative;opacity:0;transform:translateY(40px);transition:all 1s ease-out;}
-section.visible{opacity:1;transform:translateY(0);animation:fadeHolo 1.2s forwards;}
-@keyframes fadeHolo{0%{opacity:0;transform:translateY(60px) skewY(-5deg);}100%{opacity:1;transform:translateY(0) skewY(0);}}
-
-/* Neon headings */
-h1,h2,h3,h4{color:var(--accent);text-shadow:0 0 8px var(--accent),0 0 16px var(--accent2);}
-
-/* Hero layout */
 .hero{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:40px;margin-top:40px;}
 .hero-left{flex:1;min-width:280px;}
-.hero-left h1{font-size:2.5rem;margin-bottom:20px;}
+.hero-left h1{font-size:2.5rem;margin-bottom:20px;color:var(--accent);}
 .hero-left p{font-size:1.1rem;margin-bottom:30px;line-height:1.5;}
-.hero-right{flex:0 0 350px;min-width:280px;perspective:1000px;position:relative;}
-.hero-avatar{width:100%;border-radius:20px;box-shadow:0 20px 60px rgba(51,255,209,0.4);transform-style:preserve-3d;transition:transform 0.3s;}
+.hero-right{flex:0 0 300px;min-width:280px;}
+.hero-right img{width:100%;border-radius:20px;box-shadow:0 20px 60px rgba(51,255,209,0.4);}
 
 /* Buttons */
-.btn-primary{background:linear-gradient(90deg,var(--accent),var(--accent2));color:var(--bg);padding:12px 20px;border-radius:14px;font-weight:700;border:none;transition:all .3s;margin-right:10px;}
-.btn-primary:hover{transform:translateY(-3px) scale(1.05);box-shadow:0 12px 32px rgba(51,255,209,0.8);}
-.btn-ghost{background:transparent;color:var(--muted);padding:12px 20px;border-radius:14px;border:1px solid rgba(255,255,255,0.1);font-weight:700;transition:all .3s;}
-.btn-ghost:hover{background:rgba(255,255,255,0.05);color:var(--accent);text-shadow:0 0 12px var(--accent);}
+.btn-primary{background:linear-gradient(90deg,var(--accent),var(--accent2));color:var(--bg);padding:12px 20px;border-radius:14px;font-weight:700;border:none;margin-right:10px;}
+.btn-primary:hover{transform:scale(1.05);}
+.btn-ghost{background:transparent;color:var(--muted);padding:12px 20px;border-radius:14px;border:1px solid rgba(255,255,255,0.1);font-weight:700;}
+.btn-ghost:hover{background:rgba(255,255,255,0.05);color:var(--accent);}
 
 /* Cards */
-.card{background:var(--card-bg);backdrop-filter:blur(12px);border-radius:20px;padding:24px;box-shadow:var(--shadow);transition:transform 0.3s,box-shadow 0.3s;}
-.card:hover{transform:translateY(-10px) rotateX(5deg) rotateY(5deg);box-shadow:0 25px 60px rgba(51,255,209,0.6);}
+.card{background:var(--card-bg);backdrop-filter:blur(12px);border-radius:20px;padding:24px;box-shadow:var(--shadow);margin-top:20px;}
+
+/* Grid */
 .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:24px;margin-top:20px;}
 
-/* Skill circle */
+/* Skills */
 .skill-circle{width:120px;height:120px;margin:20px auto;position:relative;}
 .skill-circle svg{transform:rotate(-90deg);}
 .skill-circle circle{fill:none;stroke-width:8;stroke-linecap:round;}
@@ -62,30 +56,15 @@ h1,h2,h3,h4{color:var(--accent);text-shadow:0 0 8px var(--accent),0 0 16px var(-
 
 /* Timeline */
 .timeline{position:relative;margin-left:20px;}
-.timeline::before{content:"";position:absolute;left:12px;top:0;bottom:0;width:4px;background:var(--accent);border-radius:2px;}
+.timeline::before{content:"";position:absolute;left:12px;top:0;bottom:0;width:4px;background:var(--accent);}
 .timeline-item{position:relative;margin-bottom:30px;padding-left:36px;}
-.timeline-item h3{margin-bottom:6px;color:var(--accent);}
 .timeline-item::before{content:"";position:absolute;left:4px;top:0;width:16px;height:16px;background:var(--accent);border-radius:50%;border:3px solid var(--accent2);}
-
-/* Project hover effect */
-.project-item{padding:20px;border-radius:20px;background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.05);transition:all 0.3s;transform-style:preserve-3d;position:relative;}
-.project-item:hover{transform:rotateX(5deg) rotateY(5deg) translateY(-8px);box-shadow:0 25px 60px rgba(0,255,210,0.5);}
-.project-item:hover::after{opacity:1;}
-.project-item::after{content:"More Info →";position:absolute;bottom:20px;right:20px;color:var(--accent);opacity:0;transition:0.3s;}
-
-/* Contact */
-.contact-grid{display:flex;gap:20px;flex-wrap:wrap;margin-top:20px;}
-.contact-left{flex:1;}
-.contact-right{display:flex;gap:12px;align-items:center;flex-wrap:wrap;}
 
 /* Footer */
 footer{text-align:center;color:var(--muted);margin-top:40px;font-size:0.92rem;}
 
-/* AI particle background */
+/* Particle background */
 #bgCanvas{position:fixed;top:0;left:0;width:100%;height:100%;z-index:-1;}
-
-/* Cursor trail */
-.cursor-trail{position:absolute;width:12px;height:12px;border-radius:50%;pointer-events:none;background:linear-gradient(45deg,var(--accent),var(--accent2));mix-blend-mode:screen;opacity:0.8;}
 
 /* Responsive */
 @media(max-width:980px){.hero{flex-direction:column;text-align:center}.hero-right{margin-top:20px}}
@@ -107,28 +86,25 @@ footer{text-align:center;color:var(--muted);margin-top:40px;font-size:0.92rem;}
 </header>
 
 <main>
-<!-- Hero -->
-<section class="hero visible">
+<section class="hero visible" id="hero">
   <div class="hero-left">
     <h1>Hi — I'm Vinayak Hotanahalli</h1>
-    <p>Building <strong>futuristic AI/ML systems</strong> — computer vision, generative AI, deep learning, and explainable pipelines.</p>
+    <p>Futuristic AI/ML Engineer | Deep Learning | Computer Vision | Explainable AI</p>
     <a class="btn-primary" href="#projects">View Projects</a>
     <a class="btn-ghost" href="mailto:vinayakhotanahalli72@gmail.com">Contact Me</a>
   </div>
   <div class="hero-right">
-    <img src="profile.png" alt="Vinayak" class="hero-avatar" id="heroAvatar">
+    <img src="https://via.placeholder.com/300x300.png?text=Vinayak" alt="Vinayak">
   </div>
 </section>
 
-<!-- About -->
 <section id="about">
   <h2>About Me</h2>
   <div class="card">
-    <p>I am an AI/ML Engineer creating scalable, production-ready pipelines, deploying explainable AI, and integrating deep learning models in computer vision projects.</p>
+    <p>I am an AI/ML Engineer building scalable AI solutions, integrating deep learning and computer vision models, and deploying explainable pipelines for real-world projects.</p>
   </div>
 </section>
 
-<!-- Skills -->
 <section id="skills">
   <h2>Skills</h2>
   <div class="grid">
@@ -156,102 +132,61 @@ footer{text-align:center;color:var(--muted);margin-top:40px;font-size:0.92rem;}
   </div>
 </section>
 
-<!-- Projects -->
 <section id="projects">
   <h2>Projects</h2>
   <div class="grid">
-    <div class="project-item card">
+    <div class="card">
       <h4>AI-Powered Text-to-3D Pipeline</h4>
-      <p>LLM + RAG + Openfabric SDK to convert prompts into 3D assets. Dockerized microservices + Streamlit demo.</p>
-      <div class="tags"><span class="tag">Python</span><span class="tag">LLM</span><span class="tag">RAG</span></div>
+      <p>LLM + RAG pipeline to convert prompts into 3D assets.</p>
     </div>
-    <div class="project-item card">
+    <div class="card">
       <h4>CNN Explainability Dashboard</h4>
-      <p>Grad-CAM, LIME, SHAP visualizations, ROC analysis, and interpretability reports for debugging.</p>
-      <div class="tags"><span class="tag">TensorFlow</span><span class="tag">CV</span><span class="tag">XAI</span></div>
+      <p>Grad-CAM, LIME, SHAP visualizations for interpretability.</p>
     </div>
   </div>
 </section>
 
-<!-- Experience -->
 <section id="experience">
   <h2>Experience</h2>
   <div class="timeline">
     <div class="timeline-item card">
-      <h3>AI/ML & Computer Vision Intern — DocketRun Tech Pvt. Ltd.</h3>
+      <h3>AI/ML & Computer Vision Intern — DocketRun Tech</h3>
       <small>(Jan 2025 – May 2025)</small>
       <ul>
-        <li>YOLO/CNN pipelines for automated material detection.</li>
-        <li>Optimized inference speed and accuracy with GPU acceleration.</li>
-        <li>Integrated AI-driven solutions into logistics workflows.</li>
+        <li>Developed YOLO/CNN pipelines for material detection.</li>
+        <li>Optimized inference speed and accuracy for production.</li>
       </ul>
     </div>
   </div>
 </section>
 
-<!-- Contact -->
 <section id="contact">
   <h2>Contact</h2>
-  <div class="contact-grid card">
-    <div class="contact-left">
-      <h3>Let's Connect</h3>
-      <p>Email me for AI/ML roles, collaborations, or research opportunities.</p>
-      <p><strong>Email:</strong> <a href="mailto:vinayakhotanahalli72@gmail.com" style="color:var(--accent)">vinayakhotanahalli72@gmail.com</a></p>
-    </div>
-    <div class="contact-right">
-      <a class="btn-primary" href="mailto:vinayakhotanahalli72@gmail.com">Email</a>
-      <a class="btn-ghost" href="https://github.com/Vinayak-Hotanahalli" target="_blank">GitHub</a>
-      <a class="btn-ghost" href="https://www.linkedin.com/in/vinayak-hotanahalli-2775b929b/" target="_blank">LinkedIn</a>
-    </div>
+  <div class="card">
+    <p>Email me at: <a href="mailto:vinayakhotanahalli72@gmail.com" style="color:var(--accent)">vinayakhotanahalli72@gmail.com</a></p>
+    <a class="btn-primary" href="mailto:vinayakhotanahalli72@gmail.com">Email</a>
   </div>
 </section>
 
-<footer>
-  &copy; 2025 Vinayak Hotanahalli — Crafted with ⚡
-</footer>
+<footer>&copy; 2025 Vinayak Hotanahalli</footer>
 
 <script>
 // Scroll fade-in
-const sections = document.querySelectorAll('section');
-window.addEventListener('scroll',()=>{sections.forEach(sec=>{if(sec.getBoundingClientRect().top<window.innerHeight-100){sec.classList.add('visible')}})});
+const sections=document.querySelectorAll('section');
+window.addEventListener('scroll',()=>{sections.forEach(s=>{if(s.getBoundingClientRect().top<window.innerHeight-100){s.classList.add('visible')}})});
 
-// Hero 3D tilt
-const heroAvatar=document.getElementById('heroAvatar');
-heroAvatar.parentElement.addEventListener('mousemove',e=>{
-  const {width,height,left,top}=heroAvatar.getBoundingClientRect();
-  const x=(e.clientX-left-width/2)/width*20;
-  const y=(e.clientY-top-height/2)/height*20;
-  heroAvatar.style.transform=`rotateY(${x}deg) rotateX(${-y}deg)`;
-});
-heroAvatar.parentElement.addEventListener('mouseleave',()=>{heroAvatar.style.transform='rotateY(0) rotateX(0)'});
-
-// Project card tilt
-document.querySelectorAll('.project-item').forEach(card=>{
-  card.addEventListener('mousemove',e=>{
-    const {width,height,left,top}=card.getBoundingClientRect();
-    const x=(e.clientX-left-width/2)/width*15;
-    const y=(e.clientY-top-height/2)/height*15;
-    card.style.transform=`rotateY(${x}deg) rotateX(${-y}deg) translateY(-8px)`;
-  });
-  card.addEventListener('mouseleave',()=>{card.style.transform='rotateY(0) rotateX(0) translateY(0)'});
-});
-
-// Skill animation
+// Skill circle animation
 document.querySelectorAll('.skill-circle').forEach(c=>{
   const percent=c.dataset.percent;
   c.querySelector('.circle').style.strokeDasharray=`${percent} 100`;
 });
 
-// AI network particle background
+// Particle background
 const canvas=document.getElementById('bgCanvas'),ctx=canvas.getContext('2d');
 let w,h,particles=[];
-function init(){w=canvas.width=window.innerWidth;h=canvas.height=window.innerHeight;particles=[];for(let i=0;i<120;i++){particles.push({x:Math.random()*w,y:Math.random()*h,vx:(Math.random()-0.5)/1.5,vy:(Math.random()-0.5)/1.5,r:Math.random()*2+0.5})}}
+function init(){w=canvas.width=window.innerWidth;h=canvas.height=window.innerHeight;particles=[];for(let i=0;i<80;i++){particles.push({x:Math.random()*w,y:Math.random()*h,vx:(Math.random()-0.5)/1.5,vy:(Math.random()-0.5)/1.5,r:Math.random()*2+0.5})}}
 function animate(){ctx.clearRect(0,0,w,h);particles.forEach(p=>{p.x+=p.vx;p.y+=p.vy;if(p.x<0)p.x=w;if(p.x>w)p.x=0;if(p.y<0)p.y=h;if(p.y>h)p.y=0;ctx.beginPath();ctx.arc(p.x,p.y,p.r,0,2*Math.PI);ctx.fillStyle='rgba(51,255,209,0.6)';ctx.fill();});for(let i=0;i<particles.length;i++){for(let j=i+1;j<particles.length;j++){let dx=particles[i].x-particles[j].x,dy=particles[i].y-particles[j].y,d=Math.sqrt(dx*dx+dy*dy);if(d<120){ctx.beginPath();ctx.moveTo(particles[i].x,particles[i].y);ctx.lineTo(particles[j].x,particles[j].y);ctx.strokeStyle='rgba(51,255,209,'+(1-d/120)*0.3+')';ctx.lineWidth=1;ctx.stroke()}}}requestAnimationFrame(animate)}
 window.addEventListener('resize',init);init();animate();
-
-// Cursor trail
-const trail=[];for(let i=0;i<8;i++){let div=document.createElement('div');div.classList.add('cursor-trail');document.body.appendChild(div);trail.push(div)}
-document.addEventListener('mousemove',e=>{trail.forEach((dot,i)=>{setTimeout(()=>{dot.style.left=e.clientX-6+'px';dot.style.top=e.clientY-6+'px'},i*20)})});
 </script>
 
 </body>
