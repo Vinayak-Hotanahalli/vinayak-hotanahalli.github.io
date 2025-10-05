@@ -223,41 +223,60 @@ Replace any placeholder text if you want to tweak wording or add links.
     </div>
     
     <!-- EXPERIENCE -->
-    <div class="glass" style="margin-top:40px; padding:30px; border-radius:22px; background:rgba(255,255,255,0.03); box-shadow:0 0 18px rgba(150,200,255,0.09);">
-  <h2 style="font-size:22px; color:#e9f2ff; margin-bottom:18px;">Professional Experience</h2>
+    <section id="experience" style="margin-top:60px; position:relative;">
+  <div class="container">
 
-  <div style="display:flex; flex-direction:column; gap:14px;">
-    
-    <div>
-      <div style="display:flex; justify-content:space-between; align-items:center;">
-        <strong style="font-size:18px; color:#ffffff;">AI/ML and Computer Vision Intern</strong>
-        <span style="font-size:13px; color:#a9c8ff;">Jan 2025 – May 2025</span>
+    <h2 style="font-size:26px; color:#e9f2ff; margin-bottom:24px; letter-spacing:0.5px;">Experience</h2>
+
+    <div style="position:relative; padding-left:32px; border-left:2px solid rgba(160,200,255,0.3);">
+
+      <!-- DocketRun Internship -->
+      <div class="exp-card" 
+           style="background:rgba(255,255,255,0.03); margin-bottom:40px; padding:24px 28px; border-radius:20px; box-shadow:0 0 18px rgba(150,200,255,0.08); transition:0.3s ease;">
+        
+        <div style="position:absolute; left:-10px; top:28px; width:18px; height:18px; border-radius:50%; background:linear-gradient(135deg,#7db7ff,#a9cfff);"></div>
+
+        <div style="display:flex; justify-content:space-between; flex-wrap:wrap; align-items:center;">
+          <div>
+            <h3 style="font-size:20px; color:#ffffff;">AI/ML and Computer Vision Intern</h3>
+            <p style="color:#9ecbff; margin-top:4px; font-size:14px;">DocketRun Tech Pvt. Ltd., Hubli</p>
+          </div>
+          <span style="font-size:13px; color:#aacaff;">Jan 2025 – May 2025</span>
+        </div>
+
+        <div style="margin-top:10px;">
+          <a href="https://docketrun.com/" target="_blank"
+             style="font-size:14px; color:#84b8ff; text-decoration:none; border-bottom:1px solid transparent; transition:0.3s;">
+            Company Website — www.docketrun.com
+          </a>
+        </div>
+
+        <div style="margin-top:16px; font-size:14.6px; color:#d8e7ff; line-height:1.8;">
+          <strong style="color:#a7c8ff;">Project:</strong> Truck Container Material Detection
+          <ul style="margin-top:10px; padding-left:18px; list-style-type:disc;">
+            <li>Developed deep learning models (YOLO, CNN) for automated detection in logistics video streams.</li>
+            <li>Designed a scalable TensorFlow–OpenCV pipeline for real-time material recognition and classification.</li>
+            <li>Optimized inference speed and model performance for live operational conditions.</li>
+            <li>Deployed solutions within production workflows to automate container inspection.</li>
+            <li>Collaborated across teams to integrate AI modules and enhance monitoring reliability.</li>
+            <li>Acquired full-cycle exposure from model design to deployment and post-production analysis.</li>
+          </ul>
+        </div>
       </div>
-      <div style="font-size:15px; color:#bcd9ff; margin-top:2px;">DocketRun Tech Pvt. Ltd., Hubli</div>
-      <div style="margin-top:4px;">
-        <a href="https://docketrun.com/" target="_blank" style="font-size:14px; color:#89baff; text-decoration:none;">
-          Company Website: www.docketrun.com
-        </a>
-      </div>
-    </div>
 
-    <div style="margin-top:10px; border-left:3px solid #88b6ff; padding-left:18px; color:#d8e7ff; font-size:14.5px; line-height:1.7;">
-      <div style="color:#a5c4ff; font-weight:600;">Project — Truck Container Material Detection</div><br>
-
-      • Built and deployed deep learning models using <strong>YOLO</strong> and <strong>CNN</strong> for automated material detection from CCTV streams, enhancing logistics automation.<br><br>
-
-      • Developed a scalable computer vision pipeline with <strong>TensorFlow</strong> and <strong>OpenCV</strong> for accurate, real-time detection under varying light and motion conditions.<br><br>
-
-      • Optimized inference efficiency and detection accuracy through hyperparameter tuning and post-processing improvements, enabling faster field deployment.<br><br>
-
-      • Integrated AI inference into production workflows, streamlining inspection processes and minimizing human intervention.<br><br>
-
-      • Collaborated with the engineering team to monitor, analyze, and iterate model performance, ensuring consistency in live operational settings.<br><br>
-
-      • Gained strong experience in end-to-end ML system development, from model training to on-site deployment, emphasizing reliability and scalability.
     </div>
   </div>
-</div>
+
+  <style>
+    /* subtle hover animation */
+    .exp-card:hover {
+      transform: translateY(-4px);
+      background: rgba(255,255,255,0.05);
+      box-shadow: 0 0 24px rgba(150,200,255,0.15);
+    }
+  </style>
+</section>
+
 
 
 
