@@ -198,18 +198,28 @@ Replace any placeholder text if you want to tweak wording or add links.
         </p>
 
         <!-- Education Section -->
-        <div class="highlight-card" style="margin-top:20px; padding:18px 22px;">
+        <div class="education-card" style="margin-top:20px; padding:24px; border-radius:24px; background:rgba(255,255,255,0.03); border:1px solid rgba(160,210,255,0.15); box-shadow:0 0 28px rgba(120,180,255,0.08); backdrop-filter:blur(18px); transition: all 0.5s ease;">
           <strong style="font-size:18px; background:linear-gradient(135deg,#4da6ff,#80c0ff); -webkit-background-clip:text; color:transparent; font-weight:700;">Education</strong>
-          <div style="margin-top:10px; font-size:14.5px; line-height:1.5; color:#e0ecff;">
 
-            <p><strong>Bachelor of Engineering — Electronics & Communication</strong> &nbsp;&nbsp;&nbsp;&nbsp;2021 – 2025<br>
-            KLS Gogte Institute of Technology, Belagavi &nbsp;&nbsp;&nbsp;&nbsp;CGPA: 8.39</p>
+          <div style="margin-top:12px; font-size:15px; line-height:1.6; color:#e0ecff;">
 
-            <p><strong>Intermediate Pre-University — Science</strong> &nbsp;&nbsp;&nbsp;&nbsp;2019 – 2021<br>
-            KSSS Science PU College, Hubli &nbsp;&nbsp;&nbsp;&nbsp;Percentage: 91%</p>
+            <p style="display:flex; justify-content:space-between; align-items:center;">
+              <span style="background:linear-gradient(90deg,#ff7a18,#af002d); -webkit-background-clip:text; color:transparent; font-weight:600;">Bachelor of Engineering — Electronics & Communication</span>
+              <span style="background:linear-gradient(90deg,#ffde59,#ffc700); -webkit-background-clip:text; color:transparent; font-weight:600;">CGPA: 8.39</span>
+            </p>
+            <p style="color:#b9d6ff; font-size:14px; margin-bottom:10px;">KLS Gogte Institute of Technology, Belagavi &nbsp;&nbsp;|&nbsp;&nbsp; 2021 – 2025</p>
 
-            <p><strong>Karnataka State Board (SSLC)</strong> &nbsp;&nbsp;&nbsp;&nbsp;2018 – 2019<br>
-            Ramakrishna School, Sagara &nbsp;&nbsp;&nbsp;&nbsp;Percentage: 85.12%</p>
+            <p style="display:flex; justify-content:space-between; align-items:center;">
+              <span style="background:linear-gradient(90deg,#1a73e8,#3a8ef6); -webkit-background-clip:text; color:transparent; font-weight:600;">Intermediate Pre-University — Science</span>
+              <span style="background:linear-gradient(90deg,#ffbc42,#ff7b00); -webkit-background-clip:text; color:transparent; font-weight:600;">Percentage: 91%</span>
+            </p>
+            <p style="color:#b9d6ff; font-size:14px; margin-bottom:10px;">KSSS Science PU College, Hubli &nbsp;&nbsp;|&nbsp;&nbsp; 2019 – 2021</p>
+
+            <p style="display:flex; justify-content:space-between; align-items:center;">
+              <span style="background:linear-gradient(90deg,#ff6ec7,#ff3cac); -webkit-background-clip:text; color:transparent; font-weight:600;">Karnataka State Board (SSLC)</span>
+              <span style="background:linear-gradient(90deg,#00c6ff,#0072ff); -webkit-background-clip:text; color:transparent; font-weight:600;">Percentage: 85.12%</span>
+            </p>
+            <p style="color:#b9d6ff; font-size:14px; margin-bottom:0;">Ramakrishna School, Sagara &nbsp;&nbsp;|&nbsp;&nbsp; 2018 – 2019</p>
 
           </div>
         </div>
@@ -277,8 +287,8 @@ Replace any placeholder text if you want to tweak wording or add links.
       50% { transform: translateY(-6px); }
     }
 
-    /* Highlight card hover */
-    .highlight-card:hover {
+    /* Education card hover */
+    .education-card:hover {
       transform: translateY(-3px) scale(1.02);
       border-color: rgba(180,220,255,0.5);
       box-shadow: 0 0 35px rgba(120,180,255,0.22);
