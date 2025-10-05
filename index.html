@@ -161,63 +161,66 @@ Replace any placeholder text if you want to tweak wording or add links.
 
   <!-- HERO -->
   <!-- 🌟 HERO SECTION START -->
-<section class="hero" role="banner" style="position:relative; height:100vh; display:flex; align-items:center; justify-content:center; overflow:hidden; background:#05060a; color:white; text-align:center;">
+<section class="hero" id="home" role="banner" style="position:relative; height:100vh; display:flex; align-items:center; justify-content:center; overflow:hidden; background:#05060a; color:white; text-align:center;">
 
   <!-- Neural Network Background -->
-  <div id="neural-bg" style="position:absolute;inset:0;z-index:0;"></div>
+  <div id="ai-background" style="position:absolute;inset:0;z-index:0;"></div>
 
   <!-- Hero Text -->
   <div class="hero-content" style="position:relative;z-index:2;">
-    <h1 class="typing-text">Vinayak Girish Hotanahalli</h1>
+    <h1 class="typing-text"></h1>
     <p class="subtext">Aspiring AI/ML & Software Engineer</p>
   </div>
 
 </section>
 
-<!-- Neural Animation + Typing Effect Scripts -->
+<!-- Scripts -->
 <script src="https://cdn.jsdelivr.net/npm/tsparticles@2.11.0/tsparticles.min.js"></script>
 <script>
-  // Neural Background Animation
-  tsParticles.load("neural-bg", {
+  // Neural Network Animation
+  tsParticles.load("ai-background", {
+    fullScreen: { enable: false },
     background: { color: { value: "#05060a" } },
     fpsLimit: 60,
     particles: {
       number: { value: 120, density: { enable: true, area: 800 } },
-      color: { value: ["#00d0ff","#8a2be2","#ff6ec7"] },
+      color: { value: ["#00d0ff", "#8a2be2", "#ff6ec7"] },
       shape: { type: "circle" },
-      opacity: { value: 0.6 },
+      opacity: { value: 0.5 },
       size: { value: { min: 1, max: 3 } },
-      move: { enable: true, speed: 0.6, outMode: "bounce" },
-      links: { enable: true, distance: 140, color: "#00d0ff", opacity: 0.2, width: 1 }
+      move: { enable: true, speed: 0.6, outModes: "bounce" },
+      links: { enable: true, distance: 130, color: "#00d0ff", opacity: 0.2, width: 1 }
     },
     interactivity: {
-      events: { onHover: { enable: true, mode: "repulse" }, onClick: { enable: true, mode: "push" } },
-      modes: { repulse: { distance: 120, duration: 0.4 }, push: { quantity: 3 } }
+      events: { onHover: { enable: true, mode: "grab" }, onClick: { enable: true, mode: "push" } },
+      modes: { grab: { distance: 140, links: { opacity: 0.25 } }, push: { quantity: 4 } }
     },
     detectRetina: true
   });
 
-  // Typing Animation
-  const text = "Vinayak Girish Hotanahalli";
-  const typingEl = document.querySelector(".typing-text");
+  // Typing Name Animation
+  const nameText = "Vinayak Girish Hotanahalli";
+  const typingElement = document.querySelector(".typing-text");
   let i = 0;
   function typeWriter() {
-    if (i < text.length) {
-      typingEl.innerHTML += text.charAt(i);
+    if (i < nameText.length) {
+      typingElement.innerHTML += nameText.charAt(i);
       i++;
       setTimeout(typeWriter, 120);
     }
   }
-  window.onload = typeWriter;
+  window.addEventListener("load", () => {
+    window.scrollTo(0, 0); // ✅ Ensures page starts at top
+    typeWriter();
+  });
 </script>
 
-<!-- Typing Text Style -->
 <style>
   @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@700&display=swap');
 
   .typing-text {
     font-family: 'Orbitron', sans-serif;
-    font-size: clamp(28px,5vw,60px);
+    font-size: clamp(32px, 5vw, 64px);
     font-weight: 700;
     color: #00d0ff;
     letter-spacing: 2px;
