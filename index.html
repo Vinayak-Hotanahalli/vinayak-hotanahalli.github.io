@@ -184,7 +184,7 @@ Replace any placeholder text if you want to tweak wording or add links.
   <div class="container">
 
     <div class="glass" 
-         style="display:grid; grid-template-columns:1fr 280px; gap:24px; align-items:start; padding:36px 32px; border-radius:28px; 
+         style="display:grid; grid-template-columns:1fr 1fr; gap:24px; align-items:start; padding:36px 32px; border-radius:28px; 
                 box-shadow:0 0 60px rgba(108,150,255,0.25); backdrop-filter:blur(18px); transition:all 0.5s ease; background:rgba(255,255,255,0.03); border:1px solid rgba(160,210,255,0.18);">
 
       <!-- About Me Text -->
@@ -207,31 +207,30 @@ Replace any placeholder text if you want to tweak wording or add links.
         </div>
       </div>
 
-      <!-- Quick Contact with unique staggered icons -->
-      <div style="position:relative; width:100%; text-align:center;">
-        <h3 style="color:#ffffff; font-size:20px; text-shadow:0 0 8px rgba(160,210,255,0.2); margin-bottom:24px;">Quick Contact</h3>
-        <div style="position:relative; height:240px;">
-
+      <!-- Quick Contact with unique polygon layout -->
+      <div style="position:relative; height:240px;">
+        <h3 style="color:#ffffff; font-size:20px; text-shadow:0 0 8px rgba(160,210,255,0.2); margin-bottom:24px; text-align:center;">Quick Contact</h3>
+        
+        <div class="contact-shape">
           <!-- Email -->
-          <a href="mailto:vinayakhotanahalli72@gmail.com" target="_blank" class="stagger-icon" style="top:0; left:0;">
+          <a href="mailto:vinayakhotanahalli72@gmail.com" target="_blank" class="polygon-icon" style="--x:50%; --y:10%;">
             <img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/gmail.svg" alt="Email">
           </a>
 
           <!-- LinkedIn -->
-          <a href="https://www.linkedin.com/in/vinayak-hotanahalli-2775b929b/" target="_blank" class="stagger-icon" style="top:30px; left:60px;">
+          <a href="https://www.linkedin.com/in/vinayak-hotanahalli-2775b929b/" target="_blank" class="polygon-icon" style="--x:80%; --y:40%;">
             <img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/linkedin.svg" alt="LinkedIn">
           </a>
 
           <!-- GitHub -->
-          <a href="https://github.com/Vinayak-Hotanahalli" target="_blank" class="stagger-icon" style="top:90px; left:-20px;">
+          <a href="https://github.com/Vinayak-Hotanahalli" target="_blank" class="polygon-icon" style="--x:20%; --y:50%;">
             <img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/github.svg" alt="GitHub">
           </a>
 
           <!-- Twitter / X -->
-          <a href="https://x.com/89_vinayak?t=2QrrDv-EYoLnZbVonv0JEQ&s=08" target="_blank" class="stagger-icon" style="top:150px; left:40px;">
+          <a href="https://x.com/89_vinayak?t=2QrrDv-EYoLnZbVonv0JEQ&s=08" target="_blank" class="polygon-icon" style="--x:60%; --y:80%;">
             <img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/twitter.svg" alt="Twitter">
           </a>
-
         </div>
       </div>
 
@@ -239,50 +238,54 @@ Replace any placeholder text if you want to tweak wording or add links.
   </div>
 
   <style>
-    /* Glass hover */
     .glass:hover {
       box-shadow: 0 0 70px rgba(140,190,255,0.3);
       border-color: rgba(180,220,255,0.5);
       transform: scale(1.015);
     }
 
-    /* Staggered Quick Contact Icons */
-    .stagger-icon {
-      position:absolute;
+    .contact-shape {
+      position: relative;
+      width: 100%;
+      height: 100%;
+    }
+
+    .polygon-icon {
+      position: absolute;
+      top: var(--y);
+      left: var(--x);
+      transform: translate(-50%, -50%) rotate(-10deg);
+      width: 70px;
+      height: 70px;
+      background: rgba(255,255,255,0.05);
+      border-radius: 18px;
       display:flex;
       align-items:center;
       justify-content:center;
-      width:70px;
-      height:70px;
-      background: rgba(255,255,255,0.05);
-      border-radius:18px;
       transition: all 0.4s ease;
-      box-shadow:0 0 8px rgba(255,255,255,0.1);
-      transform: rotate(-7deg);
+      box-shadow: 0 0 8px rgba(255,255,255,0.1);
       animation: float 4s ease-in-out infinite;
     }
 
-    .stagger-icon img {
-      width:32px;
+    .polygon-icon img {
+      width: 32px;
       transition: all 0.4s ease;
     }
 
-    /* Hover effect */
-    .stagger-icon:hover {
+    .polygon-icon:hover {
       background: linear-gradient(135deg, #ff4d4d, #ffb84d, #4dffb8, #4da6ff);
       box-shadow: 0 0 28px rgba(255,200,255,0.6), 0 0 38px rgba(80,220,255,0.5);
       transform: scale(1.3) rotate(0deg);
     }
 
-    .stagger-icon:hover img {
+    .polygon-icon:hover img {
       filter: invert(0);
     }
 
-    /* Floating animation */
     @keyframes float {
-      0% { transform: translateY(0px) rotate(-7deg); }
-      50% { transform: translateY(-6px) rotate(-5deg); }
-      100% { transform: translateY(0px) rotate(-7deg); }
+      0% { transform: translate(-50%, -50%) translateY(0px) rotate(-10deg); }
+      50% { transform: translate(-50%, -50%) translateY(-6px) rotate(-5deg); }
+      100% { transform: translate(-50%, -50%) translateY(0px) rotate(-10deg); }
     }
   </style>
 </section>
