@@ -223,92 +223,69 @@ Replace any placeholder text if you want to tweak wording or add links.
     </div>
     
    <!-- EXPERIENCE -->
-<!-- EXPERIENCE -->
-<section id="experience" style="margin-top:70px;">
+<section id="experience" style="margin-top:60px;">
   <div class="container">
-    <div class="glass"
-         style="background:rgba(255,255,255,0.025);
-                border:1px solid rgba(180,220,255,0.18);
-                border-radius:28px;
-                padding:60px 60px 55px 60px;
-                box-shadow:0 0 45px rgba(120,180,255,0.12);
-                backdrop-filter:blur(18px);
-                transition:all 0.6s ease;
-                width:100%;">
 
-      <!-- Left-aligned Heading -->
-      <h2 style="font-size:26px; margin:0; color:#eaf3ff; letter-spacing:0.8px; text-shadow:0 0 16px rgba(160,210,255,0.25);">
-        Experience
-      </h2>
+    <div class="glass" style="padding:40px; border-radius:24px; box-shadow:0 0 50px rgba(108,150,255,0.35);">
+      <h2 style="font-size:28px; margin-bottom:12px; text-align:left;">Experience</h2>
+      <p style="color:#bcd3ff; margin-top:4px; font-size:15px; line-height:1.6;">
+        Hands-on experience in AI, Machine Learning, and Computer Vision applied to real-world industry problems.
+      </p>
 
-      <!-- Experience Card -->
-      <div class="ach"
-           style="margin-top:38px;
-                  background:linear-gradient(150deg, rgba(255,255,255,0.03), rgba(80,150,255,0.08));
-                  border:1px solid rgba(160,210,255,0.28);
-                  border-radius:22px;
-                  padding:40px 45px;
-                  box-shadow:inset 0 0 25px rgba(120,180,255,0.12);
-                  transition:all 0.5s ease;
-                  cursor:pointer;">
+      <div style="margin-top:28px;">
+        <div class="exp-card glass"
+             style="padding:28px; border-radius:20px; margin-bottom:22px; border:1px solid rgba(180,220,255,0.25); background:rgba(255,255,255,0.03); transition:all 0.4s ease;">
 
-        <!-- Header Row -->
-        <div style="display:flex; justify-content:space-between; flex-wrap:wrap; align-items:center;">
-          <div>
-            <h3 style="font-size:21px; color:#ffffff; margin:0;">AI/ML and Computer Vision Intern</h3>
-            <p style="color:#a9cfff; font-size:15px; margin-top:6px;">DocketRun Tech Pvt. Ltd., Hubli</p>
+          <div style="display:flex; justify-content:space-between; flex-wrap:wrap; align-items:center;">
+            <div>
+              <h3 style="font-size:20px; color:#ffffff; margin:0;">AI/ML and Computer Vision Intern</h3>
+              <p style="color:#a9cfff; font-size:14px; margin-top:4px;">DocketRun Tech Pvt. Ltd., Hubli</p>
+            </div>
+            <span style="font-size:13px; color:#b9d6ff; background:rgba(150,200,255,0.08); padding:6px 12px; border-radius:8px;">
+              Jan 2025 – May 2025
+            </span>
           </div>
-          <span style="font-size:14px; color:#c9e1ff; background:rgba(150,200,255,0.1); padding:6px 14px; border-radius:10px;">
-            Jan 2025 – May 2025
-          </span>
-        </div>
 
-        <!-- Company Website -->
-        <div style="margin-top:18px;">
-          <a href="https://docketrun.com/" target="_blank"
-             style="color:#98cbff; font-size:15px; text-decoration:none; border-bottom:1px dashed rgba(150,200,255,0.45); font-weight:500; transition:0.3s;">
-            Company Website
-          </a>
-        </div>
+          <div style="margin-top:14px;">
+            <a href="https://docketrun.com/" target="_blank"
+               style="color:#93c7ff; font-size:14px; text-decoration:none; border-bottom:1px dashed rgba(150,200,255,0.4); font-weight:500; transition:0.3s;">
+              Company Website
+            </a>
+          </div>
 
-        <!-- Project Description -->
-        <div style="margin-top:28px; color:#e2eeff; font-size:15.2px; line-height:1.9;">
-          <strong style="color:#a7c8ff;">Project:</strong> Truck Container Material Detection
-          <ul style="margin-top:12px; padding-left:24px; list-style-type:disc;">
-            <li>Developed and deployed YOLO & CNN-based models for automated material detection using CCTV footage.</li>
-            <li>Built real-time TensorFlow and OpenCV pipelines for high-speed and accurate inference.</li>
-            <li>Enhanced detection precision via data augmentation, mask-based filtering, and segmentation optimization.</li>
-            <li>Deployed scalable AI workflows for container monitoring and logistics automation.</li>
-            <li>Collaborated with engineers to integrate ML modules into production-grade infrastructure.</li>
-          </ul>
+          <div style="margin-top:22px; color:#e0ecff; font-size:14.6px; line-height:1.8;">
+            <strong style="color:#a7c8ff;">Project:</strong> Truck Container Material Detection
+            <ul style="margin-top:10px; padding-left:20px; list-style-type:disc;">
+              <li>Developed deep learning models (YOLO, CNN) to automate material detection in truck containers using CCTV footage.</li>
+              <li>Built real-time computer vision pipelines with TensorFlow and OpenCV for high-speed inference.</li>
+              <li>Enhanced accuracy and eliminated false positives using advanced segmentation and data augmentation.</li>
+              <li>Deployed optimized AI pipelines for continuous monitoring and logistics automation.</li>
+              <li>Collaborated with engineering teams to integrate scalable ML components into production.</li>
+            </ul>
+          </div>
         </div>
-
       </div>
     </div>
   </div>
 
-  <!-- Hover Animation Styles -->
   <style>
-    /* Outer Glass Glow */
+    /* Lightning glass hover */
+    .exp-card:hover {
+      transform: translateY(-4px);
+      background: linear-gradient(145deg, rgba(160,210,255,0.07), rgba(90,150,255,0.15));
+      border-color: rgba(180,220,255,0.6);
+      box-shadow: 0 0 25px rgba(140,190,255,0.25);
+    }
+
     .glass:hover {
-      border-color: rgba(170,220,255,0.55);
-      box-shadow: 0 0 65px rgba(150,200,255,0.22);
-      transform: scale(1.015);
+      box-shadow: 0 0 60px rgba(140,190,255,0.25);
+      border-color: rgba(180,220,255,0.45);
+      transform: scale(1.01);
     }
 
-    /* Inner Card Hover Effect */
-    .ach:hover {
-      background: linear-gradient(160deg, rgba(160,210,255,0.1), rgba(90,150,255,0.2));
-      border-color: rgba(190,230,255,0.7);
-      box-shadow: 0 0 40px rgba(140,190,255,0.25), inset 0 0 20px rgba(140,190,255,0.15);
-      transform: translateY(-6px) scale(1.01);
-    }
-
-    /* Link Hover */
-    .ach a:hover {
-      color:#cbe6ff;
-      border-bottom:1px solid rgba(160,220,255,0.85);
-      text-shadow:0 0 8px rgba(180,220,255,0.4);
+    .exp-card a:hover {
+      color:#b8dbff;
+      border-bottom:1px solid rgba(150,200,255,0.8);
     }
   </style>
 </section>
