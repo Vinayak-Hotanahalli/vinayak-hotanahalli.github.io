@@ -180,20 +180,23 @@ Replace any placeholder text if you want to tweak wording or add links.
   <main>
 
    <!-- ABOUT -->
-<section id="about">
+<section id="about" style="margin-top:60px;">
   <div class="container">
-    <div class="glass" style="display:grid;grid-template-columns:1fr 360px;gap:20px;align-items:start">
+
+    <div class="glass" style="display:grid;grid-template-columns:1fr 280px;gap:24px;align-items:start; padding:32px; border-radius:24px; box-shadow:0 0 50px rgba(108,150,255,0.25); backdrop-filter:blur(16px); transition:all 0.5s ease;">
+
+      <!-- About Me Text -->
       <div>
-        <h2 style="font-size:24px;margin:0">About Me</h2>
-        <p style="color:#bcd3ff;margin-top:12px;line-height:1.6">
+        <h2 style="font-size:26px; margin:0; color:#ffffff; text-shadow:0 0 12px rgba(160,210,255,0.2);">About Me</h2>
+        <p style="color:#bcd3ff; margin-top:14px; line-height:1.65; font-size:15.5px;">
           I'm an AI/ML engineer with hands-on experience in Computer Vision, Deep Learning, and Generative AI. I build reliable models and production pipelines — from data collection and annotation to model training, explainability (Grad-CAM/SHAP), and deployment (FastAPI, Docker). Currently focused on robust detection systems (YOLO/CNN), EEG-based drowsiness detection, and local LLM integrations. Passionate about researching, developing, and deploying AI solutions that solve real-world problems efficiently.
         </p>
 
         <!-- Education -->
-        <div style="display:flex;gap:12px;margin-top:16px;flex-wrap:wrap">
-          <div class="glass" style="padding:12px; min-width:220px;">
-            <strong>Education</strong>
-            <div style="margin-top:8px;font-size:13px;color:#cfe6ff;line-height:1.4">
+        <div style="display:flex; gap:14px; margin-top:18px; flex-wrap:wrap;">
+          <div class="glass" style="padding:14px; min-width:220px; border-radius:18px; background:rgba(255,255,255,0.03); border:1px solid rgba(160,210,255,0.2); box-shadow:inset 0 0 15px rgba(120,180,255,0.08); transition:all 0.4s ease;">
+            <strong style="color:#ffffff;">Education</strong>
+            <div style="margin-top:8px; font-size:13.5px; color:#cfe6ff; line-height:1.5;">
               BE (Bachelor of Engineering) — Electronics & Communication<br>
               KLS Gogte Institute of Technology, Belgaum, India (2021 – 2025)<br>
               CGPA: 8.39
@@ -202,25 +205,51 @@ Replace any placeholder text if you want to tweak wording or add links.
         </div>
       </div>
 
-      <!-- Quick Contact with logos -->
-      <div style="text-align:center" class="glass">
-        <h3 style="margin-top:0">Quick Contact</h3>
-        <div style="display:flex;flex-direction:column;gap:12px;align-items:center;margin-top:8px">
-          <a href="mailto:vinayakhotanahalli72@gmail.com" style="display:flex;align-items:center;gap:6px;text-decoration:none;color:#bcd3ff">
-            <img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/gmail.svg" alt="Email" width="22"> vinayakhotanahalli72@gmail.com
+      <!-- Quick Contact with only icons -->
+      <div style="text-align:center;">
+        <h3 style="margin-top:0; color:#ffffff; font-size:20px;">Quick Contact</h3>
+        <div style="display:flex; flex-direction:column; gap:16px; align-items:center; margin-top:14px;">
+          
+          <!-- Email -->
+          <a href="mailto:vinayakhotanahalli72@gmail.com" target="_blank" style="display:flex;align-items:center;justify-content:center;width:48px;height:48px;background:rgba(255,255,255,0.05);border-radius:12px;transition:0.3s;">
+            <img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/gmail.svg" alt="Email" width="24" style="filter:invert(1);">
           </a>
-          <a href="tel:+918970393850" style="display:flex;align-items:center;gap:6px;text-decoration:none;color:#bcd3ff">
-            <img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/phonelink.svg" alt="Phone" width="22"> +91 8970393850
+
+          <!-- LinkedIn -->
+          <a href="https://www.linkedin.com/in/vinayak-hotanahalli-2775b929b/" target="_blank" style="display:flex;align-items:center;justify-content:center;width:48px;height:48px;background:rgba(255,255,255,0.05);border-radius:12px;transition:0.3s;">
+            <img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/linkedin.svg" alt="LinkedIn" width="24" style="filter:invert(1);">
           </a>
-          <a href="https://www.linkedin.com/in/vinayak-hotanahalli-2775b929b/" target="_blank" style="display:flex;align-items:center;gap:6px;text-decoration:none;color:#bcd3ff">
-            <img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/linkedin.svg" alt="LinkedIn" width="22"> LinkedIn
+
+          <!-- GitHub -->
+          <a href="https://github.com/Vinayak-Hotanahalli" target="_blank" style="display:flex;align-items:center;justify-content:center;width:48px;height:48px;background:rgba(255,255,255,0.05);border-radius:12px;transition:0.3s;">
+            <img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/github.svg" alt="GitHub" width="24" style="filter:invert(1);">
           </a>
-          <a href="https://github.com/Vinayak-Hotanahalli" target="_blank" style="display:flex;align-items:center;gap:6px;text-decoration:none;color:#bcd3ff">
-            <img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/github.svg" alt="GitHub" width="22"> GitHub
+
+          <!-- Twitter / X -->
+          <a href="https://x.com/89_vinayak?t=2QrrDv-EYoLnZbVonv0JEQ&s=08" target="_blank" style="display:flex;align-items:center;justify-content:center;width:48px;height:48px;background:rgba(255,255,255,0.05);border-radius:12px;transition:0.3s;">
+            <img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/twitter.svg" alt="Twitter" width="24" style="filter:invert(1);">
           </a>
+
         </div>
       </div>
+
     </div>
+  </div>
+
+  <style>
+    .glass:hover {
+      box-shadow: 0 0 60px rgba(140,190,255,0.25);
+      border-color: rgba(180,220,255,0.45);
+      transform: scale(1.01);
+    }
+
+    .glass a:hover {
+      background: linear-gradient(135deg, #4da6ff, #80c0ff);
+      box-shadow: 0 0 15px rgba(120,200,255,0.4);
+      transform:translateY(-2px);
+    }
+  </style>
+</section>
     
    <!-- EXPERIENCE -->
 <section id="experience" style="margin-top:60px;">
