@@ -560,30 +560,36 @@ Replace any placeholder text if you want to tweak wording or add links.
   </style>
 </section>
 
-    <section id="achievements" style="margin-top:60px; background:linear-gradient(180deg, rgba(255,255,255,0.008), rgba(0,0,0,0.02)); padding:60px 0;">
+    <section id="achievements" style="margin-top:60px; background:linear-gradient(180deg, rgba(255,255,255,0.01), rgba(0,0,0,0.03)); padding:60px 0;">
   <div class="container">
     <h2 style="color:#eaf3ff; font-size:28px; margin-bottom:8px; text-shadow:0 0 12px rgba(160,210,255,0.25);">Achievements & Publications</h2>
-    <p style="color:#9fb6ea; margin-top:8px; font-size:15px;">Highlighting peer-reviewed research and notable achievements in AI and Deep Learning.</p>
+    <p style="color:#9fb6ea; margin-top:8px; font-size:15px;">Highlighting peer-reviewed research and notable contributions in AI, Deep Learning, and Explainability.</p>
 
-    <div class="achievement-card" style="margin-top:32px; background: rgba(255,255,255,0.03); border-radius:22px; padding:28px 32px; border:1px solid rgba(160,210,255,0.15); box-shadow:0 0 25px rgba(120,180,255,0.08); backdrop-filter:blur(16px); transition: all 0.4s ease; position:relative;">
-      
-      <!-- Tag + Dates -->
-      <div style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap;">
-        <span style="padding:6px 14px; border-radius:12px; font-size:13px; font-weight:600; background:linear-gradient(90deg,#1a73e8,#3a8ef6); color:white; text-shadow:0 0 6px rgba(58,142,246,0.5);">
-          IEEE NKCON 2024
-        </span>
-        <span style="font-size:13px; color:#b9d6ff; font-weight:500;">April 2024 – August 2024</span>
+    <div class="achievement-card" style="margin-top:32px; background: rgba(255,255,255,0.03); border-radius:24px; padding:32px 36px; border:1px solid rgba(160,210,255,0.15); box-shadow:0 0 28px rgba(120,180,255,0.08); backdrop-filter:blur(18px); transition: all 0.5s ease;">
+
+      <!-- Header with Category + Conference + Date -->
+      <div style="display:flex; justify-content:space-between; flex-wrap:wrap; align-items:center;">
+        <div>
+          <h3 style="font-size:20px; color:#ffffff; margin:0;">Research Publication</h3>
+          <p style="color:#b9d6ff; font-size:14.2px; margin-top:6px;">
+            <span style="background:linear-gradient(90deg,#ff7a18,#af002d); -webkit-background-clip:text; color:transparent; font-weight:600; text-shadow:0 0 6px rgba(255,120,24,0.3);">April 2024 – August 2024</span>  
+            | <span style="background:linear-gradient(90deg,#1a73e8,#3a8ef6); -webkit-background-clip:text; color:transparent; font-weight:600; text-shadow:0 0 8px rgba(58,142,246,0.3);">IEEE NKCON 2024</span>
+            | <span style="background:linear-gradient(90deg,#ffbc42,#ff7b00); -webkit-background-clip:text; color:transparent; font-weight:600; text-shadow:0 0 6px rgba(255,188,66,0.3);">Deep Learning & Explainability</span>
+          </p>
+        </div>
       </div>
 
-      <!-- Paper Title -->
-      <div style="margin-top:16px; font-size:16.5px; line-height:1.75; color:#e0ecff; text-align:justify;">
-        <strong style="font-size:17.5px; background:linear-gradient(135deg,#4da6ff,#80c0ff); -webkit-background-clip:text; color:transparent; font-weight:700; text-shadow:0 0 12px rgba(120,200,255,0.4); display:block; margin-bottom:10px;">
+      <!-- Paper Title and Details -->
+      <div style="margin-top:22px; color:#e0ecff; font-size:15px; line-height:1.8; text-align:justify;">
+        <strong style="font-size:17.5px; background:linear-gradient(135deg,#4da6ff,#80c0ff); -webkit-background-clip:text; color:transparent; font-weight:700; text-shadow:0 0 14px rgba(120,200,255,0.45); display:block; margin-bottom:12px;">
           "An Approach to Hyperparameter Tuning and Optimizers for Driver Drowsiness Detection Using Artificial Neural Networks"
         </strong>
-        <ul style="padding-left:20px; list-style-type:disc;">
-          <li>Designed and fine-tuned ANN architectures using advanced optimizers (Adam, RMSProp) to significantly enhance drowsiness detection accuracy using EEG signals.</li>
-          <li>Achieved 92% model accuracy while reducing overfitting through rigorous hyperparameter search and cross-validation strategies.</li>
-          <li>Contributed to the domain of AI in automotive safety, emphasizing real-time detection and performance optimization.</li>
+        <ul style="padding-left:22px; list-style-type:disc;">
+          <li>Developed and fine-tuned ANN architectures leveraging <span style="font-weight:600; background:linear-gradient(135deg,#ff6ec7,#ff3cac); -webkit-background-clip:text; color:transparent;">Adam & RMSProp</span> optimizers for enhanced EEG-based driver drowsiness detection.</li>
+          <li>Designed a modular pipeline covering data preprocessing, feature engineering, model training, evaluation, and deployment using <span style="font-weight:600; background:linear-gradient(135deg,#00c6ff,#0072ff); -webkit-background-clip:text; color:transparent;">TensorFlow, Scikit-learn</span> and explainability tools (Grad-CAM, SHAP, LIME).</li>
+          <li>Achieved <span style="font-weight:600; background:linear-gradient(135deg,#ffde59,#ffc700); -webkit-background-clip:text; color:transparent;">92% accuracy</span> while mitigating overfitting through hyperparameter search and cross-validation.</li>
+          <li>Enhanced transparency and model trustworthiness via deep learning explainability workflows, generating heatmaps and interpretability reports for real-time monitoring.</li>
+          <li>Contributed to automotive safety AI, emphasizing <span style="font-weight:600; background:linear-gradient(135deg,#ff6a00,#ff0000); -webkit-background-clip:text; color:transparent;">real-time detection, workflow impact, and operational optimization</span>.</li>
         </ul>
       </div>
 
@@ -592,9 +598,9 @@ Replace any placeholder text if you want to tweak wording or add links.
 
   <style>
     .achievement-card:hover {
-      transform: translateY(-4px) scale(1.02);
-      border-color: rgba(180,220,255,0.45);
-      box-shadow: 0 0 35px rgba(120,180,255,0.25), 0 0 45px rgba(140,200,255,0.18);
+      transform: translateY(-5px) scale(1.025);
+      border-color: rgba(180,220,255,0.5);
+      box-shadow: 0 0 45px rgba(120,180,255,0.28), 0 0 55px rgba(140,200,255,0.22);
     }
   </style>
 </section>
