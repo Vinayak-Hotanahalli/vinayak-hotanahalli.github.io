@@ -161,21 +161,86 @@ Replace any placeholder text if you want to tweak wording or add links.
 
   <!-- HERO -->
   <!-- 🌟 HERO SECTION START -->
-<!-- 🌟 HERO SECTION START -->
 <section class="hero" role="banner" style="position:relative; height:100vh; display:flex; align-items:center; justify-content:center; overflow:hidden; background:#05060a; color:white; text-align:center;">
 
-  <canvas id="neural-bg"></canvas>
+  <!-- Neural Network Background -->
+  <div id="neural-bg" style="position:absolute;inset:0;z-index:0;"></div>
 
-  <div class="hero">
+  <!-- Hero Text -->
+  <div class="hero-content" style="position:relative;z-index:2;">
     <h1 class="typing-text">Vinayak Girish Hotanahalli</h1>
     <p class="subtext">Aspiring AI/ML & Software Engineer</p>
   </div>
 
 </section>
 
+<!-- Neural Animation + Typing Effect Scripts -->
+<script src="https://cdn.jsdelivr.net/npm/tsparticles@2.11.0/tsparticles.min.js"></script>
 <script>
-  // Paste your neuron background JavaScript here
+  // Neural Background Animation
+  tsParticles.load("neural-bg", {
+    background: { color: { value: "#05060a" } },
+    fpsLimit: 60,
+    particles: {
+      number: { value: 120, density: { enable: true, area: 800 } },
+      color: { value: ["#00d0ff","#8a2be2","#ff6ec7"] },
+      shape: { type: "circle" },
+      opacity: { value: 0.6 },
+      size: { value: { min: 1, max: 3 } },
+      move: { enable: true, speed: 0.6, outMode: "bounce" },
+      links: { enable: true, distance: 140, color: "#00d0ff", opacity: 0.2, width: 1 }
+    },
+    interactivity: {
+      events: { onHover: { enable: true, mode: "repulse" }, onClick: { enable: true, mode: "push" } },
+      modes: { repulse: { distance: 120, duration: 0.4 }, push: { quantity: 3 } }
+    },
+    detectRetina: true
+  });
+
+  // Typing Animation
+  const text = "Vinayak Girish Hotanahalli";
+  const typingEl = document.querySelector(".typing-text");
+  let i = 0;
+  function typeWriter() {
+    if (i < text.length) {
+      typingEl.innerHTML += text.charAt(i);
+      i++;
+      setTimeout(typeWriter, 120);
+    }
+  }
+  window.onload = typeWriter;
 </script>
+
+<!-- Typing Text Style -->
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@700&display=swap');
+
+  .typing-text {
+    font-family: 'Orbitron', sans-serif;
+    font-size: clamp(28px,5vw,60px);
+    font-weight: 700;
+    color: #00d0ff;
+    letter-spacing: 2px;
+    border-right: 3px solid #8a2be2;
+    white-space: nowrap;
+    overflow: hidden;
+    width: fit-content;
+    margin: 0 auto;
+    animation: blinkCursor 0.8s step-end infinite;
+  }
+
+  @keyframes blinkCursor {
+    from { border-color: transparent; }
+    to { border-color: #8a2be2; }
+  }
+
+  .subtext {
+    margin-top: 18px;
+    font-size: 20px;
+    color: #bcd3ff;
+    font-weight: 500;
+  }
+</style>
 <!-- 🌟 HERO SECTION END -->
 
 <!-- TSParticles (AI Background Animation Script) -->
