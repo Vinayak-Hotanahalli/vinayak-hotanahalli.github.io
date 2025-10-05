@@ -235,13 +235,13 @@ Replace any placeholder text if you want to tweak wording or add links.
   <div class="glass" 
        style="margin-top:24px; background:rgba(255,255,255,0.03); border:1px solid rgba(180,220,255,0.18); border-radius:20px; padding:32px; box-shadow:0 0 30px rgba(120,180,255,0.08); backdrop-filter:blur(18px); transition:all 0.4s ease;">
     
-    <h2 style="font-size:26px; color:#eaf3ff; margin-bottom:16px; letter-spacing:0.5px; text-shadow:0 0 10px rgba(150,200,255,0.2);">
+    <h2 style="font-size:26px; color:#eaf3ff; margin-bottom:24px; letter-spacing:0.5px; text-shadow:0 0 10px rgba(150,200,255,0.2);">
       Experience
     </h2>
 
     <div class="ach" 
          style="background:linear-gradient(135deg, rgba(255,255,255,0.02), rgba(120,180,255,0.08)); border-radius:16px; padding:24px 28px; border:1px solid rgba(150,200,255,0.25); box-shadow:inset 0 0 20px rgba(120,180,255,0.05); transition:all 0.4s ease;">
-      
+
       <div style="display:flex; justify-content:space-between; align-items:flex-start; flex-wrap:wrap;">
         <div>
           <strong style="font-size:19px; color:#ffffff;">AI/ML and Computer Vision Intern</strong>
@@ -256,42 +256,42 @@ Replace any placeholder text if you want to tweak wording or add links.
 
       <div style="margin-top:12px; font-size:14px;">
         <a href="https://docketrun.com/" target="_blank"
-           style="color:#93c7ff; text-decoration:none; border-bottom:1px dashed rgba(150,200,255,0.5); font-weight:500; transition:0.3s;">
-          Company Website — docketrun.com
+           style="color:#93c7ff; text-decoration:none; font-weight:500; transition:0.3s;">
+          Company Website
         </a>
       </div>
 
       <div style="margin-top:18px; color:#e0ecff; font-size:14.5px; line-height:1.8;">
         <strong style="color:#a7c8ff;">Project:</strong> Truck Container Material Detection
         <ul style="margin-top:10px; padding-left:20px; list-style:disc;">
-          <li>Built and deployed deep learning models (YOLO, CNN) to automate material detection in truck containers using CCTV footage.</li>
-          <li>Designed an end-to-end computer vision pipeline ensuring real-time inference with TensorFlow and OpenCV.</li>
-          <li>Optimized detection precision by eliminating false positives and enhancing post-processing logic.</li>
-          <li>Integrated AI workflows into logistics automation, reducing manual checks and increasing throughput.</li>
-          <li>Improved inference performance with quantization and tuned parameters for latency-sensitive environments.</li>
-          <li>Collaborated with data teams to refine model training loops and automate retraining for live operations.</li>
+          <li>Developed deep learning models (YOLO, CNN) to automate material detection in truck containers using CCTV footage.</li>
+          <li>Built real-time computer vision pipelines with TensorFlow and OpenCV for dynamic environment detection.</li>
+          <li>Optimized model accuracy and speed for logistics operations under production constraints.</li>
+          <li>Deployed scalable AI workflows to reduce manual inspection and improve throughput.</li>
+          <li>Enhanced post-processing to eliminate false positives and refine segmentation masks.</li>
+          <li>Worked with teams to integrate machine learning solutions into enterprise systems.</li>
         </ul>
       </div>
     </div>
   </div>
 
   <style>
+    /* Highlight glass box when hovering */
+    .ach:hover {
+      background: linear-gradient(135deg, rgba(160,210,255,0.06), rgba(100,160,255,0.14));
+      border-color: rgba(180,220,255,0.6);
+      box-shadow: 0 0 30px rgba(150,210,255,0.2);
+      transform: translateY(-3px);
+    }
+
     .glass:hover {
       border-color: rgba(160,210,255,0.5);
       box-shadow: 0 0 40px rgba(140,190,255,0.12), inset 0 0 25px rgba(140,190,255,0.05);
-      transform: scale(1.01);
-    }
-
-    .ach:hover {
-      background:linear-gradient(135deg, rgba(160,210,255,0.05), rgba(100,160,255,0.12));
-      border-color: rgba(180,220,255,0.5);
-      box-shadow: 0 0 25px rgba(150,210,255,0.15);
-      transform: translateY(-2px);
     }
 
     .ach a:hover {
-      border-bottom:1px solid rgba(150,200,255,0.9);
-      color:#b4daff;
+      color: #b4daff;
+      text-decoration: underline;
     }
   </style>
 </section>
