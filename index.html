@@ -273,37 +273,59 @@ Replace any placeholder text if you want to tweak wording or add links.
 
     <!-- PROJECTS -->
     <section id="projects" style="background:linear-gradient(180deg, rgba(255,255,255,0.008), rgba(0,0,0,0.02))">
-      <div class="container">
-        <h2>Selected Projects</h2>
-        <p style="color:#9fb6ea;margin-top:8px">A curated list of hands-on projects from my resume.</p>
+  <div class="container">
+    <h2>Selected Projects</h2>
+    <p style="color:#9fb6ea;margin-top:8px">A curated list of hands-on projects from my resume.</p>
 
-        <div class="projects-grid" id="projectsGrid">
-          <article class="card" data-tilt>
-            <div class="tag">Computer Vision</div>
-            <h3>Truck Container Material Detection</h3>
-            <p>Built YOLO & CNN-based pipelines to detect cement and sand inside truck/tractor containers. Focused on precise container detection, segmentation, container-only bounding boxes, and eliminating false positives (wheels/ground). Improved accuracy via data augmentation and post-processing masks.</p>
-          </article>
+    <div class="projects-grid" id="projectsGrid">
 
-          <article class="card" data-tilt>
-            <div class="tag">Generative AI</div>
-            <h3>Text → 3D Generation Pipeline</h3>
-            <p>Created a pipeline to convert textual prompts into 3D assets using local LLM orchestration and generative model tools. Dockerized for consistent deployments and integrated with a lightweight Streamlit UI for demos.</p>
-          </article>
+      <!-- 1️⃣ Text to 3D Generation -->
+      <article class="card" data-tilt>
+        <div class="tag">Generative AI</div>
+        <h3>Text → 3D Generation Pipeline</h3>
+        <p><strong>Duration:</strong> Jan 2025 – May 2025</p>
+        <p>Created a pipeline to convert textual prompts into 3D assets using local LLM orchestration and generative model tools. Dockerized for consistent deployments and integrated with a lightweight Streamlit UI for demos.</p>
+        <ul style="margin-top:8px;">
+          <li>Automated text-to-3D asset generation workflows for reproducibility and realism.</li>
+          <li>Used advanced prompt engineering for enhanced creativity and structural quality.</li>
+          <li>Deployed using Docker for environment consistency and portability.</li>
+        </ul>
+        <a href="https://github.com/Vinayak-Hotanahalli" target="_blank" style="color:#9fb6ea;display:block;margin-top:8px;">🔗 View on GitHub</a>
+      </article>
 
-          <article class="card" data-tilt>
-            <div class="tag">Explainability</div>
-            <h3>Grad-CAM & SHAP Visualizations</h3>
-            <p>Implemented explainability tools to visualize CNN decisions. Used Grad-CAM for spatial explanations and SHAP for feature importance to debug and harden models.</p>
-          </article>
+      <!-- 2️⃣ CNN Explainability -->
+      <article class="card" data-tilt>
+        <div class="tag">Explainability</div>
+        <h3>CNN Layer Visualization & Explainability using Grad-CAM, LIME, SHAP</h3>
+        <p><strong>Duration:</strong> Sep 2024 – Dec 2024</p>
+        <p>Implemented Grad-CAM, LIME, and SHAP frameworks to visualize CNN prediction layers and improve interpretability. Analyzed optimizers, activation functions, and backpropagation via heatmaps and ROC curves.</p>
+        <ul style="margin-top:8px;">
+          <li>Achieved 94.56% accuracy while providing deep interpretability insights.</li>
+          <li>Enhanced transparency of CNN behavior through visualization and layer analysis.</li>
+          <li>Used TensorFlow and Keras to fine-tune CNN architectures for better generalization.</li>
+        </ul>
+        <a href="https://github.com/Vinayak-Hotanahalli" target="_blank" style="color:#9fb6ea;display:block;margin-top:8px;">🔗 View on GitHub</a>
+      </article>
 
-          <article class="card" data-tilt>
-            <div class="tag">Signal Processing</div>
-            <h3>EEG Drowsiness Detection</h3>
-            <p>Designed ANN models for driver drowsiness detection using EEG data with hyperparameter tuning and cross-validation, achieving strong accuracy in experimental settings.</p>
-          </article>
-        </div>
-      </div>
-    </section>
+      <!-- 3️⃣ Driver Drowsiness Detection -->
+      <article class="card" data-tilt>
+        <div class="tag">AI & Signal Processing</div>
+        <h3>AI-Powered Driver Drowsiness Detection via EEG & ANN</h3>
+        <p><strong>Duration:</strong> Apr 2024 – Aug 2024</p>
+        <p>Developed a robust ANN-based system for detecting driver drowsiness using EEG signals. Designed, trained, and optimized artificial neural networks with TensorFlow and Scikit-learn to classify alert vs. drowsy states.</p>
+        <ul style="margin-top:8px;">
+          <li>Implemented both TensorFlow-based and manual backpropagation for validation.</li>
+          <li>Achieved 92% accuracy on EEG dataset for reliable state classification.</li>
+          <li>Enhanced ANN efficiency and responsiveness through systematic hyperparameter tuning.</li>
+          <li>Aligned pipeline design with modular and MLOps-ready architecture for scalability.</li>
+        </ul>
+        <a href="https://github.com/Vinayak-Hotanahalli" target="_blank" style="color:#9fb6ea;display:block;margin-top:8px;">🔗 View on GitHub</a>
+      </article>
+
+    </div>
+  </div>
+</section>
+
 
     <!-- CERTIFICATIONS / ACHIEVEMENTS -->
     <section id="certs">
