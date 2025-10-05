@@ -231,41 +231,70 @@ Replace any placeholder text if you want to tweak wording or add links.
     <div style="position:relative; padding-left:32px; border-left:2px solid rgba(160,200,255,0.3);">
 
       <!-- DocketRun Internship -->
-      <div class="exp-card" 
-           style="background:rgba(255,255,255,0.03); margin-bottom:40px; padding:24px 28px; border-radius:20px; box-shadow:0 0 18px rgba(150,200,255,0.08); transition:0.3s ease;">
-        
-        <div style="position:absolute; left:-10px; top:28px; width:18px; height:18px; border-radius:50%; background:linear-gradient(135deg,#7db7ff,#a9cfff);"></div>
+      <section id="experience" style="margin-top:60px;">
+  <div class="glass" 
+       style="margin-top:24px; background:rgba(255,255,255,0.03); border:1px solid rgba(180,220,255,0.18); border-radius:20px; padding:32px; box-shadow:0 0 30px rgba(120,180,255,0.08); backdrop-filter:blur(18px); transition:all 0.4s ease;">
+    
+    <h2 style="font-size:26px; color:#eaf3ff; margin-bottom:16px; letter-spacing:0.5px; text-shadow:0 0 10px rgba(150,200,255,0.2);">
+      Experience
+    </h2>
 
-        <div style="display:flex; justify-content:space-between; flex-wrap:wrap; align-items:center;">
-          <div>
-            <h3 style="font-size:20px; color:#ffffff;">AI/ML and Computer Vision Intern</h3>
-            <p style="color:#9ecbff; margin-top:4px; font-size:14px;">DocketRun Tech Pvt. Ltd., Hubli</p>
+    <div class="ach" 
+         style="background:linear-gradient(135deg, rgba(255,255,255,0.02), rgba(120,180,255,0.08)); border-radius:16px; padding:24px 28px; border:1px solid rgba(150,200,255,0.25); box-shadow:inset 0 0 20px rgba(120,180,255,0.05); transition:all 0.4s ease;">
+      
+      <div style="display:flex; justify-content:space-between; align-items:flex-start; flex-wrap:wrap;">
+        <div>
+          <strong style="font-size:19px; color:#ffffff;">AI/ML and Computer Vision Intern</strong>
+          <div style="margin-top:4px; font-size:14px; color:#a9cfff;">
+            DocketRun Tech Pvt. Ltd., Hubli
           </div>
-          <span style="font-size:13px; color:#aacaff;">Jan 2025 – May 2025</span>
         </div>
-
-        <div style="margin-top:10px;">
-          <a href="https://docketrun.com/" target="_blank"
-             style="font-size:14px; color:#84b8ff; text-decoration:none; border-bottom:1px solid transparent; transition:0.3s;">
-            Company Website — www.docketrun.com
-          </a>
-        </div>
-
-        <div style="margin-top:16px; font-size:14.6px; color:#d8e7ff; line-height:1.8;">
-          <strong style="color:#a7c8ff;">Project:</strong> Truck Container Material Detection
-          <ul style="margin-top:10px; padding-left:18px; list-style-type:disc;">
-            <li>Developed deep learning models (YOLO, CNN) for automated detection in logistics video streams.</li>
-            <li>Designed a scalable TensorFlow–OpenCV pipeline for real-time material recognition and classification.</li>
-            <li>Optimized inference speed and model performance for live operational conditions.</li>
-            <li>Deployed solutions within production workflows to automate container inspection.</li>
-            <li>Collaborated across teams to integrate AI modules and enhance monitoring reliability.</li>
-            <li>Acquired full-cycle exposure from model design to deployment and post-production analysis.</li>
-          </ul>
-        </div>
+        <span style="font-size:13px; color:#b9d6ff; background:rgba(150,200,255,0.08); padding:4px 10px; border-radius:8px;">
+          Jan 2025 – May 2025
+        </span>
       </div>
 
+      <div style="margin-top:12px; font-size:14px;">
+        <a href="https://docketrun.com/" target="_blank"
+           style="color:#93c7ff; text-decoration:none; border-bottom:1px dashed rgba(150,200,255,0.5); font-weight:500; transition:0.3s;">
+          Company Website — docketrun.com
+        </a>
+      </div>
+
+      <div style="margin-top:18px; color:#e0ecff; font-size:14.5px; line-height:1.8;">
+        <strong style="color:#a7c8ff;">Project:</strong> Truck Container Material Detection
+        <ul style="margin-top:10px; padding-left:20px; list-style:disc;">
+          <li>Built and deployed deep learning models (YOLO, CNN) to automate material detection in truck containers using CCTV footage.</li>
+          <li>Designed an end-to-end computer vision pipeline ensuring real-time inference with TensorFlow and OpenCV.</li>
+          <li>Optimized detection precision by eliminating false positives and enhancing post-processing logic.</li>
+          <li>Integrated AI workflows into logistics automation, reducing manual checks and increasing throughput.</li>
+          <li>Improved inference performance with quantization and tuned parameters for latency-sensitive environments.</li>
+          <li>Collaborated with data teams to refine model training loops and automate retraining for live operations.</li>
+        </ul>
+      </div>
     </div>
   </div>
+
+  <style>
+    .glass:hover {
+      border-color: rgba(160,210,255,0.5);
+      box-shadow: 0 0 40px rgba(140,190,255,0.12), inset 0 0 25px rgba(140,190,255,0.05);
+      transform: scale(1.01);
+    }
+
+    .ach:hover {
+      background:linear-gradient(135deg, rgba(160,210,255,0.05), rgba(100,160,255,0.12));
+      border-color: rgba(180,220,255,0.5);
+      box-shadow: 0 0 25px rgba(150,210,255,0.15);
+      transform: translateY(-2px);
+    }
+
+    .ach a:hover {
+      border-bottom:1px solid rgba(150,200,255,0.9);
+      color:#b4daff;
+    }
+  </style>
+</section>
 
   <style>
     /* subtle hover animation */
