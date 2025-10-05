@@ -442,48 +442,53 @@ Replace any placeholder text if you want to tweak wording or add links.
     <section id="projects" style="background:linear-gradient(180deg, rgba(255,255,255,0.008), rgba(0,0,0,0.02)); padding:60px 0;">
   <div class="container">
     <h2 style="color:#eaf3ff; font-size:28px; margin-bottom:8px; text-shadow:0 0 12px rgba(160,210,255,0.25);">Selected Projects</h2>
-    <p style="color:#9fb6ea; margin-top:8px; font-size:15px;">A curated set of hands-on projects emphasizing Deep Learning and model explainability.</p>
+    <p style="color:#9fb6ea; margin-top:8px; font-size:15px;">Curated hands-on projects emphasizing Deep Learning, Generative AI, Explainability, and signal processing techniques.</p>
 
-    <div class="projects-grid" style="display:grid; grid-template-columns:repeat(auto-fit, minmax(320px, 1fr)); gap:24px; margin-top:24px;">
+    <div class="projects-grid" style="display:grid; grid-template-columns:repeat(auto-fit, minmax(320px, 1fr)); gap:24px; margin-top:32px;">
 
-      <!-- 1️⃣ Text to 3D Generation -->
+      <!-- 1️⃣ Generative AI -->
       <article class="card">
-        <div class="tag">Generative AI</div>
+        <div class="tag generative">Generative AI</div>
         <h3>Text → 3D Generation Pipeline</h3>
         <p><strong>Duration:</strong> Jan 2025 – May 2025</p>
-        <p>Built a pipeline that converts textual prompts into realistic 3D assets using local LLM orchestration and generative model tools. Dockerized for consistent deployments with a lightweight Streamlit demo interface.</p>
+        <p>Developed a complete pipeline to convert textual prompts into realistic 3D assets leveraging local LLM orchestration, generative AI models, and prompt engineering techniques. Fully Dockerized for reproducible deployments and integrated into a lightweight Streamlit UI for demoing and testing.</p>
         <ul>
-          <li>Automated text-to-3D asset workflows ensuring reproducibility and realism.</li>
-          <li>Advanced prompt engineering to improve creativity and structural accuracy.</li>
-          <li>Dockerized deployments for environment portability and consistency.</li>
+          <li>Automated text-to-3D asset generation workflows ensuring accuracy and structural realism.</li>
+          <li>Implemented advanced prompt engineering and natural language parsing for better 3D coherence.</li>
+          <li>Integrated deployment pipeline with Streamlit for real-time interaction and visualization.</li>
+          <li>Docker-based containerization ensures consistent environment for research and production.</li>
         </ul>
         <a href="https://github.com/Vinayak-Hotanahalli/text-to-3d-ai-pipeline" target="_blank" class="github-btn">View on GitHub</a>
       </article>
 
       <!-- 2️⃣ Deep Learning Explainability -->
-      <article class="card explainability">
-        <div class="tag" style="background: linear-gradient(135deg, #ff6fcf, #3a8ef6); color:#fff;">Deep Learning Explainability</div>
-        <h3>CNN Explainability with Grad-CAM, LIME, SHAP</h3>
+      <article class="card">
+        <div class="tag explainability">Deep Learning & Explainability</div>
+        <h3>CNN Layer Visualization & Model Interpretability</h3>
         <p><strong>Duration:</strong> Sep 2024 – Dec 2024</p>
-        <p>Implemented Deep Learning interpretability pipelines to visualize CNN model behavior and layer activations. Used Grad-CAM, LIME, and SHAP to make predictions explainable, aiding model trust and analysis.</p>
+        <p>Implemented advanced deep learning interpretability techniques on convolutional neural networks to visualize predictions and understand internal feature learning. Used Grad-CAM, LIME, and SHAP to highlight influential features, improve transparency, and guide model optimization.</p>
         <ul>
-          <li>Achieved 94.56% accuracy while providing deep interpretability insights.</li>
-          <li>Visualized CNN activations, gradients, and importance weights for transparency.</li>
-          <li>Enhanced model analysis using TensorFlow and Keras architectures.</li>
+          <li>Visualized CNN feature maps, layer activations, and gradients to interpret model behavior.</li>
+          <li>Integrated SHAP and LIME for feature-level explainability and insights into decision-making.</li>
+          <li>Analyzed model performance under different optimizers, activation functions, and hyperparameters.</li>
+          <li>Enhanced trust in AI systems by providing explainable outputs for stakeholders.</li>
+          <li>Implemented using TensorFlow & Keras with detailed visualization dashboards.</li>
         </ul>
         <a href="https://github.com/Vinayak-Hotanahalli/CNN-Visualization-Explainability" target="_blank" class="github-btn">View on GitHub</a>
       </article>
 
-      <!-- 3️⃣ Driver Drowsiness Detection -->
+      <!-- 3️⃣ AI & Signal Processing -->
       <article class="card">
-        <div class="tag">AI & Signal Processing</div>
+        <div class="tag signal">AI & Signal Processing</div>
         <h3>Driver Drowsiness Detection via EEG & ANN</h3>
         <p><strong>Duration:</strong> Apr 2024 – Aug 2024</p>
-        <p>Developed a robust ANN system to detect driver drowsiness using EEG signals. Trained artificial neural networks with TensorFlow and Scikit-learn to classify alert vs drowsy states.</p>
+        <p>Developed a real-time driver drowsiness detection system leveraging EEG signals and artificial neural networks. Focused on building a modular pipeline for signal acquisition, preprocessing, ANN training, hyperparameter optimization, and deployment-ready inference for real-world scenarios.</p>
         <ul>
-          <li>Implemented TensorFlow-based backpropagation and hyperparameter tuning for ANN.</li>
-          <li>Achieved 92% accuracy on EEG dataset.</li>
-          <li>Designed scalable and MLOps-ready pipeline for real-time usage.</li>
+          <li>Processed raw EEG signals for feature extraction and noise reduction.</li>
+          <li>Designed, trained, and validated ANN models using TensorFlow and Scikit-learn.</li>
+          <li>Achieved 92% accuracy in alert vs. drowsy classification, ensuring high reliability.</li>
+          <li>Optimized ANN architecture with hyperparameter tuning for real-time inference efficiency.</li>
+          <li>Implemented scalable and MLOps-ready pipeline for integration into automotive systems.</li>
         </ul>
         <a href="https://github.com/Vinayak-Hotanahalli/Driver-Drowsiness-Detection" target="_blank" class="github-btn">View on GitHub</a>
       </article>
@@ -492,14 +497,12 @@ Replace any placeholder text if you want to tweak wording or add links.
   </div>
 
   <style>
-    .projects-grid {
-      perspective: 1200px;
-    }
+    .projects-grid { perspective: 1200px; }
 
     .card {
       background: rgba(255,255,255,0.03);
       border-radius: 22px;
-      padding: 24px 20px;
+      padding: 28px 24px;
       border: 1px solid rgba(160,210,255,0.15);
       box-shadow: 0 0 25px rgba(120,180,255,0.08);
       transition: transform 0.4s ease, box-shadow 0.4s ease, border-color 0.4s ease;
@@ -512,52 +515,41 @@ Replace any placeholder text if you want to tweak wording or add links.
       box-shadow: 0 0 35px rgba(120,180,255,0.25), 0 0 45px rgba(140,200,255,0.18);
     }
 
-    .card h3 {
-      font-size: 18px;
-      margin: 12px 0;
-      color: #ffffff;
-    }
+    .card h3 { font-size:18px; margin:12px 0; color:#ffffff; }
 
-    .card p, .card ul li {
-      font-size: 14.5px;
-      color: #cfe6ff;
-      line-height: 1.6;
-    }
+    .card p, .card ul li { font-size:14.5px; color:#cfe6ff; line-height:1.65; }
 
-    .card ul {
-      padding-left:20px;
-      margin-top:8px;
-    }
+    .card ul { padding-left:20px; margin-top:8px; }
 
+    /* Tags */
     .tag {
       display:inline-block;
-      padding:4px 10px;
-      border-radius:12px;
-      background: rgba(60,150,255,0.25);
-      font-size:12px;
-      color:#fff;
+      padding:4px 12px;
+      border-radius:14px;
+      font-size:12.5px;
       font-weight:500;
       margin-bottom:6px;
       transition: all 0.3s ease;
     }
 
-    .tag:hover {
-      background: linear-gradient(135deg, #4da6ff, #80c0ff);
-      box-shadow: 0 0 12px rgba(120,200,255,0.35);
-    }
+    .generative { background: linear-gradient(135deg, #ff6fcf, #3a8ef6); color:#fff; }
+    .explainability { background: linear-gradient(135deg, #ff6fcf, #3aafff); color:#fff; }
+    .signal { background: linear-gradient(135deg, #ffa13d, #ffd03d); color:#fff; }
+
+    .tag:hover { box-shadow:0 0 12px rgba(255,255,255,0.35); transform:scale(1.05); }
 
     .github-btn {
-      display: inline-block;
-      margin-top: 12px;
-      padding: 8px 18px;
+      display:inline-block;
+      margin-top:12px;
+      padding:8px 18px;
       background: linear-gradient(90deg, #1a73e8, #3a8ef6);
       color: white;
       text-decoration: none;
       border-radius: 10px;
-      font-weight: 500;
-      letter-spacing: 0.3px;
+      font-weight:500;
+      letter-spacing:0.3px;
       transition: all 0.3s ease;
-      box-shadow: 0 0 8px rgba(58, 142, 246, 0.4);
+      box-shadow: 0 0 8px rgba(58,142,246,0.4);
     }
 
     .github-btn:hover {
