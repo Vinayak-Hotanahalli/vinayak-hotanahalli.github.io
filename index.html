@@ -1,84 +1,309 @@
-<!DOCTYPE html>
+<!--
+Profilero — Vinayak Girish Hotanahalli
+Single-file personal portfolio (resume) — copy to index.html and host on GitHub Pages / Vercel.
+
+What's included:
+- 3D hero (Three.js) with rotating low-poly "brain"
+- Particle background
+- Custom cursor with hover effect & click ripple
+- GSAP scroll reveals & card tilt
+- Neon/glassmorphism theme & dark/light toggle
+- Sections: Hero, About, Skills, Projects, Certifications & Achievements, Contact
+- Responsive & optimized for static hosting
+
+Personal info pulled from your resume:
+- Name: Vinayak Girish Hotanahalli
+- Tagline: AI/ML Engineer | Computer Vision | Generative AI | Deep Learning Enthusiast
+- Email: vinayakhotanahalli72@gmail.com
+- Phone: +91 8970393850
+- LinkedIn: https://www.linkedin.com/in/vinayak-hotanahalli-2775b929b/
+- GitHub: https://github.com/Vinayak-Hotanahalli
+
+Replace any placeholder text if you want to tweak wording or add links.
+-->
+<!doctype html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Vinayak Girish Hotanahalli | Portfolio</title>
-
-  <!-- Google Fonts -->
-  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700&family=Roboto+Mono:wght@400;700&display=swap" rel="stylesheet">
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Profilero — Vinayak Girish Hotanahalli</title>
+  <meta name="description" content="Profilero — Personal portfolio of Vinayak Girish Hotanahalli (AI/ML, Computer Vision). 3D web resume with interactive effects." />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
 
   <style>
-    body {
-      margin: 0;
-      font-family: 'Roboto Mono', monospace;
-      background: #000;
-      color: #fff;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      height: 100vh;
-      text-align: center;
-      overflow: hidden;
+    :root{
+      --bg:#05060a;
+      --panel: rgba(255,255,255,0.04);
+      --muted: rgba(255,255,255,0.72);
+      --accent1:#00d0ff;
+      --accent2:#8a2be2;
+      --glass: rgba(255,255,255,0.04);
+      --glass-border: rgba(255,255,255,0.06);
+    }
+    *{box-sizing:border-box}
+    html,body{height:100%}
+    body{
+      margin:0;
+      font-family:Inter,system-ui,Arial;
+      background:linear-gradient(180deg,var(--bg),#071026 72%);
+      color:#e8f0ff;
+      -webkit-font-smoothing:antialiased;
+      -moz-osx-font-smoothing:grayscale;
+      overflow-x:hidden;
     }
 
-    .hero {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
+    /* NAV */
+    header.navbar{
+      position:fixed; top:18px; left:18px; right:18px; z-index:70;
+      display:flex; justify-content:space-between; align-items:center; gap:12px;
+    }
+    .brand{font-weight:800; letter-spacing:0.6px; display:flex;gap:10px;align-items:center}
+    .brand .dot{width:11px;height:11px;border-radius:999px;background:linear-gradient(90deg,var(--accent1),var(--accent2));box-shadow:0 6px 20px rgba(138,43,226,0.18)}
+    nav.links{display:flex;gap:8px;align-items:center}
+    nav.links button{background:transparent;border:1px solid var(--glass-border);padding:8px 12px;border-radius:10px;color:var(--muted);backdrop-filter: blur(6px);cursor:pointer}
+    nav.links button:hover{transform:translateY(-3px);border-color:rgba(255,255,255,0.14)}
+
+    /* HERO */
+    .hero{
+      height:85vh; min-height:560px; position:relative; display:flex; align-items:center; justify-content:center; overflow:hidden;
+    }
+    #three-wrap{position:absolute;inset:0;z-index:1;pointer-events:none}
+    .hero-content{position:relative;z-index:10;text-align:center;padding:28px;max-width:980px}
+    .title{font-size: clamp(28px,5vw,56px); font-weight:900; line-height:1;}
+    .subtitle{margin-top:14px;color:#bcd3ff;font-size:18px;max-width:820px;margin-left:auto;margin-right:auto}
+
+    .cta-group{margin-top:22px;display:flex; gap:12px; justify-content:center; flex-wrap:wrap}
+    .btn{
+      border-radius:999px;padding:12px 20px;font-weight:700;border:none;cursor:pointer;
+      background:linear-gradient(90deg,var(--accent1),var(--accent2));
+      box-shadow:0 10px 34px rgba(138,43,226,0.12); color:#021025;
+    }
+    .btn.secondary{background:transparent;border:1px solid rgba(255,255,255,0.06); color:var(--muted)}
+
+    /* Custom cursor */
+    .cursor {
+      position: fixed;
+      width: 18px; height:18px; border-radius:50%;
+      pointer-events:none; z-index:9999; transform:translate3d(-50%,-50%,0);
+      transition: transform .12s ease, width .12s ease, height .12s ease, background .12s ease;
+      mix-blend-mode:screen;
+      background: radial-gradient(circle at 30% 30%, rgba(0,208,255,0.95), rgba(138,43,226,0.95));
+      box-shadow: 0 6px 30px rgba(0,0,0,0.35);
+    }
+    .cursor.hovering{width:48px;height:48px;background:linear-gradient(90deg,var(--accent2),var(--accent1));}
+
+    /* Sections */
+    section{padding: 84px 18px;}
+    .container{max-width:1120px;margin:0 auto;padding:0 18px}
+    .glass{
+      background: linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));
+      border: 1px solid var(--glass-border);
+      padding:18px;border-radius:14px;
+      backdrop-filter: blur(8px);
     }
 
-    .hero h1 {
-      font-family: 'Orbitron', sans-serif;
-      font-size: clamp(40px, 6vw, 80px);
-      margin: 0;
-      letter-spacing: 4px;
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: center;
+    /* Projects grid */
+    .projects-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:18px;margin-top:18px}
+    .card{
+      border-radius:14px;padding:18px;min-height:160px;position:relative;overflow:hidden;
+      background: linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));
+      border:1px solid rgba(255,255,255,0.03);transition:transform .28s cubic-bezier(.2,.9,.3,1), box-shadow .28s;
+    }
+    .card:hover{transform:translateY(-10px) scale(1.01); box-shadow:0 22px 60px rgba(2,16,36,0.6)}
+    .tag{font-size:12px;color:#bcd3ff; font-weight:700}
+    .card h3{margin:8px 0 0 0;font-size:18px}
+    .card p{color:#9fb6ea;font-size:14px;margin-top:8px}
+
+    /* Skills */
+    .skill-badges{display:flex;gap:8px;flex-wrap:wrap;margin-top:12px}
+    .badge{padding:8px 12px;border-radius:999px;border:1px solid rgba(255,255,255,0.04); background:rgba(255,255,255,0.02);font-weight:600;font-size:13px;color:#dff4ff}
+
+    /* Certifications & Achievements */
+    .list-row{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:12px}
+    .ach{padding:12px;border-radius:10px;background:linear-gradient(180deg,rgba(255,255,255,0.01),transparent);border:1px solid rgba(255,255,255,0.03)}
+
+    /* Contact */
+    .contact-grid{display:grid;grid-template-columns:1fr 1fr;gap:18px}
+    .input, textarea{width:100%; padding:12px;border-radius:10px;border:1px solid rgba(255,255,255,0.04);background:transparent;color:#eaf3ff}
+
+    footer{padding:28px 18px;text-align:center;color:#8ea8dc}
+
+    /* Responsive */
+    @media (max-width:880px){
+      .hero{height:68vh}
+      .contact-grid{grid-template-columns:1fr}
     }
 
-    .hero h1 span {
-      opacity: 0;
-      transform: translateY(-20px);
-      display: inline-block;
-      animation: fadeInUp 0.5s forwards;
-    }
-
-    .subtext {
-      font-size: 18px;
-      color: #aaa;
-      margin-top: 12px;
-      letter-spacing: 1px;
-    }
-
-    @keyframes fadeInUp {
-      to {
-        opacity: 1;
-        transform: translateY(0);
-      }
-    }
+    .neon-line{height:3px;background:linear-gradient(90deg,var(--accent1),var(--accent2));border-radius:2px;margin-top:12px;width:120px;margin-left:auto;margin-right:auto}
   </style>
 </head>
 <body>
 
-  <div class="hero">
-    <h1 id="name"></h1>
-    <p class="subtext">AI/ML Engineer | Computer Vision | Deep Learning Enthusiast</p>
+  <!-- Custom cursor -->
+  <div class="cursor" id="cursor"></div>
+
+  <!-- NAV -->
+  <header class="navbar">
+    <div class="brand">
+      <div class="dot" aria-hidden="true"></div>
+      <div style="font-size:16px">Profilero</div>
+    </div>
+
+    <nav class="links" aria-label="Main navigation">
+      <button data-to="about">About</button>
+      <button data-to="skills">Skills</button>
+      <button data-to="projects">Projects</button>
+      <button data-to="certs">Certifications</button>
+      <button data-to="contact">Contact</button>
+      <button id="toggleTheme" title="Toggle Theme">Toggle</button>
+    </nav>
+  </header>
+
+  <!-- HERO --><!-- 🌟 HERO SECTION START -->
+<section class="hero" id="home" role="banner" style="position:relative; height:100vh; display:flex; align-items:center; justify-content:center; overflow:hidden; background:#05060a; color:white; text-align:center;">
+  
+  <!-- Neural Network Background -->
+  <div id="ai-network" style="position:absolute; inset:0; z-index:0;"></div>
+
+  <!-- Hero Content -->
+  <div class="hero-content" style="position:relative; z-index:2;">
+    <h1 class="typing-text"></h1>
+    <p class="subtext">Aspiring AI/ML & Software Engineer</p>
   </div>
+</section>
 
-  <script>
-    const name = "Vinayak Girish Hotanahalli";
-    const nameContainer = document.getElementById('name');
+<!-- Scripts -->
+<script src="https://cdn.jsdelivr.net/npm/tsparticles@2.11.0/tsparticles.min.js"></script>
+<script>
+  // 🌐 Neural Network Background Animation
+  tsParticles.load("ai-network", {
+    fullScreen: { enable: false },
+    background: { color: { value: "#05060a" } },
+    fpsLimit: 60,
+    particles: {
+      number: { value: 130, density: { enable: true, area: 800 } },
+      color: { value: ["#00d0ff", "#8a2be2", "#ff6ec7"] },
+      shape: { type: "circle" },
+      opacity: { value: 0.7, random: true },
+      size: { value: { min: 1, max: 3 } },
+      move: {
+        enable: true,
+        speed: 1,
+        direction: "none",
+        random: false,
+        straight: false,
+        outModes: "bounce",
+        attract: { enable: true, rotateX: 600, rotateY: 1200 }
+      },
+      links: {
+        enable: true,
+        distance: 140,
+        color: "#00d0ff",
+        opacity: 0.25,
+        width: 1
+      }
+    },
+    interactivity: {
+      events: {
+        onHover: { enable: true, mode: "grab" },
+        onClick: { enable: true, mode: "repulse" }
+      },
+      modes: {
+        grab: { distance: 180, links: { opacity: 0.35 } },
+        repulse: { distance: 150, duration: 0.4 }
+      }
+    },
+    detectRetina: true
+  });
 
-    name.split('').forEach((char, index) => {
-      const span = document.createElement('span');
-      span.textContent = char;
-      span.style.animationDelay = `${index * 0.1}s`;
-      nameContainer.appendChild(span);
-    });
-  </script>
+  // ✨ Typing Animation for Name
+  const nameText = "Vinayak Girish Hotanahalli";
+  const typingElement = document.querySelector(".typing-text");
+  let index = 0;
+
+  function typeWriter() {
+    if (index < nameText.length) {
+      typingElement.innerHTML += nameText.charAt(index);
+      index++;
+      setTimeout(typeWriter, 120);
+    } else {
+      typingElement.classList.add("finished");
+    }
+  }
+
+  // Wait until page fully loads
+  window.addEventListener("load", () => {
+    window.scrollTo(0, 0);
+    typingElement.innerHTML = "";
+    typeWriter();
+  });
+</script>
+
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@700&display=swap');
+
+  /* ✨ Typing Text */
+  .typing-text {
+    font-family: 'Orbitron', sans-serif;
+    font-size: clamp(36px, 6vw, 72px);
+    font-weight: 800;
+    color: #00d0ff;
+    letter-spacing: 2px;
+    border-right: 3px solid #8a2be2;
+    white-space: nowrap;
+    overflow: hidden;
+    width: fit-content;
+    margin: 0 auto;
+    animation: blinkCursor 0.8s step-end infinite;
+    text-shadow: 0 0 20px rgba(0, 208, 255, 0.6), 0 0 30px rgba(138, 43, 226, 0.4);
+  }
+
+  .typing-text.finished {
+    border-right: none;
+  }
+
+  @keyframes blinkCursor {
+    from { border-color: transparent; }
+    to { border-color: #8a2be2; }
+  }
+
+  /* 🌌 Subtext */
+  .subtext {
+    margin-top: 20px;
+    font-size: 22px;
+    color: #bcd3ff;
+    font-weight: 500;
+    text-shadow: 0 0 10px rgba(140, 200, 255, 0.4);
+  }
+</style>
+<!-- 🌟 HERO SECTION END -->
+
+<!-- TSParticles (AI Background Animation Script) -->
+<script src="https://cdn.jsdelivr.net/npm/tsparticles@2.11.0/tsparticles.min.js"></script>
+<script>
+  tsParticles.load("ai-background", {
+    fullScreen: { enable: false },
+    background: { color: { value: "#05060a" } },
+    fpsLimit: 60,
+    particles: {
+      number: { value: 120, density: { enable: true, area: 800 } },
+      color: { value: ["#00d0ff","#8a2be2","#ff6ec7"] },
+      shape: { type: "circle" },
+      opacity: { value: 0.5 },
+      size: { value: { min: 2, max: 4 } },
+      move: { enable: true, speed: 0.6, direction: "none", outMode: "bounce" },
+      links: { enable: true, distance: 120, color: "#00d0ff", opacity: 0.15, width: 1 }
+    },
+    interactivity: {
+      events: {
+        onHover: { enable: true, mode: "grab" },
+        onClick: { enable: true, mode: "push" }
+      },
+      modes: { grab: { distance: 140, links: { opacity: 0.25 } }, push: { quantity: 4 } }
+    },
+    detectRetina: true
+  });
+</script>
 
    <!-- ABOUT -->
 <section id="about" style="margin-top:60px; background:linear-gradient(180deg, rgba(255,255,255,0.01), rgba(0,0,0,0.02)); padding:60px 0;">
