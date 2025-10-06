@@ -1,242 +1,230 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Hero — Vinayak Hotanahalli</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Vinayak Girish Hotanahalli — Portfolio</title>
 
-  <!-- Fonts -->
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&family=Orbitron:wght@700&display=swap" rel="stylesheet">
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;600;700&display=swap" rel="stylesheet">
 
   <style>
-    :root{
-      --bg:#05060a;
-      --accent1:#00d0ff;
-      --accent2:#8a2be2;
-      --name-color: #00d0ff;
-      --sub-color: #bcd3ff;
+    :root {
+      --bg-color: #0a0a0f;
+      --name-color: #00d4ff;
+      --sub-color: #b8b8ff;
     }
-    html,body{height:100%;margin:0;font-family:Inter,system-ui,Arial;background: linear-gradient(180deg,var(--bg), #071026 72%);color:#e8f0ff;-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale}
-    /* HERO layout */
+
+    body {
+      margin: 0;
+      font-family: 'Poppins', sans-serif;
+      background: var(--bg-color);
+      color: white;
+      overflow-x: hidden;
+    }
+
+    /* 🌟 HERO SECTION */
     .hero {
-      height:100vh; min-height:560px;
-      display:flex; align-items:center; justify-content:center;
-      position:relative; overflow:hidden;
+      height: 70vh;
+      min-height: 400px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+      overflow: hidden;
+      text-align: center;
+      padding-top: 40px;
     }
 
-    /* particles container (behind) */
-    #ai-network{ position:absolute; inset:0; z-index:0; pointer-events:none; }
+    /* Particle canvas background */
+    #tsparticles {
+      position: absolute;
+      inset: 0;
+      z-index: 1;
+    }
 
-    /* center content (above particles) */
-    .hero-content{
-      position:relative; z-index:2; text-align:center; padding: 24px; width:100%; max-width:980px;
-      display:flex; flex-direction:column; gap:18px; align-items:center; justify-content:center;
+    /* Hero content */
+    .hero-content {
+      position: relative;
+      z-index: 2;
+      width: 100%;
+      max-width: 760px;
+      margin: 0 auto;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      animation: fadeIn 1s ease forwards;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(15px); }
+      to { opacity: 1; transform: translateY(0); }
     }
 
     /* Pulse ring behind the name */
-    .pulse-wrap{ position:relative; display:inline-block; }
-    .pulse-ring{
-      position:absolute; inset: -14px  -18px; border-radius: 14px; z-index:0;
-      pointer-events:none;
-      /* initial subtle glow */
-      box-shadow: 0 0 40px rgba(0,208,255,0.12), 0 0 80px rgba(138,43,226,0.06);
-      transition: opacity .35s ease, transform .35s ease;
-      opacity: 0.88;
-      transform: scale(1);
-      background: radial-gradient(60% 60% at 50% 40%, rgba(0,208,255,0.06), rgba(138,43,226,0.02));
-      backdrop-filter: blur(6px);
+    .pulse-wrap {
+      position: relative;
+      display: inline-block;
     }
 
-    /* Name / typing text */
+    .pulse-ring {
+      position: absolute;
+      inset: -25px;
+      border-radius: 50%;
+      border: 2px solid rgba(0,212,255,0.25);
+      opacity: 0;
+      transform: scale(0.8);
+      transition: opacity 0.2s ease, transform 0.3s ease;
+    }
+
+    /* Glow while typing */
+    .pulse-ring.typing {
+      opacity: 1;
+      transform: scale(1);
+    }
+
+    /* Idle glow pulse */
+    .pulse-ring.idle {
+      animation: pulseIdle 2.5s infinite ease-in-out;
+    }
+
+    @keyframes pulseIdle {
+      0%, 100% {
+        opacity: 0.3;
+        transform: scale(0.95);
+      }
+      50% {
+        opacity: 0.6;
+        transform: scale(1.05);
+      }
+    }
+
+    /* Typing name */
     .typing-text {
-      position:relative;
-      z-index:1;
       font-family: 'Orbitron', sans-serif;
       color: var(--name-color);
-      font-weight:800;
-      font-size: clamp(36px, 6vw, 72px);
-      letter-spacing: 1px;
-      display:inline-block;
-      padding: 18px 22px;
-      border-radius:10px;
-      white-space:nowrap;
-      overflow:visible;
-      box-shadow: 0 10px 30px rgba(2,16,36,0.45);
-      /* subtle inner glow */
-      text-shadow: 0 0 20px rgba(0,208,255,0.18), 0 0 36px rgba(138,43,226,0.12);
-      border-right: 3px solid rgba(138,43,226,0.9); /* cursor effect during typing */
+      font-weight: 700;
+      font-size: clamp(28px, 4vw, 56px);
+      letter-spacing: 0.5px;
+      padding: 10px 16px;
+      border-radius: 8px;
+      white-space: nowrap;
+      text-shadow: 0 0 12px rgba(0,208,255,0.15);
+      border-right: 2px solid rgba(138,43,226,0.8);
     }
-
-    .typing-text.finished { border-right: none; }
 
     /* Subtext */
-    .subtext{
-      color:var(--sub-color); font-size:20px; font-weight:500; margin-top:6px; text-shadow:0 0 10px rgba(140,200,255,0.06)
+    .subtext {
+      color: var(--sub-color);
+      font-size: 16px;
+      font-weight: 400;
+      margin-top: 4px;
+      text-shadow: 0 0 6px rgba(140,200,255,0.05);
     }
 
-    /* Pulse animation triggered per char */
-    @keyframes char-pulse {
-      0%   { transform: scale(0.98); box-shadow: 0 0 8px rgba(0,208,255,0.12); opacity:0.95;}
-      30%  { transform: scale(1.07); box-shadow: 0 0 48px rgba(0,208,255,0.22), 0 0 90px rgba(138,43,226,0.12); opacity:1;}
-      100% { transform: scale(1); box-shadow: 0 0 30px rgba(0,208,255,0.12); opacity:0.9;}
-    }
-    .pulse-ring.pulse {
-      animation: char-pulse 420ms cubic-bezier(.2,.9,.3,1);
-    }
-
-    /* Idle gentle breathing glow after typing finishes */
-    @keyframes idle-breath {
-      0% { transform: scale(1); opacity:0.85; box-shadow: 0 0 26px rgba(0,208,255,0.10), 0 0 60px rgba(138,43,226,0.05); }
-      50% { transform: scale(1.03); opacity:1; box-shadow: 0 0 46px rgba(0,208,255,0.16), 0 0 90px rgba(138,43,226,0.09); }
-      100% { transform: scale(1); opacity:0.85; box-shadow: 0 0 26px rgba(0,208,255,0.10), 0 0 60px rgba(138,43,226,0.05); }
-    }
-    .pulse-ring.idle {
-      animation: idle-breath 2400ms ease-in-out infinite;
+    /* ↓ About Button */
+    .scroll-down {
+      margin-top: 20px;
+      font-size: 14px;
+      color: #00d4ff;
+      text-decoration: none;
+      border: 1px solid rgba(0,212,255,0.4);
+      padding: 8px 18px;
+      border-radius: 30px;
+      transition: all 0.3s ease;
     }
 
-    /* small responsiveness */
-    @media (max-width:560px){
-      .typing-text{ font-size: clamp(24px, 9vw, 42px); padding:12px 14px; }
-      .pulse-ring{ inset:-10px -12px; border-radius:10px; }
+    .scroll-down:hover {
+      background: rgba(0,212,255,0.1);
+      box-shadow: 0 0 10px rgba(0,212,255,0.4);
     }
 
+    /* About Section */
+    section#about {
+      margin-top: 60px;
+      background: linear-gradient(180deg, rgba(255,255,255,0.01), rgba(0,0,0,0.02));
+      padding: 60px 0;
+      text-align: center;
+    }
+
+    .container {
+      width: 85%;
+      max-width: 1000px;
+      margin: 0 auto;
+    }
+
+    @media (max-width: 768px) {
+      .typing-text { font-size: 32px; }
+      .subtext { font-size: 14px; }
+    }
   </style>
 </head>
 <body>
 
-  <section class="hero" role="banner" aria-label="Hero section with animated neural background and typing name">
-    <div id="ai-network" aria-hidden="true"></div>
+  <!-- 🌌 HERO SECTION -->
+  <section class="hero" id="home">
+    <div id="tsparticles"></div>
 
-    <div class="hero-content" role="contentinfo">
-      <!-- pulse-wrap creates a glow behind the name, pulses on every typed char -->
-      <div class="pulse-wrap" aria-hidden="false">
-        <div class="pulse-ring" id="pulseRing" aria-hidden="true"></div>
-        <div class="typing-text" id="typingText" aria-live="polite" aria-atomic="true"></div>
+    <div class="hero-content">
+      <div class="pulse-wrap">
+        <div class="pulse-ring"></div>
+        <div class="typing-text" id="typingName"></div>
       </div>
-
-      <p class="subtext">AI/ML Engineer · Computer Vision · Generative AI · Deep Learning Enthusiast</p>
+      <div class="subtext">AI / ML | Computer Vision | Deep Learning Engineer</div>
+      <a href="#about" class="scroll-down">↓ About Me</a>
     </div>
   </section>
 
-  <!-- tsParticles CDN for particle / neural background -->
-  <script src="https://cdn.jsdelivr.net/npm/tsparticles@2.11.0/tsparticles.min.js"></script>
+  <!-- ✨ PARTICLES.JS + TYPING SCRIPT -->
+  <script src="https://cdn.jsdelivr.net/npm/tsparticles@3.3.0/tsparticles.bundle.min.js"></script>
   <script>
-    /***********************
-     * tsParticles (neural background)
-     ***********************/
-    (function initParticles(){
-      if (!window.tsParticles) return;
-      tsParticles.load("ai-network", {
-        fullScreen: { enable: false },
-        detectRetina: true,
-        fpsLimit: 60,
-        background: { color: { value: "transparent" } },
-        particles: {
-          number: { value: 120, density: { enable: true, area: 900 } },
-          color: { value: ["#00d0ff", "#8a2be2", "#ff6ec7"] },
-          shape: { type: "circle" },
-          opacity: { value: 0.75, random: true },
-          size: { value: { min: 1, max: 3 } },
-          move: {
-            enable: true,
-            speed: 0.9,
-            direction: "none",
-            random: true,
-            straight: false,
-            outModes: { default: "bounce" },
-            attract: { enable: true, rotateX: 600, rotateY: 1200 }
-          },
-          links: {
-            enable: true,
-            distance: 140,
-            color: "#00d0ff",
-            opacity: 0.2,
-            width: 1,
-            triangles: { enable: false }
-          }
-        },
-        interactivity: {
-          detectsOn: "canvas",
-          events: {
-            onHover: { enable: true, mode: "grab" },
-            onClick: { enable: true, mode: "repulse" }
-          },
-          modes: {
-            grab: { distance: 160, links: { opacity: 0.35 } },
-            repulse: { distance: 140, duration: 0.4 }
-          }
-        }
-      }).catch((err)=>{ console.warn("tsParticles failed to load:", err); });
-    })();
-  </script>
+    // Initialize particles
+    tsParticles.load("tsparticles", {
+      background: { color: { value: "#0a0a0f" } },
+      particles: {
+        number: { value: 60 },
+        color: { value: ["#00d4ff", "#8a2be2"] },
+        opacity: { value: 0.4 },
+        size: { value: { min: 1, max: 3 } },
+        move: { enable: true, speed: 1 },
+        links: { enable: true, color: "#8a2be2", opacity: 0.2 }
+      }
+    });
 
-  <script>
-    /***********************
-     * Typing animation + pulse sync
-     *
-     * Behavior:
-     * - Types the name character by character.
-     * - On each char typed, triggers a short pulse animation on the pulse ring.
-     * - When typing completes, removes the typing cursor border and starts a slow idle breath glow.
-     ***********************/
-    (function typingWithPulse(){
-      const nameText = "Vinayak Hotanahalli";
-      const typingEl = document.getElementById('typingText');
-      const pulseEl  = document.getElementById('pulseRing');
-
-      let i = 0;
-      const typingDelay = 110; // ms: adjust speed here
-      const charPulseClass = "pulse";
+    // Typing effect with glow pulse
+    (() => {
+      const typingEl = document.getElementById("typingName");
+      const pulseEl = document.querySelector(".pulse-ring");
+      const nameText = "Vinayak Girish Hotanahalli";
       const idleClass = "idle";
 
-      // Helper: trigger the pulse safely
-      function triggerPulse() {
-        // remove if already animating to re-trigger
-        pulseEl.classList.remove(charPulseClass);
-        // force reflow so re-adding restarts the animation
-        void pulseEl.offsetWidth;
-        pulseEl.classList.add(charPulseClass);
-
-        // ensure idle breathing isn't interfering while typing
-        pulseEl.classList.remove(idleClass);
-      }
-
-      // Type one char, then pulse
-      function typeStep() {
+      let i = 0;
+      const typeStep = () => {
         if (i < nameText.length) {
           typingEl.textContent += nameText.charAt(i);
+          pulseEl.classList.add("typing");
           i++;
-          triggerPulse();
-          // schedule next char
-          setTimeout(typeStep, typingDelay);
+          setTimeout(typeStep, 100);
         } else {
-          // finished typing
           typingEl.classList.add("finished");
-          // small final pulse
-          pulseEl.classList.remove(charPulseClass);
-          void pulseEl.offsetWidth;
-          pulseEl.classList.add(charPulseClass);
-
-          // after a beat, enable slow idle breathing glow
-          setTimeout(()=> {
-            pulseEl.classList.remove(charPulseClass);
-            pulseEl.classList.add(idleClass);
-          }, 500);
+          pulseEl.classList.remove("typing");
+          pulseEl.classList.add(idleClass);
+          typingEl.style.borderRight = "none";
         }
-      }
+      };
 
-      // Start typing when DOM ready / window loaded
+      // Start typing when DOM ready
       if (document.readyState === "complete" || document.readyState === "interactive") {
-        // small delay so particles render behind smoothly
         setTimeout(typeStep, 240);
       } else {
         window.addEventListener('DOMContentLoaded', ()=> setTimeout(typeStep, 240));
       }
 
-      // Accessibility: allow reduced motion users to see name immediately
+      // Accessibility: reduced motion users
       const mediaQuery = window.matchMedia('(prefers-reduced-motion: reduce)');
       if (mediaQuery && mediaQuery.matches) {
-        // show name instantly and idle glow but no animations
         typingEl.textContent = nameText;
         typingEl.classList.add("finished");
         pulseEl.classList.add(idleClass);
