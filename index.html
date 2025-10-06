@@ -1,237 +1,236 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Vinayak Girish Hotanahalli — Portfolio</title>
-
-  <!-- Google Fonts -->
-  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;600;700&display=swap" rel="stylesheet">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Vinayak Hotanahalli | Portfolio</title>
 
   <style>
-    :root {
-      --bg-color: #0a0a0f;
-      --name-color: #00d4ff;
-      --sub-color: #b8b8ff;
+    /* RESET */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      scroll-behavior: smooth;
     }
 
     body {
-      margin: 0;
       font-family: 'Poppins', sans-serif;
-      background: var(--bg-color);
-      color: white;
+      color: #fff;
+      background: #000;
       overflow-x: hidden;
     }
 
-    /* 🌟 HERO SECTION */
+    /* === NEURON ANIMATION BACKGROUND === */
+    canvas#neuron-bg {
+      position: fixed;
+      top: 0;
+      left: 0;
+      z-index: -1;
+      width: 100%;
+      height: 100%;
+      background: radial-gradient(ellipse at bottom, #0d1b2a 0%, #000000 100%);
+    }
+
+    /* === NAVIGATION BAR === */
+    nav {
+      position: fixed;
+      top: 20px;
+      right: 40px;
+      z-index: 10;
+      display: flex;
+      gap: 20px;
+    }
+
+    nav a {
+      text-decoration: none;
+      color: #fff;
+      font-weight: 500;
+      font-size: 16px;
+      transition: color 0.3s;
+      position: relative;
+    }
+
+    nav a::after {
+      content: '';
+      position: absolute;
+      width: 0;
+      height: 2px;
+      bottom: -4px;
+      left: 0;
+      background: #ff3b3b;
+      transition: width 0.3s;
+    }
+
+    nav a:hover::after {
+      width: 100%;
+    }
+
+    nav a:hover {
+      color: #ffb347;
+    }
+
+    /* === HERO SECTION === */
     .hero {
       height: 70vh;
       min-height: 400px;
       display: flex;
       align-items: center;
       justify-content: center;
-      position: relative;
-      overflow: hidden;
-      text-align: center;
-      padding-top: 40px;
-    }
-
-    /* Particle canvas background */
-    #tsparticles {
-      position: absolute;
-      inset: 0;
-      z-index: 1;
-    }
-
-    /* Hero content */
-    .hero-content {
-      position: relative;
-      z-index: 2;
-      width: 100%;
-      max-width: 760px;
-      margin: 0 auto;
-      display: flex;
       flex-direction: column;
+      text-align: center;
+    }
+
+    .fire-text {
+      font-size: clamp(36px, 5vw, 70px);
+      font-weight: 800;
+      text-transform: uppercase;
+      background: linear-gradient(90deg, #ff0000, #ffae00, #ff0000);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      animation: fireGlow 1.6s infinite alternate;
+      letter-spacing: 2px;
+    }
+
+    @keyframes fireGlow {
+      0% { text-shadow: 0 0 10px #ff3b3b, 0 0 20px #ffae00; }
+      100% { text-shadow: 0 0 20px #ffae00, 0 0 30px #ff3b3b; }
+    }
+
+    .subtext {
+      margin-top: 8px;
+      font-size: 18px;
+      color: #ccc;
+    }
+
+    /* PLACEHOLDER SECTIONS (for scroll targets) */
+    section {
+      height: 100vh;
+      display: flex;
       align-items: center;
       justify-content: center;
-      gap: 10px;
-      animation: fadeIn 1s ease forwards;
-    }
-
-    @keyframes fadeIn {
-      from { opacity: 0; transform: translateY(15px); }
-      to { opacity: 1; transform: translateY(0); }
-    }
-
-    /* Pulse ring behind the name */
-    .pulse-wrap {
-      position: relative;
-      display: inline-block;
-    }
-
-    .pulse-ring {
-      position: absolute;
-      inset: -25px;
-      border-radius: 50%;
-      border: 2px solid rgba(0,212,255,0.25);
-      opacity: 0;
-      transform: scale(0.8);
-      transition: opacity 0.2s ease, transform 0.3s ease;
-    }
-
-    /* Glow while typing */
-    .pulse-ring.typing {
-      opacity: 1;
-      transform: scale(1);
-    }
-
-    /* Idle glow pulse */
-    .pulse-ring.idle {
-      animation: pulseIdle 2.5s infinite ease-in-out;
-    }
-
-    @keyframes pulseIdle {
-      0%, 100% {
-        opacity: 0.3;
-        transform: scale(0.95);
-      }
-      50% {
-        opacity: 0.6;
-        transform: scale(1.05);
-      }
-    }
-
-    /* Typing name */
-    .typing-text {
-      font-family: 'Orbitron', sans-serif;
-      color: var(--name-color);
-      font-weight: 700;
-      font-size: clamp(28px, 4vw, 56px);
-      letter-spacing: 0.5px;
-      padding: 10px 16px;
-      border-radius: 8px;
-      white-space: nowrap;
-      text-shadow: 0 0 12px rgba(0,208,255,0.15);
-      border-right: 2px solid rgba(138,43,226,0.8);
-    }
-
-    /* Subtext */
-    .subtext {
-      color: var(--sub-color);
-      font-size: 16px;
-      font-weight: 400;
-      margin-top: 4px;
-      text-shadow: 0 0 6px rgba(140,200,255,0.05);
-    }
-
-    /* ↓ About Button */
-    .scroll-down {
-      margin-top: 20px;
-      font-size: 14px;
-      color: #00d4ff;
-      text-decoration: none;
-      border: 1px solid rgba(0,212,255,0.4);
-      padding: 8px 18px;
-      border-radius: 30px;
-      transition: all 0.3s ease;
-    }
-
-    .scroll-down:hover {
-      background: rgba(0,212,255,0.1);
-      box-shadow: 0 0 10px rgba(0,212,255,0.4);
-    }
-
-    /* About Section */
-    section#about {
-      margin-top: 60px;
-      background: linear-gradient(180deg, rgba(255,255,255,0.01), rgba(0,0,0,0.02));
-      padding: 60px 0;
-      text-align: center;
-    }
-
-    .container {
-      width: 85%;
-      max-width: 1000px;
-      margin: 0 auto;
-    }
-
-    @media (max-width: 768px) {
-      .typing-text { font-size: 32px; }
-      .subtext { font-size: 14px; }
+      font-size: 32px;
+      background: rgba(255,255,255,0.02);
+      border-top: 1px solid rgba(255,255,255,0.05);
     }
   </style>
 </head>
 <body>
 
-  <!-- 🌌 HERO SECTION -->
-  <section class="hero" id="home">
-    <div id="tsparticles"></div>
+  <!-- Neuron Background -->
+  <canvas id="neuron-bg"></canvas>
 
-    <div class="hero-content">
-      <div class="pulse-wrap">
-        <div class="pulse-ring"></div>
-        <div class="typing-text" id="typingName"></div>
-      </div>
-      <div class="subtext">AI / ML | Computer Vision | Deep Learning Engineer</div>
-      <a href="#about" class="scroll-down">↓ About Me</a>
-    </div>
+  <!-- NAVIGATION -->
+  <nav>
+    <a href="#about">About</a>
+    <a href="#experience">Experience</a>
+    <a href="#skills">Skills</a>
+    <a href="#projects">Projects</a>
+    <a href="#achievements">Achievements</a>
+    <a href="#certifications">Certifications</a>
+    <a href="#contact">Contact</a>
+  </nav>
+
+  <!-- HERO SECTION -->
+  <section class="hero">
+    <h1 class="fire-text">Vinayak Girish Hotanahalli</h1>
+    <p class="subtext">AI / ML & Computer Vision Engineer</p>
   </section>
 
-  <!-- ✨ PARTICLES.JS + TYPING SCRIPT -->
-  <script src="https://cdn.jsdelivr.net/npm/tsparticles@3.3.0/tsparticles.bundle.min.js"></script>
+  <!-- SECTIONS (just for scroll target) -->
+  <section id="about">About Section</section>
+  <section id="experience">Experience Section</section>
+  <section id="skills">Skills Section</section>
+  <section id="projects">Projects Section</section>
+  <section id="achievements">Achievements Section</section>
+  <section id="certifications">Certifications Section</section>
+  <section id="contact">Contact Section</section>
+
+  <!-- === NEURON ANIMATION SCRIPT === -->
   <script>
-    // Initialize particles
-    tsParticles.load("tsparticles", {
-      background: { color: { value: "#0a0a0f" } },
-      particles: {
-        number: { value: 60 },
-        color: { value: ["#00d4ff", "#8a2be2"] },
-        opacity: { value: 0.4 },
-        size: { value: { min: 1, max: 3 } },
-        move: { enable: true, speed: 1 },
-        links: { enable: true, color: "#8a2be2", opacity: 0.2 }
+    const canvas = document.getElementById('neuron-bg');
+    const ctx = canvas.getContext('2d');
+    let particlesArray;
+
+    // resize
+    function resizeCanvas() {
+      canvas.width = window.innerWidth;
+      canvas.height = window.innerHeight;
+    }
+    resizeCanvas();
+    window.addEventListener('resize', resizeCanvas);
+
+    class Particle {
+      constructor(x, y, dirX, dirY, size, color) {
+        this.x = x;
+        this.y = y;
+        this.dirX = dirX;
+        this.dirY = dirY;
+        this.size = size;
+        this.color = color;
       }
-    });
+      draw() {
+        ctx.beginPath();
+        ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2, false);
+        ctx.fillStyle = this.color;
+        ctx.fill();
+      }
+      update() {
+        if (this.x > canvas.width || this.x < 0) this.dirX = -this.dirX;
+        if (this.y > canvas.height || this.y < 0) this.dirY = -this.dirY;
+        this.x += this.dirX;
+        this.y += this.dirY;
+        this.draw();
+      }
+    }
 
-    // Typing effect with glow pulse
-    (() => {
-      const typingEl = document.getElementById("typingName");
-      const pulseEl = document.querySelector(".pulse-ring");
-      const nameText = "Vinayak Girish Hotanahalli";
-      const idleClass = "idle";
-
-      let i = 0;
-      const typeStep = () => {
-        if (i < nameText.length) {
-          typingEl.textContent += nameText.charAt(i);
-          pulseEl.classList.add("typing");
-          i++;
-          setTimeout(typeStep, 100);
-        } else {
-          typingEl.classList.add("finished");
-          pulseEl.classList.remove("typing");
-          pulseEl.classList.add(idleClass);
-          typingEl.style.borderRight = "none";
+    // connect lines between nearby particles
+    function connect() {
+      let opacityValue = 1;
+      for (let a = 0; a < particlesArray.length; a++) {
+        for (let b = a; b < particlesArray.length; b++) {
+          let distance = ((particlesArray[a].x - particlesArray[b].x) ** 2)
+                       + ((particlesArray[a].y - particlesArray[b].y) ** 2);
+          if (distance < (canvas.width / 7) * (canvas.height / 7)) {
+            opacityValue = 1 - (distance / 20000);
+            ctx.strokeStyle = 'rgba(0,255,255,' + opacityValue + ')';
+            ctx.lineWidth = 1;
+            ctx.beginPath();
+            ctx.moveTo(particlesArray[a].x, particlesArray[a].y);
+            ctx.lineTo(particlesArray[b].x, particlesArray[b].y);
+            ctx.stroke();
+          }
         }
-      };
-
-      // Start typing when DOM ready
-      if (document.readyState === "complete" || document.readyState === "interactive") {
-        setTimeout(typeStep, 240);
-      } else {
-        window.addEventListener('DOMContentLoaded', ()=> setTimeout(typeStep, 240));
       }
+    }
 
-      // Accessibility: reduced motion users
-      const mediaQuery = window.matchMedia('(prefers-reduced-motion: reduce)');
-      if (mediaQuery && mediaQuery.matches) {
-        typingEl.textContent = nameText;
-        typingEl.classList.add("finished");
-        pulseEl.classList.add(idleClass);
+    function init() {
+      particlesArray = [];
+      let numParticles = (canvas.height * canvas.width) / 18000;
+      for (let i = 0; i < numParticles; i++) {
+        let size = Math.random() * 2 + 1;
+        let x = Math.random() * (window.innerWidth - size * 2);
+        let y = Math.random() * (window.innerHeight - size * 2);
+        let dirX = (Math.random() * 0.4) - 0.2;
+        let dirY = (Math.random() * 0.4) - 0.2;
+        let color = 'cyan';
+        particlesArray.push(new Particle(x, y, dirX, dirY, size, color));
       }
-    })();
+    }
+
+    function animate() {
+      requestAnimationFrame(animate);
+      ctx.clearRect(0, 0, innerWidth, innerHeight);
+      for (let i = 0; i < particlesArray.length; i++) {
+        particlesArray[i].update();
+      }
+      connect();
+    }
+
+    init();
+    animate();
   </script>
-
+  
   <!-- MAIN CONTENT -->
   <main>
 
