@@ -159,58 +159,82 @@ Replace any placeholder text if you want to tweak wording or add links.
     </nav>
   </header>
 
-  <!-- HERO -->
-  <!-- 🌟 HERO SECTION START -->
+  <!-- HERO --><!-- 🌟 HERO SECTION START -->
 <section class="hero" id="home" role="banner" style="position:relative; height:100vh; display:flex; align-items:center; justify-content:center; overflow:hidden; background:#05060a; color:white; text-align:center;">
-
+  
   <!-- Neural Network Background -->
-  <div id="ai-background" style="position:absolute;inset:0;z-index:0;"></div>
+  <div id="ai-network" style="position:absolute; inset:0; z-index:0;"></div>
 
-  <!-- Hero Text -->
-  <div class="hero-content" style="position:relative;z-index:2;">
+  <!-- Hero Content -->
+  <div class="hero-content" style="position:relative; z-index:2;">
     <h1 class="typing-text"></h1>
     <p class="subtext">Aspiring AI/ML & Software Engineer</p>
   </div>
-
 </section>
 
 <!-- Scripts -->
 <script src="https://cdn.jsdelivr.net/npm/tsparticles@2.11.0/tsparticles.min.js"></script>
 <script>
-  // Neural Network Animation
-  tsParticles.load("ai-background", {
+  // 🌐 Neural Network Background Animation
+  tsParticles.load("ai-network", {
     fullScreen: { enable: false },
     background: { color: { value: "#05060a" } },
     fpsLimit: 60,
     particles: {
-      number: { value: 120, density: { enable: true, area: 800 } },
+      number: { value: 130, density: { enable: true, area: 800 } },
       color: { value: ["#00d0ff", "#8a2be2", "#ff6ec7"] },
       shape: { type: "circle" },
-      opacity: { value: 0.5 },
+      opacity: { value: 0.7, random: true },
       size: { value: { min: 1, max: 3 } },
-      move: { enable: true, speed: 0.6, outModes: "bounce" },
-      links: { enable: true, distance: 130, color: "#00d0ff", opacity: 0.2, width: 1 }
+      move: {
+        enable: true,
+        speed: 1,
+        direction: "none",
+        random: false,
+        straight: false,
+        outModes: "bounce",
+        attract: { enable: true, rotateX: 600, rotateY: 1200 }
+      },
+      links: {
+        enable: true,
+        distance: 140,
+        color: "#00d0ff",
+        opacity: 0.25,
+        width: 1
+      }
     },
     interactivity: {
-      events: { onHover: { enable: true, mode: "grab" }, onClick: { enable: true, mode: "push" } },
-      modes: { grab: { distance: 140, links: { opacity: 0.25 } }, push: { quantity: 4 } }
+      events: {
+        onHover: { enable: true, mode: "grab" },
+        onClick: { enable: true, mode: "repulse" }
+      },
+      modes: {
+        grab: { distance: 180, links: { opacity: 0.35 } },
+        repulse: { distance: 150, duration: 0.4 }
+      }
     },
     detectRetina: true
   });
 
-  // Typing Name Animation
+  // ✨ Typing Animation for Name
   const nameText = "Vinayak Girish Hotanahalli";
   const typingElement = document.querySelector(".typing-text");
-  let i = 0;
+  let index = 0;
+
   function typeWriter() {
-    if (i < nameText.length) {
-      typingElement.innerHTML += nameText.charAt(i);
-      i++;
+    if (index < nameText.length) {
+      typingElement.innerHTML += nameText.charAt(index);
+      index++;
       setTimeout(typeWriter, 120);
+    } else {
+      typingElement.classList.add("finished");
     }
   }
+
+  // Wait until page fully loads
   window.addEventListener("load", () => {
-    window.scrollTo(0, 0); // ✅ Ensures page starts at top
+    window.scrollTo(0, 0);
+    typingElement.innerHTML = "";
     typeWriter();
   });
 </script>
@@ -218,10 +242,11 @@ Replace any placeholder text if you want to tweak wording or add links.
 <style>
   @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@700&display=swap');
 
+  /* ✨ Typing Text */
   .typing-text {
     font-family: 'Orbitron', sans-serif;
-    font-size: clamp(32px, 5vw, 64px);
-    font-weight: 700;
+    font-size: clamp(36px, 6vw, 72px);
+    font-weight: 800;
     color: #00d0ff;
     letter-spacing: 2px;
     border-right: 3px solid #8a2be2;
@@ -230,6 +255,11 @@ Replace any placeholder text if you want to tweak wording or add links.
     width: fit-content;
     margin: 0 auto;
     animation: blinkCursor 0.8s step-end infinite;
+    text-shadow: 0 0 20px rgba(0, 208, 255, 0.6), 0 0 30px rgba(138, 43, 226, 0.4);
+  }
+
+  .typing-text.finished {
+    border-right: none;
   }
 
   @keyframes blinkCursor {
@@ -237,11 +267,13 @@ Replace any placeholder text if you want to tweak wording or add links.
     to { border-color: #8a2be2; }
   }
 
+  /* 🌌 Subtext */
   .subtext {
-    margin-top: 18px;
-    font-size: 20px;
+    margin-top: 20px;
+    font-size: 22px;
     color: #bcd3ff;
     font-weight: 500;
+    text-shadow: 0 0 10px rgba(140, 200, 255, 0.4);
   }
 </style>
 <!-- 🌟 HERO SECTION END -->
