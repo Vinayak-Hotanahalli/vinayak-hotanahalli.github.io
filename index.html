@@ -159,7 +159,7 @@ Replace any placeholder text if you want to tweak wording or add links.
     </nav>
   </header>
 
-  <!-- HERO --><!-- 🌟 HERO SECTION START -->
+  <!-- 🌟 HERO SECTION START -->
 <section class="hero" id="home" role="banner" style="position:relative; height:100vh; display:flex; align-items:center; justify-content:center; overflow:hidden; background:#05060a; color:white; text-align:center;">
   
   <!-- Neural Network Background -->
@@ -172,10 +172,10 @@ Replace any placeholder text if you want to tweak wording or add links.
   </div>
 </section>
 
-<!-- Scripts -->
+<!-- ✨ Neural Background + Typing Animation -->
 <script src="https://cdn.jsdelivr.net/npm/tsparticles@2.11.0/tsparticles.min.js"></script>
 <script>
-  // 🌐 Neural Network Background Animation
+  // Neural Network Background Animation
   tsParticles.load("ai-network", {
     fullScreen: { enable: false },
     background: { color: { value: "#05060a" } },
@@ -216,7 +216,7 @@ Replace any placeholder text if you want to tweak wording or add links.
     detectRetina: true
   });
 
-  // ✨ Typing Animation for Name
+  // Typing Animation for Name
   const nameText = "Vinayak Girish Hotanahalli";
   const typingElement = document.querySelector(".typing-text");
   let index = 0;
@@ -231,7 +231,6 @@ Replace any placeholder text if you want to tweak wording or add links.
     }
   }
 
-  // Wait until page fully loads
   window.addEventListener("load", () => {
     window.scrollTo(0, 0);
     typingElement.innerHTML = "";
@@ -242,7 +241,7 @@ Replace any placeholder text if you want to tweak wording or add links.
 <style>
   @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@700&display=swap');
 
-  /* ✨ Typing Text */
+  /* Typing Text Style */
   .typing-text {
     font-family: 'Orbitron', sans-serif;
     font-size: clamp(36px, 6vw, 72px);
@@ -258,16 +257,13 @@ Replace any placeholder text if you want to tweak wording or add links.
     text-shadow: 0 0 20px rgba(0, 208, 255, 0.6), 0 0 30px rgba(138, 43, 226, 0.4);
   }
 
-  .typing-text.finished {
-    border-right: none;
-  }
+  .typing-text.finished { border-right: none; }
 
   @keyframes blinkCursor {
     from { border-color: transparent; }
     to { border-color: #8a2be2; }
   }
 
-  /* 🌌 Subtext */
   .subtext {
     margin-top: 20px;
     font-size: 22px;
@@ -277,33 +273,6 @@ Replace any placeholder text if you want to tweak wording or add links.
   }
 </style>
 <!-- 🌟 HERO SECTION END -->
-
-<!-- TSParticles (AI Background Animation Script) -->
-<script src="https://cdn.jsdelivr.net/npm/tsparticles@2.11.0/tsparticles.min.js"></script>
-<script>
-  tsParticles.load("ai-background", {
-    fullScreen: { enable: false },
-    background: { color: { value: "#05060a" } },
-    fpsLimit: 60,
-    particles: {
-      number: { value: 120, density: { enable: true, area: 800 } },
-      color: { value: ["#00d0ff","#8a2be2","#ff6ec7"] },
-      shape: { type: "circle" },
-      opacity: { value: 0.5 },
-      size: { value: { min: 2, max: 4 } },
-      move: { enable: true, speed: 0.6, direction: "none", outMode: "bounce" },
-      links: { enable: true, distance: 120, color: "#00d0ff", opacity: 0.15, width: 1 }
-    },
-    interactivity: {
-      events: {
-        onHover: { enable: true, mode: "grab" },
-        onClick: { enable: true, mode: "push" }
-      },
-      modes: { grab: { distance: 140, links: { opacity: 0.25 } }, push: { quantity: 4 } }
-    },
-    detectRetina: true
-  });
-</script>
 
   <!-- MAIN CONTENT -->
   <main>
