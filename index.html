@@ -1,205 +1,150 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Vinayak Hotanahalli — Portfolio</title>
-
-  <!-- Fonts -->
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&family=Orbitron:wght@700&display=swap" rel="stylesheet">
-
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Vinayak Girish Hotanahalli | Portfolio</title>
   <style>
-    :root {
-      --bg: #05060a;
-      --accent1: #00d0ff;
-      --accent2: #8a2be2;
-      --name-color: #00d0ff;
-      --sub-color: #bcd3ff;
-    }
-
-    html, body {
-      height: 100%;
+    * {
       margin: 0;
-      font-family: "Inter", sans-serif;
-      background: var(--bg);
-      color: #e8f0ff;
-      scroll-behavior: smooth;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: "Poppins", sans-serif;
     }
 
-    /* HERO SECTION */
-    .hero {
-      height: 100vh;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      position: relative;
+    body {
       overflow: hidden;
-      text-align: center;
+      height: 100vh;
+      background: radial-gradient(circle at center, #020617 10%, #000 100%);
+      color: white;
     }
 
-    #ai-network {
-      position: absolute;
-      inset: 0;
-      z-index: 0;
-      pointer-events: none;
+    /* Neural Network background */
+    canvas#neuralBg {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: -1;
+      background: linear-gradient(135deg, #020617, #000);
     }
 
-    .hero-content {
-      position: relative;
-      z-index: 2;
+    .center-content {
       display: flex;
       flex-direction: column;
       align-items: center;
       justify-content: center;
-      padding: 20px;
-    }
-
-    .pulse-wrap {
-      position: relative;
-      display: inline-block;
-    }
-
-    .pulse-ring {
-      position: absolute;
-      inset: -14px -18px;
-      border-radius: 14px;
-      z-index: 0;
-      pointer-events: none;
-      box-shadow: 0 0 40px rgba(0,208,255,0.12), 0 0 80px rgba(138,43,226,0.06);
-      transition: opacity .35s ease, transform .35s ease;
-      opacity: 0.88;
-      transform: scale(1);
-      background: radial-gradient(60% 60% at 50% 40%, rgba(0,208,255,0.06), rgba(138,43,226,0.02));
-      backdrop-filter: blur(6px);
-    }
-
-    .typing-text {
-      position: relative;
-      z-index: 1;
-      font-family: 'Orbitron', sans-serif;
-      color: var(--name-color);
-      font-weight: 800;
-      font-size: clamp(36px, 6vw, 72px);
-      letter-spacing: 1px;
-      display: inline-block;
-      padding: 18px 22px;
-      border-radius: 10px;
-      border-right: 3px solid rgba(138,43,226,0.9);
-      text-shadow: 0 0 20px rgba(0,208,255,0.18), 0 0 36px rgba(138,43,226,0.12);
-      white-space: nowrap;
-    }
-
-    .typing-text.finished {
-      border-right: none;
-    }
-
-    .subtext {
-      color: var(--sub-color);
-      font-size: 20px;
-      font-weight: 500;
-      margin-top: 10px;
-    }
-
-    /* Background Particle Animation */
-    @keyframes char-pulse {
-      0% { transform: scale(0.98); opacity: 0.9; }
-      50% { transform: scale(1.1); opacity: 1; }
-      100% { transform: scale(1); opacity: 0.9; }
-    }
-
-    .pulse-ring.pulse {
-      animation: char-pulse 420ms ease;
-    }
-
-    .pulse-ring.idle {
-      animation: idle-breath 2400ms ease-in-out infinite;
-    }
-
-    @keyframes idle-breath {
-      0% { transform: scale(1); opacity: 0.85; }
-      50% { transform: scale(1.03); opacity: 1; }
-      100% { transform: scale(1); opacity: 0.85; }
-    }
-
-    /* ABOUT SECTION */
-    section#about {
-      background: rgba(255, 255, 255, 0.03);
-      padding: 80px 20px;
+      height: 100vh;
       text-align: center;
     }
 
-    section#about h2 {
-      color: #00d0ff;
-      font-size: 28px;
-      margin-bottom: 20px;
+    h1 {
+      font-size: 3rem;
+      color: #00ffff;
+      border-right: 3px solid #00ffff;
+      white-space: nowrap;
+      overflow: hidden;
+      width: 0;
+      animation: typing 4s steps(30, end) forwards, blink 0.7s infinite;
     }
 
-    section#about p {
-      color: #bcd6ff;
-      font-size: 16px;
-      line-height: 1.6;
-      max-width: 800px;
-      margin: auto;
+    @keyframes typing {
+      from { width: 0; }
+      to { width: 100%; }
     }
 
+    @keyframes blink {
+      50% { border-color: transparent; }
+    }
+
+    p {
+      margin-top: 20px;
+      font-size: 1.2rem;
+      color: #cfcfcf;
+    }
+
+    a {
+      display: inline-block;
+      margin-top: 30px;
+      background: #00ffff;
+      color: #000;
+      text-decoration: none;
+      padding: 10px 25px;
+      border-radius: 25px;
+      font-weight: 600;
+      transition: 0.3s;
+    }
+
+    a:hover {
+      background: #fff;
+      color: #000;
+      box-shadow: 0 0 10px #00ffff;
+    }
   </style>
 </head>
-
 <body>
 
-  <!-- 🧠 HERO SECTION -->
-  <section class="hero">
-    <div id="ai-network"></div>
-    <div class="hero-content">
-      <div class="pulse-wrap">
-        <div class="pulse-ring" id="pulseRing"></div>
-        <div class="typing-text" id="typingText"></div>
-      </div>
-      <p class="subtext">Aspiring AI/ML & Software Engineer</p>
-    </div>
-  </section>
+  <canvas id="neuralBg"></canvas>
 
-  <!-- 🌌 Neural Network Background -->
-  <script src="https://cdn.jsdelivr.net/npm/tsparticles@2.11.0/tsparticles.min.js"></script>
+  <div class="center-content">
+    <h1 id="typingName">Welcome to My Portfolio</h1>
+    <p>Hi, I'm <span style="color:#00ffff;">Vinayak Girish Hotanahalli</span> — Passionate AI/ML Engineer</p>
+    <a href="#about">Explore More</a>
+  </div>
+
   <script>
-    tsParticles.load("ai-network", {
-      fullScreen: { enable: false },
-      background: { color: { value: "transparent" } },
-      fpsLimit: 60,
-      particles: {
-        number: { value: 100, density: { enable: true, area: 800 } },
-        color: { value: ["#00d0ff", "#8a2be2", "#ff6ec7"] },
-        links: { enable: true, distance: 150, color: "#00d0ff", opacity: 0.2, width: 1 },
-        move: { enable: true, speed: 1, outModes: { default: "bounce" } },
-        opacity: { value: 0.8 },
-        size: { value: { min: 1, max: 3 } },
-      }
-    });
-  </script>
+    // Neural Network moving background
+    const canvas = document.getElementById('neuralBg');
+    const ctx = canvas.getContext('2d');
+    let nodes = [];
 
-  <!-- ✨ Typing Animation -->
-  <script>
-    const nameText = "Vinayak Girish Hotanahalli";
-    const typingEl = document.getElementById("typingText");
-    const pulseEl = document.getElementById("pulseRing");
-    let i = 0;
-
-    function typeStep() {
-      if (i < nameText.length) {
-        typingEl.textContent += nameText.charAt(i);
-        i++;
-        pulseEl.classList.remove("pulse");
-        void pulseEl.offsetWidth;
-        pulseEl.classList.add("pulse");
-        setTimeout(typeStep, 100);
-      } else {
-        typingEl.classList.add("finished");
-        pulseEl.classList.remove("pulse");
-        pulseEl.classList.add("idle");
-      }
+    function resizeCanvas() {
+      canvas.width = window.innerWidth;
+      canvas.height = window.innerHeight;
+      nodes = Array(60).fill().map(() => ({
+        x: Math.random() * canvas.width,
+        y: Math.random() * canvas.height,
+        vx: (Math.random() - 0.5) * 0.5,
+        vy: (Math.random() - 0.5) * 0.5
+      }));
     }
 
-    window.addEventListener("load", () => setTimeout(typeStep, 300));
+    function draw() {
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+      for (let i = 0; i < nodes.length; i++) {
+        const nodeA = nodes[i];
+        nodeA.x += nodeA.vx;
+        nodeA.y += nodeA.vy;
+        if (nodeA.x < 0 || nodeA.x > canvas.width) nodeA.vx *= -1;
+        if (nodeA.y < 0 || nodeA.y > canvas.height) nodeA.vy *= -1;
+
+        ctx.beginPath();
+        ctx.arc(nodeA.x, nodeA.y, 2, 0, Math.PI * 2);
+        ctx.fillStyle = '#00ffff';
+        ctx.fill();
+
+        for (let j = i + 1; j < nodes.length; j++) {
+          const nodeB = nodes[j];
+          const dx = nodeA.x - nodeB.x;
+          const dy = nodeA.y - nodeB.y;
+          const dist = Math.sqrt(dx * dx + dy * dy);
+          if (dist < 120) {
+            ctx.beginPath();
+            ctx.moveTo(nodeA.x, nodeA.y);
+            ctx.lineTo(nodeB.x, nodeB.y);
+            ctx.strokeStyle = `rgba(0,255,255,${1 - dist / 120})`;
+            ctx.lineWidth = 0.5;
+            ctx.stroke();
+          }
+        }
+      }
+      requestAnimationFrame(draw);
+    }
+
+    window.addEventListener('resize', resizeCanvas);
+    resizeCanvas();
+    draw();
   </script>
 
    <!-- ABOUT -->
