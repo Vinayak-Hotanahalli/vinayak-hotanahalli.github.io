@@ -1,279 +1,161 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Vinayak Girish Hotanahalli | Portfolio</title>
-
-  <!-- Google Fonts -->
-  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700&display=swap" rel="stylesheet">
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Profilero — Vinayak Girish Hotanahalli</title>
+  <meta name="description" content="Portfolio of Vinayak Girish Hotanahalli — AI/ML, Computer Vision, and Deep Learning Engineer." />
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@700&family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
 
   <style>
     :root {
-      --main-color: cyan;
-      --text-color: #fff;
-      --nav-bg: rgba(0,0,0,0.3);
-      --highlight-color: cyan;
+      --bg: #05060a;
+      --accent1: #00d0ff;
+      --accent2: #8a2be2;
     }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
 
     body {
-      margin: 0;
-      font-family: 'Poppins', sans-serif;
-      background: #000;
-      color: var(--text-color);
-      overflow-x: hidden;
-      scroll-behavior: smooth;
+      height: 100vh;
+      background: radial-gradient(ellipse at bottom, #0a0f1a, #000);
+      overflow: hidden;
+      font-family: 'Inter', sans-serif;
+      color: white;
     }
 
-    /* === NEURON BACKGROUND === */
-    #neuron-bg {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      z-index: -1;
-      background: radial-gradient(ellipse at bottom, #0d1b2a 0%, #000000 100%);
-    }
-
-    /* === NAVBAR === */
-    #main-nav {
-      position: fixed;
-      top: 20px;
-      right: 40px;
-      z-index: 999;
-      background: var(--nav-bg);
-      padding: 10px 18px;
-      border-radius: 12px;
-      backdrop-filter: blur(6px);
-      box-shadow: 0 0 10px rgba(0,255,255,0.1);
-    }
-
-    #main-nav ul {
-      display: flex;
-      gap: 14px;
-      list-style: none;
-      margin: 0;
-      padding: 0;
-    }
-
-    #main-nav a {
-      color: #ddd;
-      font-weight: 500;
-      font-size: 15px;
-      text-decoration: none;
-      padding: 6px 10px;
-      border-radius: 6px;
-      transition: all 0.3s ease;
-    }
-
-    #main-nav a:hover {
-      color: var(--highlight-color);
-    }
-
-    #main-nav a.active {
-      background: rgba(0,255,255,0.2);
-      color: cyan;
-      box-shadow: 0 0 10px cyan;
-    }
-
-    /* === HERO SECTION === */
+    /* ===== Hero Section ===== */
     .hero {
-      height: 70vh;
+      position: relative;
+      z-index: 1;
       display: flex;
+      flex-direction: column;
       align-items: center;
       justify-content: center;
+      height: 100vh;
       text-align: center;
-      flex-direction: column;
-      position: relative;
-      padding: 0 20px;
+      overflow: hidden;
     }
 
-    /* === FIRE TEXT === */
-    .fire-text {
+    /* Neural Background Canvas */
+    #ai-network {
+      position: absolute;
+      inset: 0;
+      z-index: 0;
+    }
+
+    /* Typing Text Effect */
+    .typing-text {
       font-family: 'Orbitron', sans-serif;
-      font-size: clamp(40px, 6vw, 80px);
-      color: #fff;
-      text-transform: uppercase;
-      animation: burn 1.5s infinite alternate;
-      position: relative;
-      text-shadow:
-        0 0 5px #ff3b3b,
-        0 0 10px #ff6600,
-        0 0 20px #ff3b3b,
-        0 0 40px #ffae00,
-        0 0 80px #ff3b3b;
+      font-size: clamp(36px, 6vw, 72px);
+      font-weight: 800;
+      color: var(--accent1);
+      letter-spacing: 2px;
+      border-right: 3px solid var(--accent2);
+      white-space: nowrap;
+      overflow: hidden;
+      width: fit-content;
+      margin: 0 auto;
+      animation: blinkCursor 0.8s step-end infinite, pulseGlow 2.5s ease-in-out infinite;
+      text-shadow: 0 0 20px rgba(0, 208, 255, 0.6), 0 0 40px rgba(138, 43, 226, 0.4);
     }
 
-    @keyframes burn {
-      0% {
-        text-shadow:
-          0 0 5px #ff6600,
-          0 0 15px #ff3b3b,
-          0 0 30px #ffae00,
-          0 0 60px #ff3b3b;
-      }
-      100% {
-        text-shadow:
-          0 0 15px #ff3b3b,
-          0 0 25px #ff6600,
-          0 0 50px #ff3b3b,
-          0 0 100px #ffae00;
-      }
-    }
+    .typing-text.finished { border-right: none; }
 
+    /* Subtitle */
     .subtext {
-      font-size: 18px;
-      color: #aaa;
-      margin-top: 8px;
-      letter-spacing: 0.5px;
+      margin-top: 20px;
+      font-size: 22px;
+      color: #bcd3ff;
+      font-weight: 500;
+      text-shadow: 0 0 10px rgba(140, 200, 255, 0.4);
     }
 
-    /* === SECTION STYLE (optional visual separation) === */
-    section {
-      padding: 80px 20px;
-      text-align: center;
+    /* Animations */
+    @keyframes blinkCursor {
+      from { border-color: transparent; }
+      to { border-color: var(--accent2); }
     }
 
-    section:nth-child(even) {
-      background: rgba(255,255,255,0.02);
+    @keyframes pulseGlow {
+      0%, 100% { text-shadow: 0 0 20px rgba(0, 208, 255, 0.6), 0 0 40px rgba(138, 43, 226, 0.4); }
+      50% { text-shadow: 0 0 40px rgba(0, 208, 255, 0.9), 0 0 70px rgba(138, 43, 226, 0.7); }
     }
   </style>
 </head>
 
 <body>
-  <!-- Neuron Background -->
-  <canvas id="neuron-bg"></canvas>
-
-  <!-- Navigation -->
-  <nav id="main-nav">
-    <ul>
-      <li><a href="#about" class="nav-link active">About</a></li>
-      <li><a href="#experience" class="nav-link">Experience</a></li>
-      <li><a href="#skills" class="nav-link">Skills</a></li>
-      <li><a href="#projects" class="nav-link">Projects</a></li>
-      <li><a href="#achievements" class="nav-link">Achievements</a></li>
-      <li><a href="#certifications" class="nav-link">Certifications</a></li>
-      <li><a href="#contact" class="nav-link">Contact</a></li>
-    </ul>
-  </nav>
-
-  <!-- HERO SECTION -->
+  <!-- Hero Section -->
   <section class="hero" id="home">
-    <h1 class="fire-text">Vinayak Girish Hotanahalli</h1>
-    <p class="subtext">AI/ML Engineer | Computer Vision | Deep Learning Enthusiast</p>
+    <div id="ai-network"></div>
+
+    <div class="hero-content" style="position: relative; z-index: 2;">
+      <h1 class="typing-text"></h1>
+      <p class="subtext">Aspiring AI/ML & Software Engineer</p>
+    </div>
   </section>
 
-  <!-- YOUR EXISTING SECTIONS -->
-  <main>
-    <section id="about"><h2>About</h2></section>
-    <section id="experience"><h2>Experience</h2></section>
-    <section id="skills"><h2>Skills</h2></section>
-    <section id="projects"><h2>Projects</h2></section>
-    <section id="achievements"><h2>Achievements</h2></section>
-    <section id="certifications"><h2>Certifications</h2></section>
-    <section id="contact"><h2>Contact</h2></section>
-  </main>
-
-  <!-- === SCRIPTS === -->
+  <!-- TSParticles (Neural Network Background) -->
+  <script src="https://cdn.jsdelivr.net/npm/tsparticles@2.11.0/tsparticles.min.js"></script>
   <script>
-  // === NEURON BACKGROUND ANIMATION ===
-  const canvas = document.getElementById('neuron-bg');
-  const ctx = canvas.getContext('2d');
-  let particlesArray;
-
-  function resizeCanvas() {
-    canvas.width = window.innerWidth;
-    canvas.height = window.innerHeight;
-  }
-  resizeCanvas();
-  window.addEventListener('resize', resizeCanvas);
-
-  class Particle {
-    constructor(x, y, dirX, dirY, size, color) {
-      this.x = x;
-      this.y = y;
-      this.dirX = dirX;
-      this.dirY = dirY;
-      this.size = size;
-      this.color = color;
-    }
-    draw() {
-      ctx.beginPath();
-      ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2, false);
-      ctx.fillStyle = this.color;
-      ctx.fill();
-    }
-    update() {
-      if (this.x > canvas.width || this.x < 0) this.dirX = -this.dirX;
-      if (this.y > canvas.height || this.y < 0) this.dirY = -this.dirY;
-      this.x += this.dirX;
-      this.y += this.dirY;
-      this.draw();
-    }
-  }
-
-  function connect() {
-    for (let a = 0; a < particlesArray.length; a++) {
-      for (let b = a; b < particlesArray.length; b++) {
-        let dx = particlesArray[a].x - particlesArray[b].x;
-        let dy = particlesArray[a].y - particlesArray[b].y;
-        let distance = dx * dx + dy * dy;
-        if (distance < 8000) {
-          ctx.strokeStyle = 'rgba(0,255,255,0.1)';
-          ctx.lineWidth = 1;
-          ctx.beginPath();
-          ctx.moveTo(particlesArray[a].x, particlesArray[a].y);
-          ctx.lineTo(particlesArray[b].x, particlesArray[b].y);
-          ctx.stroke();
+    // Neural Network Background
+    tsParticles.load("ai-network", {
+      fullScreen: { enable: false },
+      background: { color: { value: "#05060a" } },
+      fpsLimit: 60,
+      particles: {
+        number: { value: 130, density: { enable: true, area: 800 } },
+        color: { value: ["#00d0ff", "#8a2be2", "#ff6ec7"] },
+        shape: { type: "circle" },
+        opacity: { value: 0.7, random: true },
+        size: { value: { min: 1, max: 3 } },
+        move: {
+          enable: true,
+          speed: 1,
+          direction: "none",
+          outModes: "bounce",
+          attract: { enable: true, rotateX: 600, rotateY: 1200 }
+        },
+        links: {
+          enable: true,
+          distance: 140,
+          color: "#00d0ff",
+          opacity: 0.25,
+          width: 1
         }
+      },
+      interactivity: {
+        events: {
+          onHover: { enable: true, mode: "grab" },
+          onClick: { enable: true, mode: "repulse" }
+        },
+        modes: {
+          grab: { distance: 180, links: { opacity: 0.35 } },
+          repulse: { distance: 150, duration: 0.4 }
+        }
+      },
+      detectRetina: true
+    });
+
+    // Typing Animation
+    const nameText = "Vinayak Girish Hotanahalli";
+    const typingElement = document.querySelector(".typing-text");
+    let index = 0;
+
+    function typeWriter() {
+      if (index < nameText.length) {
+        typingElement.innerHTML += nameText.charAt(index);
+        index++;
+        setTimeout(typeWriter, 120);
+      } else {
+        typingElement.classList.add("finished");
       }
     }
-  }
 
-  function init() {
-    particlesArray = [];
-    const numParticles = (canvas.height * canvas.width) / 15000;
-    for (let i = 0; i < numParticles; i++) {
-      let size = Math.random() * 2 + 1;
-      let x = Math.random() * (innerWidth - size * 2);
-      let y = Math.random() * (innerHeight - size * 2);
-      let dirX = (Math.random() * 0.3) - 0.15;
-      let dirY = (Math.random() * 0.3) - 0.15;
-      let color = 'cyan';
-      particlesArray.push(new Particle(x, y, dirX, dirY, size, color));
-    }
-  }
-
-  function animate() {
-    requestAnimationFrame(animate);
-    ctx.clearRect(0, 0, innerWidth, innerHeight);
-    for (let i = 0; i < particlesArray.length; i++) {
-      particlesArray[i].update();
-    }
-    connect();
-  }
-
-  init();
-  animate();
-
-  // === NAVBAR ACTIVE HIGHLIGHT ===
-  const sections = document.querySelectorAll('section');
-  const navLinks = document.querySelectorAll('.nav-link');
-
-  window.addEventListener('scroll', () => {
-    let current = '';
-    sections.forEach(section => {
-      const sectionTop = section.offsetTop - 100;
-      if (scrollY >= sectionTop) current = section.getAttribute('id');
+    window.addEventListener("load", () => {
+      typingElement.innerHTML = "";
+      typeWriter();
     });
-    navLinks.forEach(link => {
-      link.classList.remove('active');
-      if (link.getAttribute('href') === '#' + current) {
-        link.classList.add('active');
-      }
-    });
-  });
   </script>
   
   <!-- MAIN CONTENT -->
