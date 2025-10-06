@@ -1,4 +1,183 @@
+<!--
+Profilero — Vinayak Girish Hotanahalli
+Single-file personal portfolio (resume) — copy to index.html and host on GitHub Pages / Vercel.
 
+What's included:
+- 3D hero (Three.js) with rotating low-poly "brain"
+- Particle background
+- Custom cursor with hover effect & click ripple
+- GSAP scroll reveals & card tilt
+- Neon/glassmorphism theme & dark/light toggle
+- Sections: Hero, About, Skills, Projects, Certifications & Achievements, Contact
+- Responsive & optimized for static hosting
+
+Personal info pulled from your resume:
+- Name: Vinayak Girish Hotanahalli
+- Tagline: AI/ML Engineer | Computer Vision | Generative AI | Deep Learning Enthusiast
+- Email: vinayakhotanahalli72@gmail.com
+- Phone: ‪+91 8970393850‬
+- LinkedIn: https://www.linkedin.com/in/vinayak-hotanahalli-2775b929b/
+- GitHub: https://github.com/Vinayak-Hotanahalli
+
+Replace any placeholder text if you want to tweak wording or add links.
+-->
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Profilero — Vinayak Girish Hotanahalli</title>
+  <meta name="description" content="Profilero — Personal portfolio of Vinayak Girish Hotanahalli (AI/ML, Computer Vision). 3D web resume with interactive effects." />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
+
+  <style>
+    :root{
+      --bg:#05060a;
+      --panel: rgba(255,255,255,0.04);
+      --muted: rgba(255,255,255,0.72);
+      --accent1:#00d0ff;
+      --accent2:#8a2be2;
+      --glass: rgba(255,255,255,0.04);
+      --glass-border: rgba(255,255,255,0.06);
+    }
+    *{box-sizing:border-box}
+    html,body{height:100%}
+    body{
+      margin:0;
+      font-family:Inter,system-ui,Arial;
+      background:linear-gradient(180deg,var(--bg),#071026 72%);
+      color:#e8f0ff;
+      -webkit-font-smoothing:antialiased;
+      -moz-osx-font-smoothing:grayscale;
+      overflow-x:hidden;
+    }
+
+    /* NAV */
+    header.navbar{
+      position:fixed; top:18px; left:18px; right:18px; z-index:70;
+      display:flex; justify-content:space-between; align-items:center; gap:12px;
+    }
+    .brand{font-weight:800; letter-spacing:0.6px; display:flex;gap:10px;align-items:center}
+    .brand .dot{width:11px;height:11px;border-radius:999px;background:linear-gradient(90deg,var(--accent1),var(--accent2));box-shadow:0 6px 20px rgba(138,43,226,0.18)}
+    nav.links{display:flex;gap:8px;align-items:center}
+    nav.links button{background:transparent;border:1px solid var(--glass-border);padding:8px 12px;border-radius:10px;color:var(--muted);backdrop-filter: blur(6px);cursor:pointer}
+    nav.links button:hover{transform:translateY(-3px);border-color:rgba(255,255,255,0.14)}
+
+    /* HERO */
+    .hero{
+      height:85vh; min-height:560px; position:relative; display:flex; align-items:center; justify-content:center; overflow:hidden;
+    }
+    #three-wrap{position:absolute;inset:0;z-index:1;pointer-events:none}
+    .hero-content{position:relative;z-index:10;text-align:center;padding:28px;max-width:980px}
+    .title{font-size: clamp(28px,5vw,56px); font-weight:900; line-height:1;}
+    .subtitle{margin-top:14px;color:#bcd3ff;font-size:18px;max-width:820px;margin-left:auto;margin-right:auto}
+
+    .cta-group{margin-top:22px;display:flex; gap:12px; justify-content:center; flex-wrap:wrap}
+    .btn{
+      border-radius:999px;padding:12px 20px;font-weight:700;border:none;cursor:pointer;
+      background:linear-gradient(90deg,var(--accent1),var(--accent2));
+      box-shadow:0 10px 34px rgba(138,43,226,0.12); color:#021025;
+    }
+    .btn.secondary{background:transparent;border:1px solid rgba(255,255,255,0.06); color:var(--muted)}
+
+    /* Custom cursor */
+    .cursor {
+      position: fixed;
+      width: 18px; height:18px; border-radius:50%;
+      pointer-events:none; z-index:9999; transform:translate3d(-50%,-50%,0);
+      transition: transform .12s ease, width .12s ease, height .12s ease, background .12s ease;
+      mix-blend-mode:screen;
+      background: radial-gradient(circle at 30% 30%, rgba(0,208,255,0.95), rgba(138,43,226,0.95));
+      box-shadow: 0 6px 30px rgba(0,0,0,0.35);
+    }
+    .cursor.hovering{width:48px;height:48px;background:linear-gradient(90deg,var(--accent2),var(--accent1));}
+
+    /* Sections */
+    section{padding: 84px 18px;}
+    .container{max-width:1120px;margin:0 auto;padding:0 18px}
+    .glass{
+      background: linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));
+      border: 1px solid var(--glass-border);
+      padding:18px;border-radius:14px;
+      backdrop-filter: blur(8px);
+    }
+
+    /* Projects grid */
+    .projects-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:18px;margin-top:18px}
+    .card{
+      border-radius:14px;padding:18px;min-height:160px;position:relative;overflow:hidden;
+      background: linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));
+      border:1px solid rgba(255,255,255,0.03);transition:transform .28s cubic-bezier(.2,.9,.3,1), box-shadow .28s;
+    }
+    .card:hover{transform:translateY(-10px) scale(1.01); box-shadow:0 22px 60px rgba(2,16,36,0.6)}
+    .tag{font-size:12px;color:#bcd3ff; font-weight:700}
+    .card h3{margin:8px 0 0 0;font-size:18px}
+    .card p{color:#9fb6ea;font-size:14px;margin-top:8px}
+
+    /* Skills */
+    .skill-badges{display:flex;gap:8px;flex-wrap:wrap;margin-top:12px}
+    .badge{padding:8px 12px;border-radius:999px;border:1px solid rgba(255,255,255,0.04); background:rgba(255,255,255,0.02);font-weight:600;font-size:13px;color:#dff4ff}
+
+    /* Certifications & Achievements */
+    .list-row{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:12px}
+    .ach{padding:12px;border-radius:10px;background:linear-gradient(180deg,rgba(255,255,255,0.01),transparent);border:1px solid rgba(255,255,255,0.03)}
+
+    /* Contact */
+    .contact-grid{display:grid;grid-template-columns:1fr 1fr;gap:18px}
+    .input, textarea{width:100%; padding:12px;border-radius:10px;border:1px solid rgba(255,255,255,0.04);background:transparent;color:#eaf3ff}
+
+    footer{padding:28px 18px;text-align:center;color:#8ea8dc}
+
+    /* Responsive */
+    @media (max-width:880px){
+      .hero{height:68vh}
+      .contact-grid{grid-template-columns:1fr}
+    }
+
+    .neon-line{height:3px;background:linear-gradient(90deg,var(--accent1),var(--accent2));border-radius:2px;margin-top:12px;width:120px;margin-left:auto;margin-right:auto}
+  </style>
+</head>
+<body>
+
+  <!-- Custom cursor -->
+  <div class="cursor" id="cursor"></div>
+
+  <!-- NAV -->
+  <header class="navbar">
+    <div class="brand">
+      <div class="dot" aria-hidden="true"></div>
+      <div style="font-size:16px">Profilero</div>
+    </div>
+
+    <nav class="links" aria-label="Main navigation">
+      <button data-to="about">About</button>
+      <button data-to="skills">Skills</button>
+      <button data-to="projects">Projects</button>
+      <button data-to="certs">Certifications</button>
+      <button data-to="contact">Contact</button>
+      <button id="toggleTheme" title="Toggle Theme">Toggle</button>
+    </nav>
+  </header>
+
+  <!-- HERO -->
+  <section class="hero" role="banner">
+    <div id="three-wrap" aria-hidden="true"></div>
+
+    <div class="hero-content">
+      <h1 class="title">Vinayak Girish Hotanahalli</h1>
+      <div class="neon-line" aria-hidden="true"></div>
+      <p class="subtitle">AI/ML Engineer | Computer Vision | Generative AI | Deep Learning Enthusiast</p>
+
+      <div class="cta-group">
+        <button class="btn" id="exploreProjects">Explore Projects</button>
+        <button class="btn secondary" id="downloadResume">Download Resume</button>
+        <a href="mailto:vinayakhotanahalli72@gmail.com" class="btn secondary" style="display:inline-flex;align-items:center;gap:8px">Contact</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- MAIN CONTENT -->
+  <main>
 
    <!-- ABOUT -->
 <section id="about" style="margin-top:60px; background:linear-gradient(180deg, rgba(255,255,255,0.01), rgba(0,0,0,0.02)); padding:60px 0;">
